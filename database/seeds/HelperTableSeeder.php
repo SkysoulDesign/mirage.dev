@@ -44,7 +44,7 @@ class HelperTableSeeder extends Seeder
                 'email'                 => 'Required - User Email',
                 'password'              => 'Required - User Password',
                 'password_confirmation' => 'Required - Password Confirmation',
-                'term'                  => 'Required - Accept the terms and conditions of usage',
+                'terms'                 => 'Required - Accept the terms and conditions of usage',
                 'gender'                => 'User Gender Male or Female',
                 'country_id'            => 'Country id as on Country Api',
                 'newsletter'            => 'Accept to Receive newsletter',
