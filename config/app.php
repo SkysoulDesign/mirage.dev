@@ -151,7 +151,6 @@ return [
         /**
          * Custom Providers
          */
-        Tymon\JWTAuth\Providers\JWTAuthServiceProvider::class,
         Maatwebsite\Excel\ExcelServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
 
@@ -212,8 +211,6 @@ return [
         /**
          * Custom Facades
          */
-        'JWTAuth'    => Tymon\JWTAuth\Facades\JWTAuth::class,
-        'JWTFactory' => Tymon\JWTAuth\Facades\JWTFactory::class,
         'Excel'      => Maatwebsite\Excel\Facades\Excel::class,
         'Debugbar'   => Barryvdh\Debugbar\Facade::class,
     ],

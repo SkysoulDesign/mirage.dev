@@ -10,9 +10,9 @@
   "require": {
     "php": ">=5.5.9",
     "laravel/framework": "5.2.*",
-    "tymon/jwt-auth": "0.5.*",
     "firebase/php-jwt": "^3.0",
-    "barryvdh/laravel-debugbar": "^2.1"
+    "dompdf/dompdf": "~0.6.2",
+    "maatwebsite/excel": "~2.1.0"
   },
   "require-dev": {
     "fzaninotto/faker": "~1.4",
@@ -20,8 +20,7 @@
     "phpunit/phpunit": "~4.0",
     "symfony/css-selector": "2.8.*|3.0.*",
     "symfony/dom-crawler": "2.8.*|3.0.*",
-    "dompdf/dompdf": "~0.6.2",
-    "maatwebsite/excel": "~2.1.0"
+    "barryvdh/laravel-debugbar": "^2.1"
   },
   "autoload": {
     "classmap": [
