@@ -1,7 +1,10 @@
-@extends('layout.master')
+@extends('layouts.master')
 
 @section('content')
-
+    <div class="ui segment">
+        todo
+    </div>
+    <!--
     <div class="row">
         <div class="medium-12 columns">
 
@@ -22,17 +25,17 @@
                 </thead>
                 <tbody>
                 @foreach($notifications as $notification)
-                    <tr>
-                        <td>{{ $notification->title }}</td>
+            <tr>
+                <td>{{ $notification->title }}</td>
                         <td>{{ $notification->body }}</td>
                         <td>{{ $notification->release_date }}</td>
                         <td><a href="#">Trigger now</a></td>
                     </tr>
                 @endforeach
-                </tbody>
-            </table>
+            </tbody>
+        </table>
 
-        </div>
     </div>
-
+</div>
+-->
 @endsection

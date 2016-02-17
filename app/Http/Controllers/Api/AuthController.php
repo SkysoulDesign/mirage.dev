@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Jobs\Users\CreateUserJob;
-use App\Jobs\Users\GenerateTokenCommand;
+use App\Jobs\Users\GenerateTokenJob;
 use Illuminate\Contracts\Auth\Factory as Auth;
 use Illuminate\Http\Request;
 
@@ -30,16 +30,17 @@ class AuthController extends Controller
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function post(Request $request)
+    public function register(Request $request)
     {
 
         $validator = $this->getValidationFactory()->make($request->all(), [
-            'username' => 'required',
-            'email'    => 'required|email|unique:users',
-            'password' => 'required|confirmed|min:6',
-//            'gender'   => 'required',
-//            'country'  => 'required',
-//            'age'      => 'required'
+            'username'   => 'required|alpha_dash',
+            'email'      => 'required|email|unique:users',
+            'password'   => 'required|confirmed|min:6',
+            'gender'     => 'string',
+            'age'        => 'string',
+            'terms'      => 'accepted',
+            'country_id' => 'exists:countries,id',
         ]);
 
         if ($validator->fails())
@@ -75,7 +76,7 @@ class AuthController extends Controller
         if (!$this->auth->attempt($request->only($field, 'password')))
             return response()->json(['error' => 'invalid_username_or_password']);
 
-        $token = dispatch(new GenerateTokenCommand($this->auth->user()));
+        $token = dispatch(new GenerateTokenJob($this->auth->user(), true));
 
         return response()->json(compact('token'));
 

@@ -11,7 +11,9 @@
 |
 */
 
-use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\Api\AuthController as ApiAuthController;
+use App\Http\Controllers\Api\FormController;
 use App\Http\Controllers\Auth\PasswordController;
 use App\Http\Controllers\CodeController;
 use App\Http\Controllers\HelpController;
@@ -49,8 +51,8 @@ $app->group(['middleware' => 'web'], function () use ($app) {
     });
 
     // Authentication Routes...
-    $this->get('login', classie(AuthController::class, 'showLoginForm'))->name('login');
-    $this->post('login', classie(AuthController::class, 'login'))->name('login');
+    $this->get('login', classie(AuthController::class, 'create'))->name('login');
+    $this->post('login', classie(AuthController::class, 'post'))->name('login.post');
     $this->get('logout', classie(AuthController::class, 'logout'))->name('logout');
 
     // Registration Routes...
@@ -117,18 +119,27 @@ $app->group(['prefix' => 'api', 'as' => 'api.'], function ($app) {
      */
     $app->group(['prefix' => 'user', 'as' => 'user.'], function ($app) {
 
-        $app->post('register', classie(AuthController::class, 'post'))->name('register');
-        $app->post('login', classie(AuthController::class, 'authenticate'))->name('login');
+        $app->post('login', classie(ApiAuthController::class, 'authenticate'))->name('login');
+        $app->post('register', classie(ApiAuthController::class, 'register'))->name('register');
 
     });
 
     /**
-     * Public Api
+     * Product Api
      */
     $app->group(['prefix' => 'product', 'as' => 'product.', 'middleware' => 'api'], function ($app) {
 
         $app->get('/', classie(ApiProductController::class, 'index'))->name('index');
         $app->get('{product}/show', classie(ApiProductController::class, 'show'))->name('show');
+
+    });
+
+    /**
+     * Form Api
+     */
+    $app->group(['prefix' => 'form', 'as' => 'form.'], function ($app) {
+
+        $app->get('countries', classie(FormController::class, 'countries'))->name('countries');
 
     });
 

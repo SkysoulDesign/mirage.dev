@@ -6,7 +6,6 @@ use App\Events\UserWasCreated;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Support\Collection;
-use Tymon\JWTAuth\JWTAuth;
 
 class CreateUserJob
 {
@@ -22,14 +21,21 @@ class CreateUserJob
     private $role;
 
     /**
+     * @var null|int
+     */
+    private $country_id;
+
+    /**
      * Create a new job instance.
      * @param array $request
      * @param int|string $role
+     * @param null $country_id
      */
-    public function __construct(array $request, $role = 'user')
+    public function __construct(array $request, $role = 'user', $country_id = null)
     {
         $this->request = $request;
         $this->role = $role;
+        $this->country_id = $country_id;
     }
 
     /**
@@ -37,10 +43,9 @@ class CreateUserJob
      *
      * @param User $user
      * @param Role $role
-     * @param JWTAuth $token
      * @return String
      */
-    public function handle(User $user, Role $role, JWTAuth $token)
+    public function handle(User $user, Role $role)
     {
 
         /**
@@ -52,13 +57,18 @@ class CreateUserJob
          * Create User, Set Role and Token
          */
         $user = $user->create($this->request);
-        $user->setAttribute('api_token', $token->fromUser($user));
+        $user->setAttribute('api_token', $token = dispatch(new GenerateTokenJob($user)));
+        $user->setAttribute('newsletter', filter_var(isset($this->request['newsletter']), FILTER_VALIDATE_BOOLEAN));
         $user->roles()->attach($role);
+        $user->country()->associate($this->country_id);
         $user->save();
 
+        /**
+         * Announce UserWasCreated
+         */
         event(new UserWasCreated($user));
 
-        return $user->getAttribute('api_token');
+        return $token;
 
     }
 

@@ -1,87 +1,117 @@
-@extends('layout.master')
+@extends('layouts.master')
 
 @section('content')
-    <div class="row medium-12 columns">
 
-        <form action="{{ route('user.register') }}" method="POST">
+
+    <div class="ui segment">
+        
+        <form class="ui form" action="{{ route('user.register') }}" method="POST">
 
             {{ csrf_field() }}
 
-            @if($errors->any())
-
-                @foreach($errors->all() as $error)
-                    {{ $error }}
-                @endforeach
-
-            @endif
-
-            <div class="row">
-
-                <div class="medium-12 columns">
-                    <label>Role
-                        <select name="role">
-                            @foreach($roles as $role)
-                                <option value="{{ $role->id }}" @if($role->id === 3) selected @endif>
-                                    {{ $role->name }}
-                                </option>
-                            @endforeach
-                        </select>
-                    </label>
+            <div class="required field">
+                <label>Role</label>
+                <div class="ui fluid search selection dropdown">
+                    <input type="hidden" name="role_id" value="3">
+                    <i class="dropdown icon"></i>
+                    <div class="default text">Select User Role</div>
+                    <div class="menu">
+                        @foreach($roles as $role)
+                            <div class="item" data-value="{{ $role->id }}">
+                                {{ studly_case($role->name) }}
+                            </div>
+                        @endforeach
+                    </div>
                 </div>
-
-                <div class="medium-12 columns">
-                    <label>Username
-                        <input type="text" name="username" placeholder="Username">
-                    </label>
-                </div>
-                <div class="medium-12 columns">
-                    <label>Password
-                        <input type="password" name="password" placeholder="Password">
-                        <input type="password" name="password_confirmation" placeholder="Password Confirmation">
-                    </label>
-                </div>
-
-                <div class="medium-12 columns">
-                    <label>Email
-                        <input type="email" name="email" placeholder="Email">
-                    </label>
-                </div>
-
-                <div class="medium-12 columns">
-                    <legend>Gender</legend>
-                    <input type="radio" name="gender" value="male" required><label>Male</label>
-                    <input type="radio" name="gender" value="female"><label>Female</label>
-                </div>
-
-                <div class="medium-12 columns">
-                    <label>Country
-                        <input type="text" name="country" placeholder="Country">
-                    </label>
-                </div>
-
-                <div class="medium-12 columns">
-                    <legend>Age Group</legend>
-                    <input type="radio" name="age" value="5/10"><label>5 - 10</label>
-                    <input type="radio" name="age" value="15/20"><label>15 - 20</label>
-                    <input type="radio" name="age" value="21/30"><label>21 - 30</label>
-                    <input type="radio" name="age" value="31/40"><label>31 - 40</label>
-                    <input type="radio" name="age" value="41/50"><label>41 - 50</label>
-                    <input type="radio" name="age" value="51/60"><label>51 - 60</label>
-                    <input type="radio" name="age" value="Above 60"><label>Above 60</label>
-                </div>
-
-                <div class="medium-12 columns">
-                    <label>
-                        <input type="checkbox" name="newsletter">
-                        Accept Receive news letter?
-                    </label>
-                </div>
-
-                <div class="medium-12 columns">
-                    <button type="submit" class="button">Create</button>
-                </div>
-
             </div>
+
+            <div class="required field">
+                <label>Username</label>
+                <input type="text" name="username" placeholder="Username">
+            </div>
+
+            <div class="two fields">
+                <div class="required field">
+                    <label>Password</label>
+                    <input type="password" name="password" placeholder="Password">
+                </div>
+                <div class="required field">
+                    <label>Repeat Password</label>
+                    <input type="password" name="password_confirmation" placeholder="Password Confirmation">
+                </div>
+            </div>
+
+            <div class="required field">
+                <label>Email</label>
+                <input type="email" name="email" placeholder="Email">
+            </div>
+
+            <div class="field">
+                <label>Gender</label>
+                <div class="ui fluid search selection dropdown">
+                    <input type="hidden" name="gender">
+                    <i class="dropdown icon"></i>
+                    <div class="default text">Select User Role</div>
+                    <div class="menu">
+                        @foreach(['male', 'female'] as $gender)
+                            <div class="item" data-value="{{ $gender }}">
+                                <i class="{{ $gender }} icon"></i>
+                                {{ studly_case($gender) }}
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+
+            <div class="field">
+                <label>Country</label>
+                <div class="ui fluid search selection dropdown">
+                    <input type="hidden" name="country_id">
+                    <i class="dropdown icon"></i>
+                    <div class="default text">Select Country</div>
+                    <div class="menu">
+                        @foreach($countries as $country)
+                            <div class="item" data-value="{{ $country->id }}">
+                                <i class="{{ strtolower($country->code) }} flag"></i>
+                                {{ $country->name }}
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+
+            <div class="field">
+                <label>Age Group</label>
+                <div class="ui fluid search selection dropdown">
+                    <input type="hidden" name="age" value="15/20">
+                    <i class="dropdown icon"></i>
+                    <div class="default text">Select Your Age Group</div>
+                    <div class="menu">
+                        @foreach(['5/10', '15/20', '21/30', '31/40', '41/50', '51/60', 'Above 60'] as $age)
+                            <div class="item" data-value="{{ $age }}">
+                                {{ $age }}
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+
+            <div class="required inline field">
+                <div class="ui checkbox">
+                    <input type="checkbox" tabindex="0" class="hidden" name="terms">
+                    <label>I agree to the terms and conditions</label>
+                </div>
+            </div>
+
+            <div class="required inline field">
+                <div class="ui checkbox">
+                    <input type="checkbox" tabindex="0" class="hidden" name="newsletter">
+                    <label>Accept Receive news letter?</label>
+                </div>
+            </div>
+
+            <button class="ui submit button primary" type="submit">Register</button>
+
         </form>
     </div>
 @endsection

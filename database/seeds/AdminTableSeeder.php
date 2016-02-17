@@ -23,7 +23,7 @@ class AdminTableSeeder extends Seeder
             'password' => '478135'
         ];
 
-        dispatch(new CreateUserJob($request, 'admin'));
+        dispatch(new CreateUserJob($request, 'admin', 30));
 
     }
 

@@ -1,46 +1,53 @@
-@extends('layout.master')
+@extends('layouts.master')
 
 @section('content')
 
-    <div class="row">
+    @include('products.partials.menu')
 
-        <div class="medium-12 columns">
-            <div class="callout">
-                <h5>Products Page</h5>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab assumenda, atque.</p>
-                <a href="{{ route('product.create') }}">Create New Product</a>
-            </div>
-            <table style="width: 100%" class="hover">
-                <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Code</th>
-                    <th class="text-right">Actions</th>
-                </tr>
-                </thead>
-                <tbody>
-                @foreach($products as $product)
-                    <tr>
-                        <td><a data-open="{{ $product->code }}">{{ $product->name }}</a></td>
-                        <td>{{ $product->code }}</td>
-                        <td class="float-right">
-                            <div class="small button-group">
-                                <a class="button" href="{{ route('product.code.create', $product->id) }}">Generate Code</a>
-                                <a class="button" href="{{ route('product.code.index', $product->id) }}">Codes</a>
-                                <a class="button secondary" href="{{ route('product.code.export', $product->id) }}">Export to Excel</a>
+    <table class="ui celled striped table">
+        <thead>
+        <tr>
+            <th colspan="3">
+                Products
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+
+        @foreach($products as $product)
+            <tr>
+                <td class="collapsing">
+                    {{ $product->code }}
+                </td>
+
+                <td>
+                    <h4 class="ui image header">
+                        <img src="{{ asset($product->image) }}" class="ui mini rounded image">
+                        <div class="content">
+                            {{ $product->name }}
+                            <div class="sub header">
+                                Generated Codes: {{ $product->codes()->count() }}
                             </div>
-                        </td>
-                    </tr>
+                        </div>
+                    </h4>
+                </td>
 
-                    <div class="reveal tiny" id="{{ $product->code }}" data-reveal>
-                        <img class="thumbnail" src="{{ $product->image }}" alt="Photo of Uranus.">
+                <td class="right aligned collapsing">
+
+                    <div class="ui small basic icon buttons">
+                        <a href="{{ route('product.code.create', $product->id) }}" class="ui button"><i
+                                    class="upload icon"></i> Generate</a>
+                        <a class="ui button" href="{{ route('product.code.index', $product->id) }}"><i
+                                    class="file icon"></i> Codes</a>
+                        <a class="ui button" href="{{ route('product.code.export', $product->id) }}"><i
+                                    class="download icon"></i> Export</a>
                     </div>
 
-                @endforeach
-                </tbody>
-            </table>
+                </td>
+            </tr>
+        @endforeach
 
-        </div>
-    </div>
+        </tbody>
+    </table>
 
 @endsection

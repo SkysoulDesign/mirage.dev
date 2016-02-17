@@ -18,7 +18,7 @@ class RoleMiddleware
     {
 
         if (!$request->user()->is($role)) {
-            dd('nao nao');
+            return redirect()->back()->withErrors('You have no permissions to open this URL');
         }
 
         return $next($request);

@@ -5,7 +5,6 @@ namespace App\Jobs;
 use App\Events\ProductWasCreated;
 use App\Models\Product;
 use Illuminate\Support\Collection;
-use SimpleSoftwareIO\QrCode\BaconQrCodeGenerator;
 use Symfony\Component\HttpFoundation\File\File;
 
 class CreateProductJob
@@ -42,12 +41,14 @@ class CreateProductJob
         $extension = $this->image->guessExtension();
         $code = strtoupper($this->request->get('code'));
 
-        $image = $this->image->move(public_path() . '/image/products', $code . '.' . $extension);
+        $path = '/image/products/';
+        $fileName = $code . '.' . $extension;
+        $image = $this->image->move(public_path() . $path, $fileName);
 
         $product = $product->create([
             'name'  => $this->request->get('name'),
             'code'  => $code,
-            'image' => $image->getPathname(),
+            'image' => $path . $fileName,
         ]);
 
         /**

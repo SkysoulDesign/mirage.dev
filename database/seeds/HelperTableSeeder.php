@@ -18,7 +18,7 @@ class HelperTableSeeder extends Seeder
          * Login Api
          */
         dispatch(new CreateAPIHelpJob([
-            'route'          => 'login',
+            'route'          => 'api.user.login',
             'description'    => 'Log the user in the system and returns a unique token',
             'parameters'     => json_encode([
                 'credential' => 'Required - Username or Email',
@@ -37,15 +37,17 @@ class HelperTableSeeder extends Seeder
          * Register Api
          */
         dispatch(new CreateAPIHelpJob([
-            'route'          => 'register',
+            'route'          => 'api.user.register',
             'description'    => 'Register a new User into the database',
             'parameters'     => json_encode([
                 'username'              => 'Required - Unique Username',
                 'email'                 => 'Required - User Email',
                 'password'              => 'Required - User Password',
                 'password_confirmation' => 'Required - Password Confirmation',
+                'term'                  => 'Required - Accept the terms and conditions of usage',
                 'gender'                => 'User Gender Male or Female',
-                'country'               => 'User Country',
+                'country_id'            => 'Country id as on Country Api',
+                'newsletter'            => 'Accept to Receive newsletter',
                 'age'                   => 'User Age',
             ]),
             'response'       => json_encode([
@@ -57,7 +59,8 @@ class HelperTableSeeder extends Seeder
                         [
                             "username" => ["The username field is required."],
                             "email"    => ["The email field is required. | The email has already been taken."],
-                            "password" => ["The password field is required."]
+                            "password" => ["The password field is required."],
+                            "terms"    => ["The terms field is required."]
                         ]
                 ])
 
@@ -122,6 +125,23 @@ class HelperTableSeeder extends Seeder
                 ]
             )
 
+        ]));
+
+        /**
+         * Forms Api
+         */
+        dispatch(new CreateAPIHelpJob([
+            'route'          => 'api.form.countries',
+            'description'    => 'Return a list with all countries',
+            'parameters'     => json_encode([
+                'api_token' => 'Required - User Token',
+            ]),
+            'response'       => json_encode([
+                "id"   => 50,
+                "code" => "CN",
+                "name" => "China (中国)"
+            ]),
+            'response_error' => json_encode([["error" => "token_not_provided"], ["error" => "invalid_token"]])
         ]));
 
     }

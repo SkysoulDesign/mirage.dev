@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Jobs\CreateProductJob;
-use App\Jobs\ExportCodesToExcelCommand;
+use App\Jobs\ExportProductCodesToExcelJob;
 use App\Jobs\GenerateCodesCommand;
 use App\Models\Product;
 use Illuminate\Http\Request;

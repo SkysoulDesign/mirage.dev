@@ -1,5 +1,6 @@
 <?php
 
+use App\Jobs\Users\CreateUserJob;
 use Illuminate\Database\Seeder;
 
 class UserTableSeeder extends Seeder
@@ -11,6 +12,15 @@ class UserTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+        /**
+         * Create Admin
+         */
+        $request = [
+            'username' => 'mirage',
+            'email'    => 'test@mirage.com',
+            'password' => '123456'
+        ];
+
+        dispatch(new CreateUserJob($request, 'user', 46));
     }
 }

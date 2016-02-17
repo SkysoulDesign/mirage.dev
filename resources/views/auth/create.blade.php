@@ -1,32 +1,26 @@
-@extends('layout.master-basic')
+@extends('layouts.master')
 
 @section('content')
 
-    <div class="row medium-12 columns">
+    <div class="ui segment">
 
-        <form action="{{ route('login') }}" method="POST">
+        <form class="ui form" action="{{ route('login.post') }}" method="POST">
 
-            <div class="row">
+            {!! csrf_field() !!}
 
-                <div class="medium-12 columns">
-                    <label>Username or Email
-                        <input type="text" name="credential" placeholder="Username Or Email">
-                    </label>
-                </div>
-
-                <div class="medium-12 columns">
-                    <label>Password
-                        <input type="password" name="password" placeholder="Password">
-                    </label>
-                </div>
-
-                <div class="medium-12 columns">
-                    <button type="submit" class="button">Login</button>
-                </div>
-
+            <div class="field">
+                <label>Username or Email</label>
+                <input type="text" name="credential" placeholder="Username Or Email">
             </div>
 
-        </form>
+            <div class="field">
+                <label>Password</label>
+                <input type="password" name="password" placeholder="Password">
+            </div>
 
+            <button class="ui button" type="submit">Login</button>
+
+        </form>
     </div>
+
 @endsection

@@ -1,52 +1,67 @@
-@extends('layout.master')
+@extends('layouts.master')
 
 @section('content')
 
-    <div class="row medium-12 columns">
-
-        <form action="{{ route('product.code.post', ['product' => $product->id]) }}" method="POST">
-
-            <div class="row">
-
-                <div class="medium-3 columns">
-                    <div class="row medium-12 columns">
-                        <img class="thumbnail" src="{{ url($product->image) }}" alt="">
+    <div class="ui grid">
+        <div class="four wide column">
+            <div class="ui card">
+                <div class="image">
+                    <img src="{{ asset($product->image) }}">
+                </div>
+                <div class="content">
+                    <a class="header">{{ $product->name }}</a>
+                    <div class="meta">
+                        <span class="date">Generated codes: <b>{{ $product->codes()->count() }}</b></span>
+                    </div>
+                    <div class="description">
+                        {{ $product->description or $product->name }}
                     </div>
                 </div>
+                <div class="extra content">
+                    <a>
+                        <i class="user icon"></i>
+                        Acquired Users: 0
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="twelve wide column">
 
-                <div class="medium-9 columns">
+            <div class="ui segment">
 
-                    <div class="row">
-                        <div class="medium-10 columns">
-                            <label>Product Name
-                                <input type="text" value="{{ $product->name }}" readonly>
-                            </label>
-                        </div>
+                <form class="ui form" action="{{ route('product.code.post', $product) }}" method="POST">
 
-                        <div class="medium-10 columns">
-                            <label>Product Code
-                                <input type="text" value="{{ $product->code }}" readonly>
-                            </label>
-                        </div>
+                    {{ csrf_field() }}
 
-                        <div class="medium-10 columns">
-                            <label>
-                                How many codes to be generated?
-                                <input type="number" name="amount" value="10">
-                            </label>
-                        </div>
+                    <div class="field">
+                        <label>Product Name</label>
+                        <input type="text" value="{{ $product->name }}" readonly>
+                    </div>
 
-                        <div class="medium-12 columns">
-                            <button type="submit" class="button">Create</button>
+                    <div class="field">
+                        <label>Product Code </label>
+                        <input type="text" value="{{ $product->code }}" readonly>
+                    </div>
+
+                    <div class="field">
+                        <label> How many codes to be generated?</label>
+                        <input type="number" name="amount" value="5000">
+                    </div>
+
+                    <div class="inline field">
+                        <div class="ui checked checkbox">
+                            <input type="checkbox" tabindex="0" class="hidden" name="export" checked="">
+                            <label>Export to Excel After Creation</label>
                         </div>
                     </div>
 
-                </div>
+                    <button type="submit" class="ui button primary">Generate</button>
+
+                </form>
 
             </div>
 
-        </form>
-
+        </div>
     </div>
 
 @endsection

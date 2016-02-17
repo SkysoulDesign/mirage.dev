@@ -6,7 +6,7 @@ use App\Models\User;
 use Carbon\Carbon;
 use Firebase\JWT\JWT;
 
-class GenerateTokenCommand
+class GenerateTokenJob
 {
 
     /**
@@ -15,12 +15,19 @@ class GenerateTokenCommand
     private $user;
 
     /**
+     * @var bool
+     */
+    private $saveToken;
+
+    /**
      * Create a new job instance.
      * @param User $user
+     * @param bool $saveToken
      */
-    public function __construct(User $user)
+    public function __construct(User $user, $saveToken = false)
     {
         $this->user = $user;
+        $this->saveToken = $saveToken;
     }
 
     /**
@@ -38,8 +45,13 @@ class GenerateTokenCommand
 
         $token = $jwt->encode($data, env('APP_KEY'));
 
-        $this->user->setAttribute('api_token', $token);
-        $this->user->save();
+        /**
+         * Save token on the user model
+         */
+        if ($this->saveToken) {
+            $this->user->setAttribute('api_token', $token);
+            $this->user->save();
+        }
 
         return $token;
 

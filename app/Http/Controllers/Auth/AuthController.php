@@ -1,14 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\TEMP;
+namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Jobs\Users\GenerateTokenCommand;
 use Illuminate\Contracts\Auth\Factory as Auth;
 use Illuminate\Http\Request;
-use Symfony\Component\HttpFoundation\Cookie;
 
-class AutahController extends Controller
+class AuthController extends Controller
 {
     /**
      * @var Auth
@@ -45,19 +43,24 @@ class AutahController extends Controller
             'password'   => 'required|min:6'
         ]);
 
-        if (!$user = $this->auth->user())
-            return response()->json(['error' => 'invalid_credentials']);
+        $field = filter_var($request->input('credential'), FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
 
-        if ($user->api_token) {
-            $token = $user->api_token;
-        } else {
-            $token = dispatch(new GenerateTokenCommand($user));
-        }
+        $request->merge([$field => $request->input('credential')]);
 
-        $cookie = app(Cookie::class, ['token', $token]);
+        if (!$this->auth->attempt($request->only($field, 'password')))
+            return redirect()->back()->withInput()->withErrors('Username or Password Not Found');
 
-        return redirect()->route('home')->withCookie($cookie);
+        return redirect()->route('home');
 
+    }
+
+    /**
+     * Display Generator Page
+     */
+    public function logout()
+    {
+        $this->auth->logout();
+        return redirect()->route('login');
     }
 
 }

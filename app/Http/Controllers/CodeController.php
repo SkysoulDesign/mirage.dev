@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Jobs\ExportCodesToExcelCommand;
+use App\Jobs\ExportProductCodesToExcelJob;
 use App\Jobs\GenerateCodeCommand;
 use App\Jobs\GenerateCodesCommand;
 use App\Models\Product;
@@ -16,6 +16,10 @@ class CodeController extends Controller
      */
     private $product;
 
+    /**
+     * CodeController constructor.
+     * @param Product $product
+     */
     function __construct(Product $product)
     {
         $this->product = $product;
@@ -29,26 +33,26 @@ class CodeController extends Controller
     public function index($product_id)
     {
         $product = $this->product->findOrFail($product_id);
-        return view('products.codes.index', compact('product'))->with('codes', $product->codes()->paginate());
+        return view('products.codes.index', compact('product'))->with('codes', $product->codes()->simplePaginate());
     }
 
     /**
      * Display Generator Page
-     * @param $product_id
+     * @param Product $product
      * @return $this
      */
-    public function create($product_id)
+    public function create(Product $product)
     {
-        return view('products.codes.create')->with('product', $this->product->findOrFail($product_id));
+        return view('products.codes.create', compact('product'));
     }
 
     /**
      * Display Generator Page
      * @param Request $request
-     * @param $product_id
+     * @param Product $product
      * @return $this
      */
-    public function post(Request $request, $product_id)
+    public function post(Request $request, Product $product)
     {
 
         $this->validate($request, [
@@ -56,13 +60,24 @@ class CodeController extends Controller
         ]);
 
         $amount = $request->get('amount');
-        $product = $this->product->findOrFail($product_id);
+        $collection = collect();
 
-        for ($i = 1; $i <= sqrt($amount); $i++) {
-            dispatch(new GenerateCodesCommand(sqrt($amount), $product));
+        for ($i = 1; $i <= $amount; $i++) {
+            $collection->push(dispatch(new GenerateCodesCommand(1, $product)));
         }
 
-        return redirect()->route('product.codes', ['product' => $product_id]);
+        if ($request->has('export')) {
+            dispatch(new ExportProductCodesToExcelJob($product, $collection->collapse()->transform(function ($code) {
+                return ['code' => $code->code];
+            })));
+        }
+
+//        for ($i = 1; $i <= sqrt($amount); $i++) {
+//            $codes = dispatch(new GenerateCodesCommand(sqrt($amount), $product));
+//            $collection->push($codes);
+//        }
+
+        return redirect()->route('product.code.index', $product);
 
     }
 
@@ -73,7 +88,8 @@ class CodeController extends Controller
      */
     public function export($product_id)
     {
-        dispatch(new ExportCodesToExcelCommand(app(Product::class)->findOrFail($product_id)));
+
+        dispatch(new ExportProductCodesToExcelJob(app(Product::class)->findOrFail($product_id)));
         return redirect()->route('products');
 
     }

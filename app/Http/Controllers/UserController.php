@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Jobs\Users\CreateUserJob;
+use App\Models\Country;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -23,11 +24,12 @@ class UserController extends Controller
     /**
      * Create user
      * @param Role $role
+     * @param Country $country
      * @return \Illuminate\View\View
      */
-    public function create(Role $role)
+    public function create(Role $role, Country $country)
     {
-        return view('users.create')->with('roles', $role->all());
+        return view('users.create')->with('roles', $role->all())->with('countries', $country->all());
     }
 
     /**
@@ -39,20 +41,20 @@ class UserController extends Controller
     {
 
         $this->validate($request, [
-            'username'   => 'required',
+            'username'   => 'required|alpha_dash',
             'email'      => 'required|email|unique:users',
             'password'   => 'required|confirmed|min:6',
-            'gender'     => 'required',
-            'country'    => 'required',
-            'age'        => 'required',
-            'newsletter' => 'boolean',
-            'role'       => 'required|exists:roles,id'
+            'gender'     => 'string',
+            'age'        => 'string',
+            'terms'      => 'required|accepted',
+            'role_id'    => 'required|exists:roles,id',
+            'country_id' => 'exists:countries,id',
         ]);
 
         /**
          * Create User
          */
-        dispatch(new CreateUserJob($request->except('role'), $request->get('role')));
+        dispatch(new CreateUserJob($request->except('role_id', 'country_id'), $request->get('role_id'), $request->get('country_id')));
 
         return redirect()->route('user.index');
 

@@ -32,10 +32,11 @@ class CreateUsersTable extends Migration
             $table->string('username')->unique();
             $table->string('email')->unique();
             $table->string('password', 60);
-            $table->string('gender');
-            $table->string('country');
-            $table->string('age');
-            $table->string('api_token');
+            $table->string('gender')->nullable();
+            $table->integer('country_id')->unsigned()->index()->nullable();
+            $table->foreign('country_id')->references('id')->on('countries')->onDelete('cascade');
+            $table->string('age')->nullable();
+            $table->string('api_token')->nullable();
             $table->boolean('newsletter')->default(false);
             $table->rememberToken();
             $table->timestamps();
