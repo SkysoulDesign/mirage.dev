@@ -34,7 +34,7 @@ class AuthController extends Controller
     {
 
         $validator = $this->getValidationFactory()->make($request->all(), [
-            'username'   => 'required|alpha_dash',
+            'username'   => 'required|alpha_dash|unique:users',
             'email'      => 'required|email|unique:users',
             'password'   => 'required|confirmed|min:6',
             'gender'     => 'string',

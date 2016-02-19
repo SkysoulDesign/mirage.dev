@@ -12,15 +12,6 @@ class UserTableSeeder extends Seeder
      */
     public function run()
     {
-        /**
-         * Create Admin
-         */
-        $request = [
-            'username' => 'mirage',
-            'email'    => 'test@mirage.com',
-            'password' => '123456'
-        ];
 
-        dispatch(new CreateUserJob($request, 'user', 46));
     }
 }
