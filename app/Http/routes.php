@@ -121,6 +121,7 @@ $app->group(['prefix' => 'api', 'as' => 'api.'], function ($app) {
 
         $app->post('login', classie(ApiAuthController::class, 'authenticate'))->name('login');
         $app->post('register', classie(ApiAuthController::class, 'register'))->name('register');
+        $app->post('check', classie(ApiAuthController::class, 'check'))->name('check');
 
     });
 
@@ -142,5 +143,6 @@ $app->group(['prefix' => 'api', 'as' => 'api.'], function ($app) {
         $app->get('countries', classie(FormController::class, 'countries'))->name('countries');
 
     });
+
 
 });

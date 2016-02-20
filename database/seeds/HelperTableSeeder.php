@@ -25,7 +25,13 @@ class HelperTableSeeder extends Seeder
                 'password'   => 'Required - User Password'
             ]),
             'response'       => json_encode([
-                "token" => "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9..."
+                "username"   => "test",
+                "email"      => "test@email.com",
+                "gender"     => null,
+                "country_id" => "30",
+                "age"        => null,
+                "api_token"  => "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...",
+                "newsletter" => "0"
             ]),
             'response_error' => json_encode(['error'      => 'invalid_username_or_password',
                                              "credential" => ["The credential field is required."],
@@ -51,7 +57,13 @@ class HelperTableSeeder extends Seeder
                 'age'                   => 'User Age',
             ]),
             'response'       => json_encode([
-                "token" => "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9..."
+                "username"   => "test",
+                "email"      => "test@email.com",
+                "gender"     => null,
+                "country_id" => "30",
+                "age"        => null,
+                "api_token"  => "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...",
+                "newsletter" => "0"
             ]),
             'response_error' => json_encode(
                 [

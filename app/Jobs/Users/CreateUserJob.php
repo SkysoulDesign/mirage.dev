@@ -68,7 +68,7 @@ class CreateUserJob
          */
         event(new UserWasCreated($user));
 
-        return $token;
+        return $user;
 
     }
 

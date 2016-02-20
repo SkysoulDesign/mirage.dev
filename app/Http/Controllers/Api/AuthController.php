@@ -46,9 +46,9 @@ class AuthController extends Controller
         if ($validator->fails())
             return response()->json(['error' => $validator->errors()]);
 
-        $token = dispatch(new CreateUserJob($request->all()));
+        $user = dispatch(new CreateUserJob($request->all()));
 
-        return response()->json(compact('token'));
+        return response()->json(collect($user)->except('id', 'remember_token', 'created_at', 'updated_at'));
 
     }
 
@@ -76,10 +76,21 @@ class AuthController extends Controller
         if (!$this->auth->attempt($request->only($field, 'password')))
             return response()->json(['error' => 'invalid_username_or_password']);
 
-        $token = dispatch(new GenerateTokenJob($this->auth->user(), true));
+        dispatch(new GenerateTokenJob($this->auth->user(), true));
 
-        return response()->json(compact('token'));
+        return response()->json(collect($this->auth->user())->except('id', 'remember_token', 'created_at', 'updated_at'));
 
+    }
+
+    /**
+     * Check if user is valid
+     *
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function check(Request $request)
+    {
+        return response()->json(compact(['status', 'okay']));
     }
 
 }
