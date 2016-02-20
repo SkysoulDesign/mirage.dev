@@ -94,7 +94,7 @@ class AuthController extends Controller
 
         $result = dispatch(new CheckTokenJob($request->get('api_token')));
 
-        if (!$result) {
+        if ($result) {
             return response()->json(['error', 'login_login_expired']);
         }
 
