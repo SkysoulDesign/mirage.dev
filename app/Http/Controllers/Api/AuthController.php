@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Jobs\Users\CheckTokenJob;
 use App\Jobs\Users\CreateUserJob;
 use App\Jobs\Users\GenerateTokenJob;
 use Illuminate\Contracts\Auth\Factory as Auth;
@@ -90,7 +91,15 @@ class AuthController extends Controller
      */
     public function check(Request $request)
     {
-        return response()->json(compact(['status', 'okay']));
+
+        $result = dispatch(new CheckTokenJob($request->get('api_token')));
+
+        if (!$result) {
+            return response()->json(['error', 'login_login_expired']);
+        }
+
+        return response()->json(['status', 'okay']);
+
     }
 
 }
