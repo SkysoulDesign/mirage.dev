@@ -126,7 +126,7 @@ $app->group(['prefix' => 'api', 'as' => 'api.'], function ($app) {
     });
 
     $app->group(['prefix' => 'auth', 'as' => 'auth.', 'middleware' => 'api'], function ($app) {
-        $app->get('check', classie(ApiAuthController::class, 'check'))->name('check');
+        $app->post('check', classie(ApiAuthController::class, 'check'))->name('check');
     });
 
     /**
