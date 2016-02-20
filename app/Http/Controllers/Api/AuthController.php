@@ -98,7 +98,7 @@ class AuthController extends Controller
             return response()->json(['error', 'login_login_expired']);
         }
 
-        return response()->json(['status', 'okay']);
+        return response()->json(['status' => 'okay']);
 
     }
 
