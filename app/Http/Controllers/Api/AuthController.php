@@ -47,7 +47,7 @@ class AuthController extends Controller
         if ($validator->fails())
             return response()->json(['error' => $validator->errors()]);
 
-        $user = dispatch(new CreateUserJob($request->all()));
+        $user = dispatch(new CreateUserJob($request->except('country_id', 'age_id'), 'user', $request->get('country_id'), $request->get('age_id')));
 
         return response()->json(collect($user)->except('id', 'remember_token', 'created_at', 'updated_at'));
 
