@@ -35,7 +35,8 @@ class CreateUsersTable extends Migration
             $table->string('gender')->nullable();
             $table->integer('country_id')->unsigned()->index()->nullable();
             $table->foreign('country_id')->references('id')->on('countries')->onDelete('cascade');
-            $table->string('age')->nullable();
+            $table->integer('age_id')->unsigned()->index()->nullable();
+            $table->foreign('age_id')->references('id')->on('ages')->onDelete('cascade');
             $table->string('api_token')->nullable();
             $table->boolean('newsletter')->default(false);
             $table->rememberToken();

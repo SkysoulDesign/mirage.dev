@@ -145,6 +145,7 @@ $app->group(['prefix' => 'api', 'as' => 'api.'], function ($app) {
     $app->group(['prefix' => 'form', 'as' => 'form.'], function ($app) {
 
         $app->get('countries', classie(FormController::class, 'countries'))->name('countries');
+        $app->get('ages', classie(FormController::class, 'ages'))->name('ages');
 
     });
 

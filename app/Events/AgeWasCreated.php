@@ -4,23 +4,23 @@ namespace App\Events;
 
 use Illuminate\Queue\SerializesModels;
 
-class CountryWasCreated extends Event
+class AgeWasCreated extends Event
 {
     use SerializesModels;
 
     /**
      * @var array
      */
-    public $countries;
+    public $ages;
 
     /**
      * Create a new event instance.
      *
-     * @param array $countries
+     * @param array $ages
      */
-    public function __construct(array $countries)
+    public function __construct(array $ages)
     {
-        $this->countries = $countries;
+        $this->ages = $ages;
     }
 
     /**

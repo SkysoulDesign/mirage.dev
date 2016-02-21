@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="DataSourceManagerImpl" format="xml" hash="711725974">
+  <component name="DataSourceManagerImpl" format="xml" hash="221505084">
     <data-source source="LOCAL" name="MySQL - mirage@127.0.0.1" uuid="fe84c568-f3cf-41a1-8120-c16298e12e57">
       <driver-ref>mysql</driver-ref>
       <synchronize>true</synchronize>

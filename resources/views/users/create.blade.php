@@ -4,7 +4,7 @@
 
 
     <div class="ui segment">
-        
+
         <form class="ui form" action="{{ route('user.register') }}" method="POST">
 
             {{ csrf_field() }}
@@ -87,7 +87,7 @@
                     <i class="dropdown icon"></i>
                     <div class="default text">Select Your Age Group</div>
                     <div class="menu">
-                        @foreach(['5/10', '15/20', '21/30', '31/40', '41/50', '51/60', 'Above 60'] as $age)
+                        @foreach($ages as $age)
                             <div class="item" data-value="{{ $age }}">
                                 {{ $age }}
                             </div>

@@ -39,7 +39,7 @@ class AuthController extends Controller
             'email'      => 'required|email|unique:users',
             'password'   => 'required|confirmed|min:6',
             'gender'     => 'string',
-            'age'        => 'string',
+            'age_id'     => 'exists:ages,id',
             'terms'      => 'accepted',
             'country_id' => 'exists:countries,id',
         ]);

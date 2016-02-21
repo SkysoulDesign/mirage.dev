@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Jobs\Users\CreateUserJob;
+use App\Models\Age;
 use App\Models\Country;
 use App\Models\Role;
 use App\Models\User;
@@ -25,11 +26,15 @@ class UserController extends Controller
      * Create user
      * @param Role $role
      * @param Country $country
+     * @param Age $age
      * @return \Illuminate\View\View
      */
-    public function create(Role $role, Country $country)
+    public function create(Role $role, Country $country, Age $age)
     {
-        return view('users.create')->with('roles', $role->all())->with('countries', $country->all());
+        return view('users.create')
+            ->with('roles', $role->all())
+            ->with('countries', $country->all())
+            ->with('ages', $age->all());
     }
 
     /**
@@ -45,7 +50,7 @@ class UserController extends Controller
             'email'      => 'required|email|unique:users',
             'password'   => 'required|confirmed|min:6',
             'gender'     => 'string',
-            'age'        => 'string',
+            'age_id'     => 'exists:ages,id',
             'terms'      => 'required|accepted',
             'role_id'    => 'required|exists:roles,id',
             'country_id' => 'exists:countries,id',

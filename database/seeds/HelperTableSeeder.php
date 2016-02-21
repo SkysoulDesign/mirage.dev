@@ -27,9 +27,9 @@ class HelperTableSeeder extends Seeder
             'response'       => json_encode([
                 "username"   => "test",
                 "email"      => "test@email.com",
-                "gender"     => null,
+                "gender"     => 'male',
                 "country_id" => "30",
-                "age"        => null,
+                "age_id"     => 1,
                 "api_token"  => "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...",
                 "newsletter" => "0"
             ]),
@@ -54,14 +54,14 @@ class HelperTableSeeder extends Seeder
                 'gender'                => 'User Gender Male or Female',
                 'country_id'            => 'Country id as on Country Api',
                 'newsletter'            => 'Accept to Receive newsletter',
-                'age'                   => 'User Age',
+                'age_id'                => 'Age ID',
             ]),
             'response'       => json_encode([
                 "username"   => "test",
                 "email"      => "test@email.com",
                 "gender"     => null,
                 "country_id" => "30",
-                "age"        => null,
+                "age_id"     => 2,
                 "api_token"  => "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...",
                 "newsletter" => "0"
             ]),
@@ -142,18 +142,34 @@ class HelperTableSeeder extends Seeder
         /**
          * Forms Api
          */
+        /**
+         * Countries
+         */
         dispatch(new CreateAPIHelpJob([
             'route'          => 'api.form.countries',
             'description'    => 'Return a list with all countries',
-            'parameters'     => json_encode([
-                'api_token' => 'Required - User Token',
-            ]),
+            'parameters'     => null,
             'response'       => json_encode([
                 "id"   => 50,
                 "code" => "CN",
                 "name" => "China (中国)"
             ]),
-            'response_error' => json_encode([["error" => "token_not_provided"], ["error" => "invalid_token"]])
+            'response_error' => null
+        ]));
+
+        /**
+         * Ages
+         */
+        dispatch(new CreateAPIHelpJob([
+            'route'          => 'api.form.ages',
+            'description'    => 'Return a list with all ages',
+            'parameters'     => null,
+            'response'       => json_encode([
+                "id"   => 1,
+                "from" => 10,
+                "to"   => 20
+            ]),
+            'response_error' => null
         ]));
 
     }
