@@ -30,11 +30,11 @@ class CreateHelpTable extends Migration
         $this->schema->create('help', function (Blueprint $table) {
             $table->increments('id');
             $table->string('route');
-            $table->string('route_parameters');
-            $table->string('description');
-            $table->longText('parameters');
-            $table->longText('response');
-            $table->longText('response_error');
+            $table->string('route_parameters')->nullable();
+            $table->string('description')->nullable();
+            $table->longText('parameters')->nullable();
+            $table->longText('response')->nullable();
+            $table->longText('response_error')->nullable();
         });
 
     }

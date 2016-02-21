@@ -26,16 +26,23 @@ class CreateUserJob
     private $country_id;
 
     /**
+     * @var null
+     */
+    private $age_id;
+
+    /**
      * Create a new job instance.
      * @param array $request
      * @param int|string $role
      * @param null $country_id
+     * @param null $age_id
      */
-    public function __construct(array $request, $role = 'user', $country_id = null)
+    public function __construct(array $request, $role = 'user', $country_id = null, $age_id = null)
     {
         $this->request = $request;
         $this->role = $role;
         $this->country_id = $country_id;
+        $this->age_id = $age_id;
     }
 
     /**
@@ -61,6 +68,7 @@ class CreateUserJob
         $user->setAttribute('newsletter', filter_var(isset($this->request['newsletter']), FILTER_VALIDATE_BOOLEAN));
         $user->roles()->attach($role);
         $user->country()->associate($this->country_id);
+        $user->age()->associate($this->age_id);
         $user->save();
 
         /**

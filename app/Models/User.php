@@ -53,13 +53,23 @@ class User extends Authenticatable
     }
 
     /**
-     * Role Relationship
+     * Country Relationship
      * @return \Illuminate\Database\Eloquent\Relations\belongsTo
      */
     public function country()
     {
         return $this->belongsTo(Country::class);
     }
+
+    /**
+     * Age Relationship
+     * @return \Illuminate\Database\Eloquent\Relations\belongsTo
+     */
+    public function age()
+    {
+        return $this->belongsTo(Age::class);
+    }
+
 
     /**
      * @param $roleName
