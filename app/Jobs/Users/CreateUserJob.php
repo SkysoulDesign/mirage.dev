@@ -39,7 +39,7 @@ class CreateUserJob
      */
     public function __construct(array $request, $role = 'user', $country_id = null, $age_id = null)
     {
-        $this->request = $request;
+        $this->request = collect($request);
         $this->role = $role;
         $this->country_id = $country_id;
         $this->age_id = $age_id;
@@ -63,9 +63,9 @@ class CreateUserJob
         /**
          * Create User, Set Role and Token
          */
-        $user = $user->create($this->request);
+        $user = $user->create($this->request->toArray());
         $user->setAttribute('api_token', $token = dispatch(new GenerateTokenJob($user)));
-        $user->setAttribute('newsletter', filter_var(isset($this->request['newsletter']), FILTER_VALIDATE_BOOLEAN));
+        $user->setAttribute('newsletter', filter_var($this->request->get('newsletter', false), FILTER_VALIDATE_BOOLEAN));
         $user->roles()->attach($role);
         $user->country()->associate($this->country_id);
         $user->age()->associate($this->age_id);
