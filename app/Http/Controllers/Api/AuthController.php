@@ -40,8 +40,8 @@ class AuthController extends Controller
             'password'   => 'required|confirmed|min:6',
             'gender'     => 'string',
             'age_id'     => 'exists:ages,id',
-            'terms'      => 'accepted',
             'country_id' => 'exists:countries,id',
+            'terms'      => 'accepted'
         ]);
 
         if ($validator->fails())

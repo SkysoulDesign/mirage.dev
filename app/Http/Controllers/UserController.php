@@ -59,7 +59,7 @@ class UserController extends Controller
         /**
          * Create User
          */
-        dispatch(new CreateUserJob($request->except('role_id', 'country_id'), $request->get('role_id'), $request->get('country_id')));
+        dispatch(new CreateUserJob($request->except('role_id', 'country_id', 'age_id'), $request->get('role_id'), $request->get('country_id'), $request->get('age_id')));
 
         return redirect()->route('user.index');
 
