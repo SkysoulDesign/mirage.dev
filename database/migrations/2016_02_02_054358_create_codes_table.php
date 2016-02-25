@@ -32,6 +32,8 @@ class CreateCodesTable extends Migration
             $table->increments('id');
             $table->integer('product_id')->unsigned()->index();
             $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
+            $table->integer('user_id')->unsigned()->index()->nullable();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->string('code')->unique();
             $table->boolean('status')->default(false);
             $table->timestamps();

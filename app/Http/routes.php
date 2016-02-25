@@ -132,22 +132,18 @@ $app->group(['prefix' => 'api', 'as' => 'api.'], function ($app) {
     /**
      * Product Api
      */
-    $app->group(['prefix' => 'product', 'as' => 'product.', 'middleware' => 'api'], function ($app) {
-
-        $app->get('/', classie(ApiProductController::class, 'index'))->name('index');
-        $app->get('{product}/show', classie(ApiProductController::class, 'show'))->name('show');
-
+    $app->get('products', classie(ApiProductController::class, 'index'))->name('product.index');
+    $app->group(['prefix' => 'product', 'as' => 'product.'], function ($app) {
+        $app->post('/', classie(ApiProductController::class, 'show'))->name('show');
+        $app->post('register', classie(ApiProductController::class, 'register'))->name('register');
     });
 
     /**
      * Form Api
      */
     $app->group(['prefix' => 'form', 'as' => 'form.'], function ($app) {
-
         $app->get('countries', classie(FormController::class, 'countries'))->name('countries');
         $app->get('ages', classie(FormController::class, 'ages'))->name('ages');
-
     });
-
 
 });

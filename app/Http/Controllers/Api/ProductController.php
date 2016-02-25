@@ -3,7 +3,11 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Jobs\EncodeImageJob;
+use App\Jobs\RegisterProductJob;
+use App\Models\Code;
 use App\Models\Product;
+use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
@@ -19,6 +23,7 @@ class ProductController extends Controller
      */
     public function __construct(Product $product)
     {
+        $this->middleware('api');
         $this->product = $product;
     }
 
@@ -35,14 +40,51 @@ class ProductController extends Controller
 
     /**
      * Display Generator Page
-     * @param $code
+     *
+     * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function show($code)
+    public function register(Request $request)
     {
 
-        if (!$product = $this->product->whereCode($code)->orWhere('id', $code)->first())
+        $validator = $this->getValidationFactory()->make($request->all(), [
+            'code' => 'required|exists:codes,code'
+        ]);
+
+        if ($validator->fails())
+            return response()->json(['error' => $validator->errors()]);
+
+        /**
+         * Associate User with The Product
+         */
+        $response = dispatch(new RegisterProductJob($request->get('code'), $request->user('api')));
+
+        if (!$response)
+            return response()->json(['error' => 'code_has_been_taken']);
+
+        return response()->json(['status' => 'okay']);
+
+    }
+
+    /**
+     * Display Generator Page
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function show(Request $request)
+    {
+
+        /** @var $product Product */
+        if (!$product = $this->product->whereCode($request->get('product_id'))->orWhere('id', $request->get('product_id'))->first())
             return response()->json(['error' => 'invalid_code']);
+
+        /**
+         * Encode Image if necessary
+         */
+        if (filter_var($request->get('encode_image', false), FILTER_VALIDATE_BOOLEAN) === true) {
+            $encoded = dispatch(new EncodeImageJob(substr($product->getAttribute('image'), 1)));
+            $product->setAttribute('image', $encoded);
+        }
 
         return response()->json(collect($product)->except('updated_at', 'created_at'));
 

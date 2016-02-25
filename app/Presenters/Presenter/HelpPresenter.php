@@ -51,7 +51,7 @@ class HelpPresenter extends Presenter
      */
     public function parameters()
     {
-        return str_replace('Required -', '<b class="color red">Required:</b>', json_decode($this->model->parameters, true));
+        return $this->model->parameters ? str_replace('Required -', '<b class="color red">Required:</b>', json_decode($this->model->parameters, true)) : [];
     }
 
     /**

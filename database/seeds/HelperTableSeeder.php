@@ -85,7 +85,7 @@ class HelperTableSeeder extends Seeder
             'route'          => 'api.product.index',
             'description'    => 'Return list with all available products',
             'parameters'     => json_encode([
-                'token' => 'Required - User Token',
+                'api_token' => 'Required - User Token',
             ]),
             'response'       => json_encode([
                 ["id" => 1, "code" => "MF001", "name" => "Batman Stand Version I"],
@@ -109,21 +109,32 @@ class HelperTableSeeder extends Seeder
          * Single Product Show
          */
         dispatch(new CreateAPIHelpJob([
-            'route'            => 'api.product.show',
-            'route_parameters' => json_encode(['product' => 'MF001']),
-            'description'      => 'Return information about an specific product',
-            'parameters'       => json_encode([
-                'token'   => 'Required - User Token',
-                'product' => 'Required - Product Code or ID',
+            'route'          => 'api.product.show',
+//            'route_parameters' => json_encode(['product' => 'MF001']),
+            'description'    => 'Return information about an specific product',
+            'parameters'     => json_encode([
+                'api_token'    => 'Required - User Token',
+                'product_id'   => 'Required - Product Code or ID',
+                'encode_image' => 'Optional - Determine whether retrieve image as a link or as Base64'
             ]),
-            'response'         => json_encode([
+            'response'       => json_encode([
                     "id"    => 1,
                     "name"  => "Batman Stand Version I",
                     "code"  => "MF001",
-                    "image" => "image/products/MF001.png"
+                    "image" => [
+                        "image/products/MF001.png",
+                        [
+                            'mime'      => "image/png",
+                            'dirname'   => "image/products",
+                            'basename'  => "MF001.png",
+                            'extension' => "png",
+                            'filename'  => "MF001",
+                            'encoder'   => 'data:image/png;base64,iVBORw0KGgoAAAANSUh....'
+                        ]
+                    ]
                 ]
             ),
-            'response_error'   => json_encode(
+            'response_error' => json_encode(
                 [
                     [
                         "error" => "invalid_code"
@@ -133,6 +144,40 @@ class HelperTableSeeder extends Seeder
                     ],
                     [
                         "error" => "invalid_token"
+                    ]
+                ]
+            )
+
+        ]));
+
+        /**
+         * Product Register
+         */
+        dispatch(new CreateAPIHelpJob([
+            'route'          => 'api.product.register',
+//            'route_parameters' => json_encode(['product' => 'MF001']),
+            'description'    => 'Return information about an specific product',
+            'parameters'     => json_encode([
+                'api_token' => 'Required - User Token',
+                'code'      => 'Required - Product Code',
+            ]),
+            'response'       => json_encode([
+                    "status" => 'okay'
+                ]
+            ),
+            'response_error' => json_encode(
+                [
+                    [
+                        "error" => "invalid_code"
+                    ],
+                    [
+                        "error" => "token_not_provided"
+                    ],
+                    [
+                        "error" => "invalid_token"
+                    ],
+                    [
+                        "error" => " code_has_been_taken"
                     ]
                 ]
             )

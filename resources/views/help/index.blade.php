@@ -6,6 +6,7 @@
 
     <div class="ui styled fluid accordion">
         @foreach($apis as $api)
+
             <div class="title">
                 <i class="dropdown icon"></i>
                 {!! $api->present()->route !!}
@@ -39,6 +40,7 @@
                         <td>
                             <div class="ui list">
                                 @foreach($api->present()->methods as $method)
+
                                     <div class="item">
                                         <i class="right triangle icon"></i>
                                         <div class="content">
@@ -56,7 +58,9 @@
                         </td>
                         <td>
                             <div class="ui list">
-                                @foreach($api->present()->parameters as $key => $description)
+
+                                @forelse($api->present()->parameters as $key => $description)
+
                                     <div class="item">
                                         <i class="right triangle icon"></i>
                                         <div class="content">
@@ -64,7 +68,10 @@
                                             <div class="content">{!! $description !!}</div>
                                         </div>
                                     </div>
-                                @endforeach
+                                @empty
+                                    []
+                                @endforelse
+
                             </div>
                         </td>
                         <td></td>
