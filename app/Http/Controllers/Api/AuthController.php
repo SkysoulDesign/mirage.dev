@@ -81,7 +81,7 @@ class AuthController extends Controller
 
         $user = $this->auth->user()->load(['codes' => function ($query) {
             $query->with(['product' => function ($query) {
-                $query->select('id', 'name', 'code');
+                $query->select('id', 'name', 'code', 'image');
             }])->select('product_id', 'user_id', 'code');
         }]);
 
@@ -104,7 +104,13 @@ class AuthController extends Controller
             return response()->json(['error', 'login_login_expired']);
         }
 
-        return response()->json(['status' => 'okay']);
+        $user = $request->user('api')->load(['codes' => function ($query) {
+            $query->with(['product' => function ($query) {
+                $query->select('id', 'name', 'code', 'image');
+            }])->select('product_id', 'user_id', 'code');
+        }]);
+
+        return response()->json(collect($user)->except('id', 'remember_token', 'created_at', 'updated_at'));
 
     }
 
