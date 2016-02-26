@@ -62,6 +62,15 @@ class User extends Authenticatable
     }
 
     /**
+     * Codes Relationship
+     * @return \Illuminate\Database\Eloquent\Relations\belongsTo
+     */
+    public function codes()
+    {
+        return $this->hasMany(Code::class);
+    }
+
+    /**
      * Age Relationship
      * @return \Illuminate\Database\Eloquent\Relations\belongsTo
      */
@@ -70,6 +79,14 @@ class User extends Authenticatable
         return $this->belongsTo(Age::class);
     }
 
+    public function scopeWithProduct($query)
+    {
+        return $query->with(['codes' => function ($query) {
+            $query->with(['product' => function ($query) {
+                $query->select('id', 'name', 'code');
+            }])->select('product_id', 'user_id', 'code');
+        }]);
+    }
 
     /**
      * @param $roleName

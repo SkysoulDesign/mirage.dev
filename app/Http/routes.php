@@ -122,7 +122,6 @@ $app->group(['prefix' => 'api', 'as' => 'api.'], function ($app) {
         $app->post('login', classie(ApiAuthController::class, 'authenticate'))->name('login');
         $app->post('register', classie(ApiAuthController::class, 'register'))->name('register');
 
-
     });
 
     $app->group(['prefix' => 'auth', 'as' => 'auth.', 'middleware' => 'api'], function ($app) {

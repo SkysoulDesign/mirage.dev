@@ -79,7 +79,13 @@ class AuthController extends Controller
 
         dispatch(new GenerateTokenJob($this->auth->user(), true));
 
-        return response()->json(collect($this->auth->user())->except('id', 'remember_token', 'created_at', 'updated_at'));
+        $user = $this->auth->user()->load(['codes' => function ($query) {
+            $query->with(['product' => function ($query) {
+                $query->select('id', 'name', 'code');
+            }])->select('product_id', 'user_id', 'code');
+        }]);
+
+        return response()->json(collect($user)->except('id', 'remember_token', 'created_at', 'updated_at'));
 
     }
 
