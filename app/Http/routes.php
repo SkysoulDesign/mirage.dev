@@ -16,6 +16,7 @@ use App\Http\Controllers\Api\AuthController as ApiAuthController;
 use App\Http\Controllers\Api\FormController;
 use App\Http\Controllers\Auth\PasswordController;
 use App\Http\Controllers\CodeController;
+use App\Http\Controllers\ExtraController;
 use App\Http\Controllers\HelpController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\NotificationController;
@@ -94,6 +95,15 @@ $app->group(['middleware' => ['web', 'auth', 'role:admin'], 'prefix' => 'admin']
             $app->get('export', classie(CodeController::class, 'export'))->name('export');
             $app->get('create', classie(CodeController::class, 'create'))->name('create');
             $app->post('post', classie(CodeController::class, 'post'))->name('post');
+        });
+
+        /**
+         * Extras
+         */
+        $app->group(['as' => 'extra.', 'prefix' => '{product}/extra'], function () use ($app) {
+            $app->get('index', classie(ExtraController::class, 'index'))->name('index');
+            $app->get('create', classie(ExtraController::class, 'create'))->name('create');
+            $app->post('post', classie(ExtraController::class, 'post'))->name('post');
         });
 
     });

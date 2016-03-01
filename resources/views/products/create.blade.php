@@ -1,6 +1,7 @@
 @extends('layout.master')
 
 @section('content')
+
     <div class="row medium-12 columns">
 
         <form action="{{ route('product.post') }}" method="POST" enctype="multipart/form-data">

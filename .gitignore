@@ -1,3 +1,4 @@
+/public/image
 /resources/backup
 /resources/work
 /vendor
@@ -5,4 +6,5 @@
 Homestead.yaml
 
 Homestead.json
+/public/videos
 .env

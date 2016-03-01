@@ -86,7 +86,7 @@ class ProductController extends Controller
             $product->setAttribute('image', $encoded);
         }
 
-        return response()->json(collect($product)->except('updated_at', 'created_at'));
+        return response()->json(collect($product->load('extras'))->except('updated_at', 'created_at'));
 
     }
 

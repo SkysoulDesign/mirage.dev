@@ -27,11 +27,21 @@ class Product extends Model
     protected $hidden = [];
 
     /**
+     * Codes Relationship
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function codes()
     {
         return $this->hasMany(Code::class);
+    }
+
+    /**
+     * Extras Relationship
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function extras()
+    {
+        return $this->hasMany(Extra::class);
     }
 
 }

@@ -1,10 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
-
-
     <div class="ui segment">
-
         <form class="ui form" action="{{ route('user.register') }}" method="POST">
 
             {{ csrf_field() }}
