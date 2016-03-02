@@ -81,8 +81,10 @@ class AuthController extends Controller
 
         $user = $this->auth->user()->load(['codes' => function ($query) {
             $query->with(['product' => function ($query) {
-                $query->select('id', 'name', 'code', 'image');
-            }])->select('product_id', 'user_id', 'code');
+                $query->with(['extras' => function ($query) {
+                    $query->select('*');
+                }])->select('*');
+            }])->select('*');
         }]);
 
         return response()->json(collect($user)->except('id', 'remember_token', 'created_at', 'updated_at'));
@@ -106,8 +108,10 @@ class AuthController extends Controller
 
         $user = $request->user('api')->load(['codes' => function ($query) {
             $query->with(['product' => function ($query) {
-                $query->select('id', 'name', 'code', 'image');
-            }])->select('product_id', 'user_id', 'code');
+                $query->with(['extras' => function ($query) {
+                    $query->select('*');
+                }])->select('*');
+            }])->select('*');
         }]);
 
         return response()->json(collect($user)->except('id', 'remember_token', 'created_at', 'updated_at'));
