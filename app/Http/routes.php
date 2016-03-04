@@ -141,7 +141,7 @@ $app->group(['prefix' => 'api', 'as' => 'api.'], function ($app) {
     /**
      * Product Api
      */
-    $app->get('products', classie(ApiProductController::class, 'index'))->name('product.index');
+    $app->post('products', classie(ApiProductController::class, 'index'))->name('product.index');
     $app->group(['prefix' => 'product', 'as' => 'product.'], function ($app) {
         $app->post('/', classie(ApiProductController::class, 'show'))->name('show');
         $app->post('register', classie(ApiProductController::class, 'register'))->name('register');
