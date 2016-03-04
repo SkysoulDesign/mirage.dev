@@ -49,6 +49,14 @@ class AuthController extends Controller
 
         $user = dispatch(new CreateUserJob($request->except('country_id', 'age_id'), 'user', $request->get('country_id'), $request->get('age_id')));
 
+        $user->load(['codes' => function ($query) {
+            $query->with(['product' => function ($query) {
+                $query->with(['extras' => function ($query) {
+                    $query->select('*');
+                }])->select('*');
+            }])->select('*');
+        }]);
+
         return response()->json(collect($user)->except('id', 'remember_token', 'created_at', 'updated_at'));
 
     }
