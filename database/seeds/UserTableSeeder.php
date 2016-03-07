@@ -1,6 +1,8 @@
 <?php
 
+use App\Jobs\RegisterProductJob;
 use App\Jobs\Users\CreateUserJob;
+use App\Models\Code;
 use Illuminate\Database\Seeder;
 
 class UserTableSeeder extends Seeder
@@ -17,13 +19,20 @@ class UserTableSeeder extends Seeder
          * Create User
          */
         $request = [
-            'username' => 'zhousong',
-            'email'    => '123@qq.com',
-            'password' => '123456',
+            'username' => 'demo',
+            'email'    => 'demo@demo.com',
+            'password' => 'demo123456',
             'gender'   => 'male'
         ];
 
-        dispatch(new CreateUserJob($request, 'user', 45, 3));
+        $user = dispatch(new CreateUserJob($request, 'user', 45, 3));
+
+//        $codes = rand(1, Code::count());
+//
+//        /**
+//         * Buy some Products
+//         */
+//        dispatch(new RegisterProductJob($codes, $user));
 
     }
 
