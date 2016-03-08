@@ -8,6 +8,7 @@ class Product extends Model
 {
     /**
      * Default MySQL table
+     *
      * @var string
      */
     protected $table = 'products';
@@ -28,6 +29,7 @@ class Product extends Model
 
     /**
      * Codes Relationship
+     *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function codes()
@@ -37,11 +39,22 @@ class Product extends Model
 
     /**
      * Extras Relationship
+     *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function extras()
     {
         return $this->hasMany(Extra::class);
+    }
+
+    /**
+     * Profile Relationship
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\hasOne
+     */
+    public function profile()
+    {
+        return $this->hasOne(Profile::class);
     }
 
 }

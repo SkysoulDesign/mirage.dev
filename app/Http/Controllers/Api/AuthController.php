@@ -18,6 +18,7 @@ class AuthController extends Controller
 
     /**
      * AuthController constructor.
+     *
      * @param Auth $auth
      */
     public function __construct(Auth $auth)
@@ -49,15 +50,9 @@ class AuthController extends Controller
 
         $user = dispatch(new CreateUserJob($request->except('country_id', 'age_id'), 'user', $request->get('country_id'), $request->get('age_id')));
 
-        $user->load(['codes' => function ($query) {
-            $query->with(['product' => function ($query) {
-                $query->with(['extras' => function ($query) {
-                    $query->select('*');
-                }])->select('*');
-            }])->select('*');
-        }]);
+        $user->load('codes', 'codes.product', 'codes.product.extras', 'codes.product.profile');
 
-        return response()->json(collect($user)->except('id', 'remember_token', 'created_at', 'updated_at'));
+        return response()->json($user);
 
     }
 
@@ -87,15 +82,9 @@ class AuthController extends Controller
 
         dispatch(new GenerateTokenJob($this->auth->user(), true));
 
-        $user = $this->auth->user()->load(['codes' => function ($query) {
-            $query->with(['product' => function ($query) {
-                $query->with(['extras' => function ($query) {
-                    $query->select('*');
-                }])->select('*');
-            }])->select('*');
-        }]);
+        $user = $this->auth->user()->load('codes', 'codes.product', 'codes.product.extras', 'codes.product.profile');
 
-        return response()->json(collect($user)->except('id', 'remember_token', 'created_at', 'updated_at'));
+        return response()->json($user);
 
     }
 
@@ -114,15 +103,9 @@ class AuthController extends Controller
             return response()->json(['error', 'login_login_expired']);
         }
 
-        $user = $request->user('api')->load(['codes' => function ($query) {
-            $query->with(['product' => function ($query) {
-                $query->with(['extras' => function ($query) {
-                    $query->select('*');
-                }])->select('*');
-            }])->select('*');
-        }]);
+        $user =  $request->user('api')->load('codes', 'codes.product', 'codes.product.extras', 'codes.product.profile');
 
-        return response()->json(collect($user)->except('id', 'remember_token', 'created_at', 'updated_at'));
+        return response()->json($user);
 
     }
 

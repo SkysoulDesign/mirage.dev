@@ -4,6 +4,7 @@ namespace App\Jobs;
 
 use App\Events\ProductWasCreated;
 use App\Models\Product;
+use App\Models\Profile;
 use Illuminate\Support\Collection;
 use Symfony\Component\HttpFoundation\File\File;
 
@@ -22,8 +23,9 @@ class CreateProductJob
 
     /**
      * Create a new job instance.
+     *
      * @param array $request
-     * @param File $image
+     * @param File  $image
      */
     public function __construct(array $request, File $image)
     {
@@ -33,9 +35,11 @@ class CreateProductJob
 
     /**
      * Execute the job.
+     *
      * @param Product $product
+     * @param Profile $profile
      */
-    public function handle(Product $product)
+    public function handle(Product $product, Profile $profile)
     {
 
         $extension = $this->image->guessExtension();
@@ -45,10 +49,21 @@ class CreateProductJob
         $fileName = $code . '.' . $extension;
         $image = $this->image->move(public_path() . $path, $fileName);
 
+        /**
+         * Create Product
+         */
         $product = $product->create([
             'name'  => $this->request->get('name'),
             'code'  => $code,
             'image' => $path . $fileName,
+        ]);
+
+        /**
+         * Create Product Profile
+         */
+        $product->profile()->create([
+            'description' => $this->request->get('profile_description'),
+            'image'       => $path . $fileName,
         ]);
 
         /**
