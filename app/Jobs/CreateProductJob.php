@@ -4,7 +4,6 @@ namespace App\Jobs;
 
 use App\Events\ProductWasCreated;
 use App\Models\Product;
-use App\Models\Profile;
 use Illuminate\Support\Collection;
 use Symfony\Component\HttpFoundation\File\File;
 
@@ -44,9 +43,8 @@ class CreateProductJob
      * Execute the job.
      *
      * @param Product $product
-     * @param Profile $profile
      */
-    public function handle(Product $product, Profile $profile)
+    public function handle(Product $product)
     {
 
         /**
@@ -55,7 +53,7 @@ class CreateProductJob
         $product = $product->create([
             'name'  => $this->request->get('name'),
             'code'  => $this->request->get('code'),
-            'image' => $this->moveFile($this->image, '/image/products/'),
+            'image' => $this->moveFile($this->image, '/image/products/', 'figurine'),
         ]);
 
         /**
@@ -63,7 +61,7 @@ class CreateProductJob
          */
         $product->profile()->create([
             'description' => $this->request->get('description'),
-            'image'       => $this->moveFile($this->poster, '/image/products-poster')
+            'image'       => $this->moveFile($this->poster, '/image/products/', 'poster')
         ]);
 
         /**
@@ -75,16 +73,17 @@ class CreateProductJob
 
     /**
      * @param File   $image
+     * @param string $prefix
      * @param String $path
      * @return string
      */
-    public function moveFile(File $image, $path)
+    public function moveFile(File $image, $prefix = '', $path)
     {
 
         $extension = $image->guessExtension();
         $code = strtoupper($this->request->get('code'));
 
-        $fileName = $code . '.' . $extension;
+        $fileName = $code . $prefix ?: '-' . $prefix . '.' . $extension;
 
         $image->move(public_path() . $path, $fileName);
 
