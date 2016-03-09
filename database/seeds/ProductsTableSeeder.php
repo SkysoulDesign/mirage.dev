@@ -89,8 +89,8 @@ class ProductsTableSeeder extends Seeder
 
             dispatch(new CreateProductJob(
                 $product->toArray(),
-                $this->file($product->get('code'), '/public/image/products/'),
-                $this->file($product->get('code'), '/public/image/products-poster/')
+                $this->file($product->get('code'), '/public/image/products/', 'figurine'),
+                $this->file($product->get('code'), '/public/image/products/', 'poster')
             ));
 
         });
@@ -104,9 +104,10 @@ class ProductsTableSeeder extends Seeder
      * @param string $ext
      * @return \Illuminate\Foundation\Application|mixed
      */
-    public function file($code, $path, $ext = 'png')
+    public function file($code, $path, $prefix = '', $ext = 'png')
     {
-        $path = base_path() . $path . strtoupper($code) . '.' . $ext;
+        $path = base_path() . $path . strtoupper($code) . '-' . $prefix . '.' . $ext;
+
         return app(File::class, compact('path'));
     }
 }
