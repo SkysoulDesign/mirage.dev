@@ -83,7 +83,7 @@ class CreateProductJob
         $extension = $image->guessExtension();
         $code = strtoupper($this->request->get('code'));
 
-        $fileName = $code . $prefix ?: '-' . $prefix . '.' . $extension;
+        $fileName = $code . ($prefix ?: '-' . $prefix) . '.' . $extension;
 
         $image->move(public_path() . $path, $fileName);
 
