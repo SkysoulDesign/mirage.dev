@@ -74,7 +74,7 @@ class ProductsTableSeeder extends Seeder
                     'description' => $description,
                 ],
                 [
-                    'name'        => '',
+                    'name'        => 'Special Edition',
                     'code'        => 'MS001',
                     'description' => $description,
                 ]
@@ -100,14 +100,13 @@ class ProductsTableSeeder extends Seeder
     /**
      * Get file in the system
      *
-     * @param        $code
+     * @param string $code
      * @param string $ext
      * @return \Illuminate\Foundation\Application|mixed
      */
     public function file($code, $path, $ext = 'png')
     {
         $path = base_path() . $path . strtoupper($code) . '.' . $ext;
-
         return app(File::class, compact('path'));
     }
 }
