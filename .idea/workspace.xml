@@ -2,15 +2,163 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d5e9fa1a-0fa9-4676-b364-911fe5075e93" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Envoy.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.ids" afterPath="$PROJECT_DIR$/.idea/dataSources.ids" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/image/products/MF001.png" afterPath="$PROJECT_DIR$/public/image/products/MF001.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/image/products/MF002.png" afterPath="$PROJECT_DIR$/public/image/products/MF002.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/image/products/MF003.png" afterPath="$PROJECT_DIR$/public/image/products/MF003.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/image/products/MF004.png" afterPath="$PROJECT_DIR$/public/image/products/MF004.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/image/products/MF005.png" afterPath="$PROJECT_DIR$/public/image/products/MF005.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/image/products/MF006.png" afterPath="$PROJECT_DIR$/public/image/products/MF006.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/image/products/MF007.png" afterPath="$PROJECT_DIR$/public/image/products/MF007.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/image/products/MF008.png" afterPath="$PROJECT_DIR$/public/image/products/MF008.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/image/products/MF009.png" afterPath="$PROJECT_DIR$/public/image/products/MF009.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/image/products/MS001.png" afterPath="$PROJECT_DIR$/public/image/products/MS001.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/image/products/MV005.png" afterPath="$PROJECT_DIR$/public/image/products/MV005.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/image/products/MV006.png" afterPath="$PROJECT_DIR$/public/image/products/MV006.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/img/mirage-logo-m.png" afterPath="$PROJECT_DIR$/public/img/mirage-logo-m.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/img/mirage-logo.png" afterPath="$PROJECT_DIR$/public/img/mirage-logo.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/videos/bunny.mp4" afterPath="$PROJECT_DIR$/public/videos/bunny.mp4" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/psds/Main Page copy.png" afterPath="$PROJECT_DIR$/resources/psds/Main Page copy.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/psds/Main Page.png" afterPath="$PROJECT_DIR$/resources/psds/Main Page.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/psds/Screens/Form Concept.png" afterPath="$PROJECT_DIR$/resources/psds/Screens/Form Concept.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/psds/Screens/Home - Concept.png" afterPath="$PROJECT_DIR$/resources/psds/Screens/Home - Concept.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/psds/Screens/User Account.png" afterPath="$PROJECT_DIR$/resources/psds/Screens/User Account.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.env.example" afterPath="$PROJECT_DIR$/.env.example" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitattributes" afterPath="$PROJECT_DIR$/.gitattributes" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/.name" afterPath="$PROJECT_DIR$/.idea/.name" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/blade.xml" afterPath="$PROJECT_DIR$/.idea/blade.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/codeStyleSettings.xml" afterPath="$PROJECT_DIR$/.idea/codeStyleSettings.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/composerJson.xml" afterPath="$PROJECT_DIR$/.idea/composerJson.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/copyright/profiles_settings.xml" afterPath="$PROJECT_DIR$/.idea/copyright/profiles_settings.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.xml" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dictionaries/Milewski.xml" afterPath="$PROJECT_DIR$/.idea/dictionaries/Milewski.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/encodings.xml" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/mirage.dev.iml" afterPath="$PROJECT_DIR$/.idea/mirage.dev.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Envoy.blade.php" afterPath="$PROJECT_DIR$/Envoy.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Events/APIHelpWasCreated.php" afterPath="$PROJECT_DIR$/app/Events/APIHelpWasCreated.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Events/AgeWasCreated.php" afterPath="$PROJECT_DIR$/app/Events/AgeWasCreated.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Events/CountryWasCreated.php" afterPath="$PROJECT_DIR$/app/Events/CountryWasCreated.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Events/ExtraWasCreated.php" afterPath="$PROJECT_DIR$/app/Events/ExtraWasCreated.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Events/ProductWasCreated.php" afterPath="$PROJECT_DIR$/app/Events/ProductWasCreated.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Events/RoleWasCreated.php" afterPath="$PROJECT_DIR$/app/Events/RoleWasCreated.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Events/UserWasCreated.php" afterPath="$PROJECT_DIR$/app/Events/UserWasCreated.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/AuthController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/AuthController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/FormController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/FormController.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/ProductController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/ProductController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/AuthController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/AuthController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/CodeController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/CodeController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/ExtraController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/ExtraController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/HelpController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/HelpController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/NotificationController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/NotificationController.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/ProductController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/ProductController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/TEMP/ExampleController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/TEMP/ExampleController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/TEMP/GeneratorController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/TEMP/GeneratorController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/TEMP/RegisterController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/TEMP/RegisterController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Middleware/Api.php" afterPath="$PROJECT_DIR$/app/Http/Middleware/Api.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Middleware/RoleMiddleware.php" afterPath="$PROJECT_DIR$/app/Http/Middleware/RoleMiddleware.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/routes.php" afterPath="$PROJECT_DIR$/app/Http/routes.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Jobs/CreateAPIHelpJob.php" afterPath="$PROJECT_DIR$/app/Jobs/CreateAPIHelpJob.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Jobs/CreateAgeJob.php" afterPath="$PROJECT_DIR$/app/Jobs/CreateAgeJob.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Jobs/CreateCountryJob.php" afterPath="$PROJECT_DIR$/app/Jobs/CreateCountryJob.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Jobs/CreateExtraJob.php" afterPath="$PROJECT_DIR$/app/Jobs/CreateExtraJob.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Jobs/CreateNotificationCommand.php" afterPath="$PROJECT_DIR$/app/Jobs/CreateNotificationCommand.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Jobs/CreateProductJob.php" afterPath="$PROJECT_DIR$/app/Jobs/CreateProductJob.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Jobs/EncodeImageJob.php" afterPath="$PROJECT_DIR$/app/Jobs/EncodeImageJob.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Jobs/ExampleJob.php" afterPath="$PROJECT_DIR$/app/Jobs/ExampleJob.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Jobs/ExportProductCodesToExcelJob.php" afterPath="$PROJECT_DIR$/app/Jobs/ExportProductCodesToExcelJob.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Jobs/GenerateCodeCommand.php" afterPath="$PROJECT_DIR$/app/Jobs/GenerateCodeCommand.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Jobs/GenerateCodesCommand.php" afterPath="$PROJECT_DIR$/app/Jobs/GenerateCodesCommand.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Jobs/RegisterProductJob.php" afterPath="$PROJECT_DIR$/app/Jobs/RegisterProductJob.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Jobs/Roles/CreateRolesJob.php" afterPath="$PROJECT_DIR$/app/Jobs/Roles/CreateRolesJob.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Jobs/Users/CheckTokenJob.php" afterPath="$PROJECT_DIR$/app/Jobs/Users/CheckTokenJob.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Jobs/Users/CreateUserJob.php" afterPath="$PROJECT_DIR$/app/Jobs/Users/CreateUserJob.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Jobs/Users/GenerateTokenJob.php" afterPath="$PROJECT_DIR$/app/Jobs/Users/GenerateTokenJob.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Models/Age.php" afterPath="$PROJECT_DIR$/app/Models/Age.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Models/Code.php" afterPath="$PROJECT_DIR$/app/Models/Code.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Models/Country.php" afterPath="$PROJECT_DIR$/app/Models/Country.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Models/Extra.php" afterPath="$PROJECT_DIR$/app/Models/Extra.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Models/Help.php" afterPath="$PROJECT_DIR$/app/Models/Help.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Models/Notification.php" afterPath="$PROJECT_DIR$/app/Models/Notification.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Models/Product.php" afterPath="$PROJECT_DIR$/app/Models/Product.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Models/Profile.php" afterPath="$PROJECT_DIR$/app/Models/Profile.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Models/Role.php" afterPath="$PROJECT_DIR$/app/Models/Role.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Models/User.php" afterPath="$PROJECT_DIR$/app/Models/User.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Presenters/Exceptions/PresenterException.php" afterPath="$PROJECT_DIR$/app/Presenters/Exceptions/PresenterException.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Presenters/PresentableInterface.php" afterPath="$PROJECT_DIR$/app/Presenters/PresentableInterface.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Presenters/PresentableTrait.php" afterPath="$PROJECT_DIR$/app/Presenters/PresentableTrait.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Presenters/Presenter.php" afterPath="$PROJECT_DIR$/app/Presenters/Presenter.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Presenters/Presenter/HelpPresenter.php" afterPath="$PROJECT_DIR$/app/Presenters/Presenter/HelpPresenter.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/composer.lock" afterPath="$PROJECT_DIR$/composer.lock" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/excel.php" afterPath="$PROJECT_DIR$/config/excel.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/image.php" afterPath="$PROJECT_DIR$/config/image.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/jwt.php" afterPath="$PROJECT_DIR$/config/jwt.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2016_02_01_035731_create_products_table.php" afterPath="$PROJECT_DIR$/database/migrations/2016_02_01_035731_create_products_table.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2016_02_01_071907_create_countries_table.php" afterPath="$PROJECT_DIR$/database/migrations/2016_02_01_071907_create_countries_table.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2016_02_01_071908_create_ages_table.php" afterPath="$PROJECT_DIR$/database/migrations/2016_02_01_071908_create_ages_table.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2016_02_01_071908_create_users_table.php" afterPath="$PROJECT_DIR$/database/migrations/2016_02_01_071908_create_users_table.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2016_02_02_054358_create_codes_table.php" afterPath="$PROJECT_DIR$/database/migrations/2016_02_02_054358_create_codes_table.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2016_02_04_024203_create_notifications_table.php" afterPath="$PROJECT_DIR$/database/migrations/2016_02_04_024203_create_notifications_table.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2016_02_04_074026_create_queue_table.php" afterPath="$PROJECT_DIR$/database/migrations/2016_02_04_074026_create_queue_table.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2016_02_06_055314_create_roles_table.php" afterPath="$PROJECT_DIR$/database/migrations/2016_02_06_055314_create_roles_table.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2016_02_06_063709_create_user_roles_table.php" afterPath="$PROJECT_DIR$/database/migrations/2016_02_06_063709_create_user_roles_table.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2016_02_14_022437_create_help_table.php" afterPath="$PROJECT_DIR$/database/migrations/2016_02_14_022437_create_help_table.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2016_03_01_020353_create_extras_table.php" afterPath="$PROJECT_DIR$/database/migrations/2016_03_01_020353_create_extras_table.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2016_03_08_075048_create_profiles_table.php" afterPath="$PROJECT_DIR$/database/migrations/2016_03_08_075048_create_profiles_table.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/seeds/AdminTableSeeder.php" afterPath="$PROJECT_DIR$/database/seeds/AdminTableSeeder.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/seeds/AgesTableSeeder.php" afterPath="$PROJECT_DIR$/database/seeds/AgesTableSeeder.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/seeds/CountriesTableSeeder.php" afterPath="$PROJECT_DIR$/database/seeds/CountriesTableSeeder.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" afterPath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/seeds/HelperTableSeeder.php" afterPath="$PROJECT_DIR$/database/seeds/HelperTableSeeder.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/seeds/ProductsTableSeeder.php" afterPath="$PROJECT_DIR$/database/seeds/ProductsTableSeeder.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/seeds/RolesTableSeeder.php" afterPath="$PROJECT_DIR$/database/seeds/RolesTableSeeder.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/seeds/UserTableSeeder.php" afterPath="$PROJECT_DIR$/database/seeds/UserTableSeeder.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/css/app.css" afterPath="$PROJECT_DIR$/public/css/app.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/app.js" afterPath="$PROJECT_DIR$/public/js/app.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/jquery.min.js" afterPath="$PROJECT_DIR$/public/js/jquery.min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/auth/create.blade.php" afterPath="$PROJECT_DIR$/resources/views/auth/create.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/auth/emails/password.blade.php" afterPath="$PROJECT_DIR$/resources/views/auth/emails/password.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/auth/login.blade.php" afterPath="$PROJECT_DIR$/resources/views/auth/login.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/auth/passwords/email.blade.php" afterPath="$PROJECT_DIR$/resources/views/auth/passwords/email.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/auth/passwords/reset.blade.php" afterPath="$PROJECT_DIR$/resources/views/auth/passwords/reset.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/auth/register.blade.php" afterPath="$PROJECT_DIR$/resources/views/auth/register.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/codes.blade.php" afterPath="$PROJECT_DIR$/resources/views/codes.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/errors/errors.blade.php" afterPath="$PROJECT_DIR$/resources/views/errors/errors.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/generator.blade.php" afterPath="$PROJECT_DIR$/resources/views/generator.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/help/create.blade.php" afterPath="$PROJECT_DIR$/resources/views/help/create.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/help/index.blade.php" afterPath="$PROJECT_DIR$/resources/views/help/index.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/help/partials/menu.blade.php" afterPath="$PROJECT_DIR$/resources/views/help/partials/menu.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/home.blade.php" afterPath="$PROJECT_DIR$/resources/views/home.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/index.blade.php" afterPath="$PROJECT_DIR$/resources/views/index.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/layouts/master.blade.php" afterPath="$PROJECT_DIR$/resources/views/layouts/master.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/notifications/create.blade.php" afterPath="$PROJECT_DIR$/resources/views/notifications/create.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/notifications/index.blade.php" afterPath="$PROJECT_DIR$/resources/views/notifications/index.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/partials/top-bar.blade.php" afterPath="$PROJECT_DIR$/resources/views/partials/top-bar.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/products.blade.php" afterPath="$PROJECT_DIR$/resources/views/products.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/products/codes/create.blade.php" afterPath="$PROJECT_DIR$/resources/views/products/codes/create.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/products/codes/index.blade.php" afterPath="$PROJECT_DIR$/resources/views/products/codes/index.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/products/codes/partials/menu.blade.php" afterPath="$PROJECT_DIR$/resources/views/products/codes/partials/menu.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/products/create.blade.php" afterPath="$PROJECT_DIR$/resources/views/products/create.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/products/extras/create.blade.php" afterPath="$PROJECT_DIR$/resources/views/products/extras/create.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/products/extras/index.blade.php" afterPath="$PROJECT_DIR$/resources/views/products/extras/index.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/products/extras/partials/menu.blade.php" afterPath="$PROJECT_DIR$/resources/views/products/extras/partials/menu.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/products/index.blade.php" afterPath="$PROJECT_DIR$/resources/views/products/index.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/products/partials/menu.blade.php" afterPath="$PROJECT_DIR$/resources/views/products/partials/menu.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/users/create.blade.php" afterPath="$PROJECT_DIR$/resources/views/users/create.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/users/index.blade.php" afterPath="$PROJECT_DIR$/resources/views/users/index.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/users/partials/menu.blade.php" afterPath="$PROJECT_DIR$/resources/views/users/partials/menu.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ssl/mirage.dev.cert" afterPath="$PROJECT_DIR$/ssl/mirage.dev.cert" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ssl/mirage.dev.key" afterPath="$PROJECT_DIR$/ssl/mirage.dev.key" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/storage/debugbar/.gitignore" afterPath="$PROJECT_DIR$/storage/debugbar/.gitignore" />
     </list>
     <ignored path="mirage.dev.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -52,9 +200,21 @@
       <file leaf-file-name="ProductController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ProductController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-14.043478">
-              <caret line="49" column="39" selection-start-line="49" selection-start-column="39" selection-end-line="49" selection-end-column="39" />
+            <state vertical-scroll-proportion="-47.47826">
+              <caret line="47" column="11" selection-start-line="47" selection-start-column="11" selection-end-line="47" selection-end-column="11" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="routes.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-16.956522">
+              <caret line="88" column="0" selection-start-line="88" selection-start-column="0" selection-end-line="88" selection-end-column="0" />
+              <folding>
+                <element signature="e#387#432#0#PHP" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -62,88 +222,18 @@
       <file leaf-file-name="CreateProductJob.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Jobs/CreateProductJob.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-18.913044">
-              <caret line="62" column="11" selection-start-line="62" selection-start-column="11" selection-end-line="62" selection-end-column="11" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AuthController.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Api/AuthController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.27769348">
-              <caret line="100" column="0" selection-start-line="100" selection-start-column="0" selection-end-line="100" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="2016_03_08_075048_create_profiles_table.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/database/migrations/2016_03_08_075048_create_profiles_table.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-10.391304">
-              <caret line="36" column="11" selection-start-line="36" selection-start-column="11" selection-end-line="36" selection-end-column="11" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ProductController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Api/ProductController.php">
-          <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="-14.608696">
-              <caret line="83" column="97" selection-start-line="83" selection-start-column="97" selection-end-line="83" selection-end-column="97" />
+              <caret line="41" column="0" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="2016_02_14_022437_create_help_table.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/database/migrations/2016_02_14_022437_create_help_table.php">
+      <file leaf-file-name="ProductsTableSeeder.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/database/seeds/ProductsTableSeeder.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-2.6086957">
-              <caret line="19" column="5" selection-start-line="8" selection-start-column="4" selection-end-line="19" selection-end-column="5" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="2016_02_01_035731_create_products_table.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/database/migrations/2016_02_01_035731_create_products_table.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-20.695652">
-              <caret line="34" column="33" selection-start-line="34" selection-start-column="12" selection-end-line="34" selection-end-column="33" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="2016_03_01_020353_create_extras_table.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/database/migrations/2016_03_01_020353_create_extras_table.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-21.130434">
-              <caret line="20" column="5" selection-start-line="9" selection-start-column="4" selection-end-line="20" selection-end-column="5" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Profile.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Models/Profile.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-21.347826">
-              <caret line="27" column="29" selection-start-line="27" selection-start-column="29" selection-end-line="27" selection-end-column="29" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="2016_02_01_071908_create_users_table.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/database/migrations/2016_02_01_071908_create_users_table.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-10.869565">
-              <caret line="36" column="98" selection-start-line="34" selection-start-column="11" selection-end-line="36" selection-end-column="98" />
+            <state vertical-scroll-proportion="0.50986344">
+              <caret line="101" column="6" selection-start-line="101" selection-start-column="6" selection-end-line="101" selection-end-column="6" />
               <folding />
             </state>
           </provider>
@@ -158,7 +248,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/../vagrant-provision.txt" />
         <option value="$PROJECT_DIR$/composer.json" />
         <option value="$PROJECT_DIR$/config/app.php" />
         <option value="$PROJECT_DIR$/app/Http/Kernel.php" />
@@ -188,7 +277,6 @@
         <option value="$PROJECT_DIR$/database/migrations/2016_03_01_020353_create_extras_table.php" />
         <option value="$PROJECT_DIR$/resources/views/products/extras/partials/menu.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/users/create.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/products/create.blade.php" />
         <option value="$PROJECT_DIR$/app/Models/Extra.php" />
         <option value="$PROJECT_DIR$/app/Events/ExtraWasCreated.php" />
         <option value="$PROJECT_DIR$/app/Jobs/CreateExtraJob.php" />
@@ -201,14 +289,16 @@
         <option value="$PROJECT_DIR$/database/seeds/UserTableSeeder.php" />
         <option value="$PROJECT_DIR$/../Vagrantfile" />
         <option value="$PROJECT_DIR$/Envoy.blade.php" />
-        <option value="$PROJECT_DIR$/database/seeds/ProductsTableSeeder.php" />
-        <option value="$PROJECT_DIR$/app/Models/Profile.php" />
         <option value="$PROJECT_DIR$/app/Models/Product.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/ProductController.php" />
         <option value="$PROJECT_DIR$/database/migrations/2016_03_08_075048_create_profiles_table.php" />
-        <option value="$PROJECT_DIR$/app/Jobs/CreateProductJob.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Api/ProductController.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Api/AuthController.php" />
+        <option value="$PROJECT_DIR$/resources/views/products/create.blade.php" />
+        <option value="$PROJECT_DIR$/database/migrations/2016_02_01_035731_create_products_table.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/ProductController.php" />
+        <option value="$PROJECT_DIR$/app/Jobs/CreateProductJob.php" />
+        <option value="$PROJECT_DIR$/app/Models/Profile.php" />
+        <option value="$PROJECT_DIR$/database/seeds/ProductsTableSeeder.php" />
       </list>
     </option>
   </component>
@@ -227,7 +317,7 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="78" />
+    <option name="x" value="62" />
     <option name="y" value="23" />
     <option name="width" value="1809" />
     <option name="height" value="1031" />
@@ -257,9 +347,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope">
-        <subPane subId="Problems" />
-      </pane>
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -275,6 +362,38 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="mirage.dev" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mirage.dev" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mirage.dev" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mirage.dev" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mirage.dev" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="image" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -320,113 +439,14 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="database" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="migrations" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mirage.dev" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mirage.dev" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mirage.dev" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mirage.dev" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Models" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mirage.dev" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mirage.dev" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Http" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mirage.dev" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mirage.dev" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Http" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Controllers" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mirage.dev" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mirage.dev" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Http" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Controllers" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Api" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
+      </pane>
+      <pane id="Scope">
+        <subPane subId="Problems" />
       </pane>
       <pane id="Scratches" />
     </panes>
@@ -526,12 +546,12 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="78" y="23" width="1809" height="1031" extended-state="0" />
+    <frame x="62" y="23" width="1809" height="1031" extended-state="0" />
     <editor active="false" />
     <layout>
       <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24957556" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25523487" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27510685" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -714,24 +734,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/products/index.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-24.347826">
-          <caret line="31" column="25" selection-start-line="23" selection-start-column="20" selection-end-line="31" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/products/extras/partials/menu.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-14.608696">
           <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/products/create.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.12537314">
-          <caret line="3" column="4" selection-start-line="3" selection-start-column="4" selection-end-line="3" selection-end-column="4" />
         </state>
       </provider>
     </entry>
@@ -753,13 +759,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.24776119">
           <caret line="35" column="21" selection-start-line="35" selection-start-column="21" selection-end-line="35" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/products/extras/create.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7104478">
-          <caret line="17" column="40" selection-start-line="17" selection-start-column="40" selection-end-line="17" selection-end-column="40" />
         </state>
       </provider>
     </entry>
@@ -799,19 +798,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="143" column="58" selection-start-line="143" selection-start-column="58" selection-end-line="143" selection-end-column="58" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Jobs/RegisterProductJob.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.5523521">
           <caret line="43" column="0" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -819,7 +809,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="4" column="64" selection-start-line="4" selection-start-column="64" selection-end-line="4" selection-end-column="64" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -827,7 +816,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="17" column="29" selection-start-line="17" selection-start-column="29" selection-end-line="17" selection-end-column="29" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -835,9 +823,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-17.695652">
           <caret line="30" column="2" selection-start-line="30" selection-start-column="2" selection-end-line="30" selection-end-column="2" />
-          <folding>
-            <element signature="e#7#39#0#PHP" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -845,7 +830,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="3" column="54" selection-start-line="3" selection-start-column="54" selection-end-line="3" selection-end-column="54" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -853,21 +837,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-7.304348">
           <caret line="6" column="8" selection-start-line="6" selection-start-column="8" selection-end-line="6" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/seeds/ProductsTableSeeder.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.304348">
-          <caret line="88" column="33" selection-start-line="88" selection-start-column="33" selection-end-line="88" selection-end-column="33" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/database/migrations/2016_02_01_071908_create_users_table.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-10.869565">
+        <state vertical-scroll-proportion="0.0">
           <caret line="36" column="98" selection-start-line="34" selection-start-column="11" selection-end-line="36" selection-end-column="98" />
           <folding />
         </state>
@@ -875,39 +850,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/database/migrations/2016_03_01_020353_create_extras_table.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-21.130434">
+        <state vertical-scroll-proportion="0.0">
           <caret line="20" column="5" selection-start-line="9" selection-start-column="4" selection-end-line="20" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Models/Product.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.8270106">
-          <caret line="58" column="0" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Models/Profile.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-21.347826">
-          <caret line="27" column="29" selection-start-line="27" selection-start-column="29" selection-end-line="27" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ProductController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-14.043478">
-          <caret line="49" column="39" selection-start-line="49" selection-start-column="39" selection-end-line="49" selection-end-column="39" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/database/migrations/2016_02_14_022437_create_help_table.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.6086957">
+        <state vertical-scroll-proportion="0.0">
           <caret line="19" column="5" selection-start-line="8" selection-start-column="4" selection-end-line="19" selection-end-column="5" />
           <folding />
         </state>
@@ -915,40 +866,108 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/database/migrations/2016_02_01_035731_create_products_table.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-20.695652">
-          <caret line="34" column="33" selection-start-line="34" selection-start-column="12" selection-end-line="34" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/2016_03_08_075048_create_profiles_table.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-10.391304">
-          <caret line="36" column="11" selection-start-line="36" selection-start-column="11" selection-end-line="36" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Jobs/CreateProductJob.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-18.913044">
-          <caret line="62" column="11" selection-start-line="62" selection-start-column="11" selection-end-line="62" selection-end-column="11" />
+        <state vertical-scroll-proportion="0.49013656">
+          <caret line="34" column="37" selection-start-line="34" selection-start-column="37" selection-end-line="34" selection-end-column="37" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Api/ProductController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-14.608696">
-          <caret line="83" column="97" selection-start-line="83" selection-start-column="97" selection-end-line="83" selection-end-column="97" />
+        <state vertical-scroll-proportion="0.5326252">
+          <caret line="87" column="0" selection-start-line="87" selection-start-column="0" selection-end-line="87" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2016_03_08_075048_create_profiles_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5326252">
+          <caret line="36" column="11" selection-start-line="36" selection-start-column="11" selection-end-line="36" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/products/index.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.16995448">
+          <caret line="4" column="38" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/products/extras/create.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.25493172">
+          <caret line="42" column="10" selection-start-line="6" selection-start-column="4" selection-end-line="42" selection-end-column="10" />
+          <folding>
+            <element signature="e#100#1317#0#HTML" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/products/create.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33990896">
+          <caret line="25" column="18" selection-start-line="25" selection-start-column="18" selection-end-line="25" selection-end-column="18" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Api/AuthController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.27769348">
-          <caret line="100" column="0" selection-start-line="100" selection-start-column="0" selection-end-line="100" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.38694993">
+          <caret line="88" column="5" selection-start-line="88" selection-start-column="5" selection-end-line="88" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ProductController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-47.47826">
+          <caret line="47" column="11" selection-start-line="47" selection-start-column="11" selection-end-line="47" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-16.956522">
+          <caret line="88" column="0" selection-start-line="88" selection-start-column="0" selection-end-line="88" selection-end-column="0" />
+          <folding>
+            <element signature="e#387#432#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Models/Profile.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5326252">
+          <caret line="28" column="5" selection-start-line="28" selection-start-column="5" selection-end-line="28" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Models/Product.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.61001515">
+          <caret line="56" column="31" selection-start-line="56" selection-start-column="31" selection-end-line="56" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Jobs/CreateProductJob.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-14.608696">
+          <caret line="41" column="0" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/seeds/ProductsTableSeeder.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.50986344">
+          <caret line="101" column="6" selection-start-line="101" selection-start-column="6" selection-end-line="101" selection-end-column="6" />
           <folding />
         </state>
       </provider>

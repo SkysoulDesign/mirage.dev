@@ -1,40 +1,50 @@
-@extends('layout.master')
+@extends('layouts.master')
 
 @section('content')
 
-    <div class="row medium-12 columns">
+    @include('products.partials.menu')
 
-        <form action="{{ route('product.post') }}" method="POST" enctype="multipart/form-data">
+    <div class="ui segment">
 
-            {!! csrf_field() !!}
+        <form class="ui form" action="{{ route('product.post') }}" method="POST" enctype="multipart/form-data">
 
-            <div class="row">
+            {{ csrf_field() }}
 
+            <div class="required field">
+                <label>Product Name</label>
+                <input type="text" name="name" placeholder="Name">
+            </div>
+
+            <div class="required field">
+                <label>Product Code</label>
+                <input type="text" name="code" placeholder="Code" maxlength="5">
+            </div>
+
+            <div class="required field">
+                <label>Description (Displayed on the Mobile App)</label>
+                <textarea type="text" name="description" placeholder="Description" rows="2"></textarea>
+            </div>
+
+            <div class="required field">
                 <div class="medium-12 columns">
-                    <label>Name
-                        <input type="text" name="name" placeholder="Product Name">
-                    </label>
-                </div>
-
-                <div class="medium-12 columns">
-                    <label>Code
-                        <input type="text" name="code" placeholder="Product Code">
-                    </label>
-                </div>
-
-                <div class="medium-12 columns">
-                    <label class="">Product Image
+                    <label class="">Product Image (Displayed on the Mobile App)
                         <input type="file" name="image">
                     </label>
                 </div>
-
-                <div class="medium-12 columns">
-                    <button type="submit" class="button">Create</button>
-                </div>
-
             </div>
+
+            <div class="required field">
+                <div class="medium-12 columns">
+                    <label class="">Poster (Displayed on the Mobile App)
+                        <input type="file" name="poster">
+                    </label>
+                </div>
+            </div>
+
+            <button class="ui submit button primary" type="submit">Create</button>
 
         </form>
 
     </div>
+
 @endsection

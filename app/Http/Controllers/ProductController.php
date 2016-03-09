@@ -40,16 +40,16 @@ class ProductController extends Controller
     {
 
         $this->validate($request, [
-            'name'                => 'required',
-            'code'                => 'required|size:5|unique:products',
-            'image'               => 'required|mimes:jpeg,png|image',
-            'profile_description' => 'required',
-//            'profile_image' => 'required',
+            'name'        => 'required',
+            'code'        => 'required|size:5|unique:products',
+            'image'       => 'required|mimes:jpeg,png|image',
+            'poster'     => 'required|mimes:jpeg,png|image',
+            'description' => 'required',
         ]);
 
-        $this->dispatch(new CreateProductJob($request->all(), $request->image));
+        $this->dispatch(new CreateProductJob($request->all(), $request->file('image'), $request->file('poster')));
 
-        return redirect()->route('products');
+        return redirect()->route('product.index');
 
     }
 

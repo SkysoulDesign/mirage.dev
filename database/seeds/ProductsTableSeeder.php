@@ -19,64 +19,64 @@ class ProductsTableSeeder extends Seeder
         $products = collect(
             [
                 [
-                    'name'                => 'Batman Stand Version I',
-                    'code'                => 'MF001',
-                    'profile_description' => $description,
+                    'name'        => 'Batman Stand Version I',
+                    'code'        => 'MF001',
+                    'description' => $description,
                 ],
                 [
-                    'name'                => 'Superman Stand Version I',
-                    'code'                => 'MF002',
-                    'profile_description' => $description,
+                    'name'        => 'Superman Stand Version I',
+                    'code'        => 'MF002',
+                    'description' => $description,
                 ],
                 [
-                    'name'                => 'Worderwoman Stand Version I',
-                    'code'                => 'MF003',
-                    'profile_description' => $description,
+                    'name'        => 'Worderwoman Stand Version I',
+                    'code'        => 'MF003',
+                    'description' => $description,
                 ],
                 [
-                    'name'                => 'Batman (Mech Suit) Stand Version I',
-                    'code'                => 'MF004',
-                    'profile_description' => $description,
+                    'name'        => 'Batman (Mech Suit) Stand Version I',
+                    'code'        => 'MF004',
+                    'description' => $description,
                 ],
                 [
-                    'name'                => 'Batman (Mech Suit) Stand Version II',
-                    'code'                => 'MF005',
-                    'profile_description' => $description,
+                    'name'        => 'Batman (Mech Suit) Stand Version II',
+                    'code'        => 'MF005',
+                    'description' => $description,
                 ],
                 [
-                    'name'                => 'Batman Stand Version II',
-                    'code'                => 'MF006',
-                    'profile_description' => $description,
+                    'name'        => 'Batman Stand Version II',
+                    'code'        => 'MF006',
+                    'description' => $description,
                 ],
                 [
-                    'name'                => 'Superman Stand Version II',
-                    'code'                => 'MF007',
-                    'profile_description' => $description,
+                    'name'        => 'Superman Stand Version II',
+                    'code'        => 'MF007',
+                    'description' => $description,
                 ],
                 [
-                    'name'                => 'Worderwoman Stand Version I',
-                    'code'                => 'MF008',
-                    'profile_description' => $description,
+                    'name'        => 'Worderwoman Stand Version I',
+                    'code'        => 'MF008',
+                    'description' => $description,
                 ],
                 [
-                    'name'                => 'Doomsday Stand Version I',
-                    'code'                => 'MF009',
-                    'profile_description' => $description,
+                    'name'        => 'Doomsday Stand Version I',
+                    'code'        => 'MF009',
+                    'description' => $description,
                 ],
                 [
-                    'name'                => 'Batmobile 2016 (Accelerated Mode)',
-                    'code'                => 'MV005',
-                    'profile_description' => $description,
+                    'name'        => 'Batmobile 2016 (Accelerated Mode)',
+                    'code'        => 'MV005',
+                    'description' => $description,
                 ],
                 [
-                    'name'                => 'Batwing 2016 (Flying Mode)',
-                    'code'                => 'MV006',
-                    'profile_description' => $description,
+                    'name'        => 'Batwing 2016 (Flying Mode)',
+                    'code'        => 'MV006',
+                    'description' => $description,
                 ],
                 [
-                    'name'                => '',
-                    'code'                => 'MS001',
-                    'profile_description' => $description,
+                    'name'        => '',
+                    'code'        => 'MS001',
+                    'description' => $description,
                 ]
             ]);
 
@@ -86,7 +86,12 @@ class ProductsTableSeeder extends Seeder
         $products->each(function ($product) {
 
             $product = collect($product);
-            dispatch(new CreateProductJob($product->toArray(), $this->file($product->get('code'))));
+
+            dispatch(new CreateProductJob(
+                $product->toArray(),
+                $this->file($product->get('code'), '/public/image/products/'),
+                $this->file($product->get('code'), '/public/image/products-poster/')
+            ));
 
         });
 
@@ -97,12 +102,12 @@ class ProductsTableSeeder extends Seeder
      *
      * @param        $code
      * @param string $ext
-     *
      * @return \Illuminate\Foundation\Application|mixed
      */
-    public function file($code, $ext = 'png')
+    public function file($code, $path, $ext = 'png')
     {
-        $path = base_path() . '/public/image/products/' . strtoupper($code) . '.' . $ext;
+        $path = base_path() . $path . strtoupper($code) . '.' . $ext;
+
         return app(File::class, compact('path'));
     }
 }

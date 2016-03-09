@@ -32,6 +32,7 @@ class CreateProductsTable extends Migration
             $table->string('name');
             $table->string('code')->unique();
             $table->string('image');
+            $table->string('poster');
             $table->timestamps();
         });
     }
