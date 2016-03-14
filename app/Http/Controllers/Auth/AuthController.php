@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\LoginRequest;
 use Illuminate\Contracts\Auth\Factory as Auth;
 use Illuminate\Http\Request;
 
@@ -32,16 +33,12 @@ class AuthController extends Controller
 
     /**
      * Check Credentials and Log user In
-     * @param Request $request
+     *
+     * @param LoginRequest|Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function post(Request $request)
+    public function post(LoginRequest $request)
     {
-
-        $this->validate($request, [
-            'credential' => 'required',
-            'password'   => 'required|min:6'
-        ]);
 
         $field = filter_var($request->input('credential'), FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
 

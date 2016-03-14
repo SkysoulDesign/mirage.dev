@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ProductRequest;
 use App\Jobs\CreateProductJob;
 use App\Jobs\ExportProductCodesToExcelJob;
 use App\Jobs\GenerateCodesCommand;
@@ -33,19 +34,11 @@ class ProductController extends Controller
     /**
      * Display Generator Page
      *
-     * @param Request $request
+     * @param ProductRequest|Request $request
      * @return \Illuminate\View\View
      */
-    public function post(Request $request)
+    public function post(ProductRequest $request)
     {
-
-        $this->validate($request, [
-            'name'        => 'required',
-            'code'        => 'required|size:5|unique:products',
-            'image'       => 'required|mimes:jpeg,png|image',
-            'poster'     => 'required|mimes:jpeg,png|image',
-            'description' => 'required',
-        ]);
 
         $this->dispatch(new CreateProductJob($request->all(), $request->file('image'), $request->file('poster')));
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\LoginRequest;
 use App\Jobs\Users\CheckTokenJob;
 use App\Jobs\Users\CreateUserJob;
 use App\Jobs\Users\GenerateTokenJob;
@@ -39,10 +40,10 @@ class AuthController extends Controller
             'username'   => 'required|alpha_dash|unique:users',
             'email'      => 'required|email|unique:users',
             'password'   => 'required|confirmed|min:6',
-            'gender'     => 'string',
-            'age_id'     => 'exists:ages,id',
-            'country_id' => 'exists:countries,id',
-            'terms'      => 'accepted'
+//            'gender'     => 'string',
+//            'age_id'     => 'exists:ages,id',
+//            'country_id' => 'exists:countries,id',
+//            'terms'      => 'accepted'
         ]);
 
         if ($validator->fails())
