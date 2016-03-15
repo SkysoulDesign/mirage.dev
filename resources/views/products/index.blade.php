@@ -35,6 +35,8 @@
                 <td class="right aligned collapsing">
 
                     <div class="ui small basic icon buttons">
+                        <a href="{{ route('product.edit', $product->id) }}" class="ui button"><i
+                                    class="edit icon"></i> Edit</a>
                         <a href="{{ route('product.extra.index', $product->id) }}" class="ui button"><i
                                     class="archive icon"></i> Extras</a>
                         <a href="{{ route('product.code.create', $product->id) }}" class="ui button"><i

@@ -28,6 +28,7 @@ use App\Http\Controllers\UserController;
 
 /**
  * Helper to refactor Controllers
+ *
  * @param $class
  * @param $method
  * @return string
@@ -35,6 +36,7 @@ use App\Http\Controllers\UserController;
 function classie($class, $method)
 {
     $namespace = 'App\Http\Controllers\'';
+
     return str_replace($namespace, "", $class) . '@' . $method;
 }
 
@@ -86,6 +88,8 @@ $app->group(['middleware' => ['web', 'auth', 'role:admin'], 'prefix' => 'admin']
         $app->get('index', classie(ProductController::class, 'index'))->name('index');
         $app->get('create', classie(ProductController::class, 'create'))->name('create');
         $app->post('post', classie(ProductController::class, 'post'))->name('post');
+        $app->get('edit/{product}', classie(ProductController::class, 'edit'))->name('edit');
+        $app->post('update/{product}', classie(ProductController::class, 'update'))->name('update');
 
         /**
          * Codes

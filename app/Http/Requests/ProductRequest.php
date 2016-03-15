@@ -21,12 +21,27 @@ class ProductRequest extends Request
      */
     public function rules()
     {
+
+        $update = $this->product ? ',id,' . $this->product->id : '';
+
         return [
             'name'        => 'required',
-            'code'        => 'required|size:5|unique:products',
-            'image'       => 'required|mimes:jpeg,png|image',
-            'poster'      => 'required|mimes:jpeg,png|image',
+            'image'       => 'mimes:jpeg,png|image',
+            'code'        => 'required|size:5|unique:products' . $update,
+            'poster'      => 'mimes:jpeg,png|image',
             'description' => 'required',
         ];
+
+//        dd($this->method());
+
+//        dd($this->all());
+
+//        return [
+//            'name'        => 'required',
+//            'code'        => 'required|size:5|unique:products,id,' . $this->product()->id,
+//            'image'       => 'required|mimes:jpeg,png|image',
+//            'poster'      => 'required|mimes:jpeg,png|image',
+//            'description' => 'required',
+//        ];
     }
 }
