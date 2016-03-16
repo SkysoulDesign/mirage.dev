@@ -14,18 +14,18 @@
 
             <div class="required field">
                 <label>Product Name</label>
-                <input type="text" name="name" placeholder="Name" value="{{ $product->name }}">
+                <input type="text" name="name" placeholder="Name" value="{{ old('name', $product->name) }}">
             </div>
 
             <div class="required field">
                 <label>Product Code</label>
-                <input type="text" name="code" placeholder="Code" maxlength="5" value="{{ $product->code }}">
+                <input type="text" name="code" placeholder="Code" maxlength="5" value="{{ old('code', $product->code) }}">
             </div>
 
             <div class="required field">
                 <label>Description (Displayed on the Mobile App)</label>
                 <textarea type="text" name="description" placeholder="Description"
-                          rows="4">{{ $product->profile->description }}</textarea>
+                          rows="4">{{ old('description', $product->profile->description) }}</textarea>
             </div>
 
             @if($product->profile->image)
@@ -45,14 +45,14 @@
                 </div>
             @endif
 
-            <div class="required field upload">
+            <div class="required field">
                 {{--<div class="medium-12 columns">--}}
                 <label class="">Product Image (Displayed on the Mobile App)</label>
                 <input type="file" name="image">
                 {{--</div>--}}
             </div>
 
-            <div class="required field upload">
+            <div class="required field">
                 {{--<div class="medium-12 columns">--}}
                 <label class="">Poster (Displayed on the Mobile App)</label>
                 <input type="file" name="poster">

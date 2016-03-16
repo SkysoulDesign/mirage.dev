@@ -42,7 +42,7 @@ class ExtraController extends Controller
         /**
          * Create Extra
          */
-        dispatch(new CreateExtraJob(
+        $this->dispatch(new CreateExtraJob(
             $product,
             $request->only('title', 'description'),
             $request->file('image'),
@@ -50,7 +50,7 @@ class ExtraController extends Controller
         ));
 
 //        return redirect()->back()->withSucess('Extra Created Successfully');
-        return redirect(route('product.extra.index', $product->id))->withSucess('Extra Created Successfully');
+        return redirect()->route('product.extra.index', $product->id)->withSucess('Extra Created Successfully');
 
     }
 
@@ -77,7 +77,7 @@ class ExtraController extends Controller
         /*
          * update Extra Data of product
          */
-        dispatch(new UpdateExtraJob(
+        $this->dispatch(new UpdateExtraJob(
             $product,
             $extra,
             $request->only('title', 'description'),
@@ -93,7 +93,7 @@ class ExtraController extends Controller
     public function delete(Product $product, Extra $extra)
     {
 
-        dispatch(new DeleteExtraJob($product, $extra));
+        $this->dispatch(new DeleteExtraJob($product, $extra));
 
         return redirect()->back()->withSucess('Extra Deleted Successfully');
     }

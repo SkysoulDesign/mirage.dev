@@ -15,3 +15,6 @@ div.ui.container {
 .clear.button{
     float: left;
 }
+.ui.form .field.upload>label,.ui.form .field.upload>input[type=file]{
+    float: left;/* added by vivek 03/15/2016 */
+}
