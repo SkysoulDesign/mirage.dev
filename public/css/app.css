@@ -9,3 +9,9 @@ div.ui.container {
 .color.blue {
     color: blue
 }
+.clear{/* 03/15/2016 */
+    clear: both;
+}
+.clear.button{
+    float: left;
+}

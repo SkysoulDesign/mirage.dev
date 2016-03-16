@@ -108,6 +108,10 @@ $app->group(['middleware' => ['web', 'auth', 'role:admin'], 'prefix' => 'admin']
             $app->get('index', classie(ExtraController::class, 'index'))->name('index');
             $app->get('create', classie(ExtraController::class, 'create'))->name('create');
             $app->post('post', classie(ExtraController::class, 'post'))->name('post');
+            /* added by vivek 03/15/2016 */
+            $app->get('edit/{extra}', classie(ExtraController::class, 'edit'))->name('edit');
+            $app->post('update/{extra}', classie(ExtraController::class, 'update'))->name('update');
+            $app->get('delete/{extra}', classie(ExtraController::class, 'delete'))->name('delete');
         });
 
     });

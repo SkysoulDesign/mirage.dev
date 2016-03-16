@@ -40,11 +40,12 @@
                 <td>
                     <div class="ui small menu compact">
                         <div class="menu">
-                            <a class="item" href="">
+                            <a class="item" href="{{ route('product.extra.edit', array($product->id, $extra->id)) }}">
                                 <i class="edit icon"></i>
                                 Edit
                             </a>
-                            <a class="item" href="">
+                            {!! method_field('DELETE') !!}
+                            <a class="item" href="{{ route('product.extra.delete', array($product->id, $extra->id)) }}">
                                 <i class="delete icon"></i>
                                 Delete
                             </a>

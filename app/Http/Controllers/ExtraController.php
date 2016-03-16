@@ -3,9 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Jobs\CreateExtraJob;
+use App\Jobs\DeleteExtraJob;
+use App\Jobs\UpdateExtraJob;
+use App\Models\Extra;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Http\Requests;
+use Symfony\Component\HttpFoundation\File\File;
 
 class ExtraController extends Controller
 {
@@ -21,17 +25,18 @@ class ExtraController extends Controller
 
     public function create(Product $product)
     {
-        return view('products.extras.create', compact('product'));
+        $extra = collect();
+        return view('products.extras.create', compact('product', 'extra'));
     }
 
     public function post(Request $request, Product $product)
     {
 
         $this->validate($request, [
-            'title'       => 'required',
+            'title' => 'required',
             'description' => 'required',
-            'image'       => 'required|image',
-            'video'       => 'mimes:mp4'
+            'image' => 'required|image',
+            'video' => 'mimes:mp4'
         ]);
 
         /**
@@ -44,8 +49,53 @@ class ExtraController extends Controller
             $request->file('video')
         ));
 
-        return redirect()->back()->withSucess('Extra Created Successfully');
+//        return redirect()->back()->withSucess('Extra Created Successfully');
+        return redirect(route('product.extra.index', $product->id))->withSucess('Extra Created Successfully');
 
+    }
+
+    /* new methods for EDIT, UPDATE, DELETE 03/15/2016 */
+    public function edit(Product $product, Extra $extra)
+    {
+        return view('products.extras.create', compact('product', 'extra'));
+    }
+
+    /**
+     * @param Request $request
+     * @param Product $product
+     * @param Extra $extra
+     * @return mixed
+     */
+    public function update(Request $request, Product $product, Extra $extra)
+    {
+
+        $this->validate($request, [
+            'title' => 'required',
+            'description' => 'required'
+        ]);
+
+        /*
+         * update Extra Data of product
+         */
+        dispatch(new UpdateExtraJob(
+            $product,
+            $extra,
+            $request->only('title', 'description'),
+            $request->file('image'),
+            $request->file('video')
+        ));
+
+
+        return redirect()->back()->withSucess('Extra Updated Successfully');
+
+    }
+
+    public function delete(Product $product, Extra $extra)
+    {
+
+        dispatch(new DeleteExtraJob($product, $extra));
+
+        return redirect()->back()->withSucess('Extra Deleted Successfully');
     }
 
 }

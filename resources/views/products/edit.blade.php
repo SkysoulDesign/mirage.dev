@@ -31,11 +31,13 @@
             @if($product->profile->image)
                 <div class="fields">
                     <div class="field">
+                        <label>Product</label>
                         <div class="ui compact segment">
                             <img class="ui medium rounded image" src="{{ $product->image }}">
                         </div>
                     </div>
                     <div class="field">
+                        <label>Poster</label>
                         <div class="ui compact segment">
                             <img class="ui medium rounded image" src="{{ $product->profile->image }}">
                         </div>
@@ -43,20 +45,18 @@
                 </div>
             @endif
 
-            <div class="required field">
-                <div class="medium-12 columns">
-                    <label class="">Product Image (Displayed on the Mobile App)
-                        <input type="file" name="image">
-                    </label>
-                </div>
+            <div class="required field upload">
+                {{--<div class="medium-12 columns">--}}
+                <label class="">Product Image (Displayed on the Mobile App)</label>
+                <input type="file" name="image">
+                {{--</div>--}}
             </div>
 
-            <div class="required field">
-                <div class="medium-12 columns">
-                    <label class="">Poster (Displayed on the Mobile App)
-                        <input type="file" name="poster">
-                    </label>
-                </div>
+            <div class="required field upload">
+                {{--<div class="medium-12 columns">--}}
+                <label class="">Poster (Displayed on the Mobile App)</label>
+                <input type="file" name="poster">
+                {{--</div>--}}
             </div>
 
             <button class="ui submit button primary" type="submit">Save</button>
