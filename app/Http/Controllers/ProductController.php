@@ -43,7 +43,7 @@ class ProductController extends Controller
 
         $this->dispatch(new CreateProductJob($request->all(), $request->file('image'), $request->file('poster')));
 
-        return redirect()->route('product.index');
+        return redirect()->route('product.index')->withSuccess('Product was created Successfully');
 
     }
 
