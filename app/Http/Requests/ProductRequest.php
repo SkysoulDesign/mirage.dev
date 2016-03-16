@@ -22,7 +22,7 @@ class ProductRequest extends Request
     public function rules()
     {
 
-        $update = $this->product ? ',id,' . $this->product->id : '';
+        $update = ($this->product && $this->product->code === $this->get('code')) ? ',id,' . $this->product->id : '';
 
         return [
             'name'        => 'required',
