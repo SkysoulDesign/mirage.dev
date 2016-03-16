@@ -9,6 +9,8 @@
         <tr>
             <th>Code</th>
             <th>Status</th>
+            <th>User</th>
+            <th>Actions</th>
         </tr>
         </thead>
         <tbody>
@@ -16,6 +18,29 @@
             <tr>
                 <td>{{ $code->code }}</td>
                 <td>{{ $code->status or 'unactivated' }}</td>
+                <td>
+                    @if($code->user_id!='')
+                        <a class=""
+                           href="{{ route('user.edit', $code->user_id) }}"
+                           target="_blank">
+                            {{ $code->user->username }}
+                            <i class="edit icon"></i>
+                        </a>
+                    @else
+                        -
+                    @endif
+                </td>
+                <td class="right aligned collapsing">
+                    @if($code->user_id!='')
+                        <div class="ui small basic icon buttons">
+                            <a class="ui button"
+                               href="{{ route('product.code.unlink', array($product, $code->id)) }}"
+                            >
+                                <i class="delete icon"></i>
+                            </a>
+                        </div>
+                    @endif
+                </td>
             </tr>
         @endforeach
         </tbody>

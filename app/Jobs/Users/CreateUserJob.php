@@ -67,8 +67,8 @@ class CreateUserJob
         $user->setAttribute('api_token', $token = dispatch(new GenerateTokenJob($user)));
         $user->setAttribute('newsletter', filter_var($this->request->get('newsletter', false), FILTER_VALIDATE_BOOLEAN));
         $user->roles()->attach($role);
-        $user->country()->associate($this->country_id);
-        $user->age()->associate($this->age_id);
+        /*$user->country()->associate($this->country_id);
+        $user->age()->associate($this->age_id);*/
         $user->save();
 
         /**

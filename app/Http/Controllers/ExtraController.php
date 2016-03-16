@@ -16,7 +16,6 @@ class ExtraController extends Controller
     /**
      * Display all extras
      * @param Product $product
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index(Product $product)
     {

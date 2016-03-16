@@ -78,6 +78,10 @@ $app->group(['middleware' => ['web', 'auth', 'role:admin'], 'prefix' => 'admin']
         $app->get('index', classie(UserController::class, 'index'))->name('index');
         $app->get('register', classie(UserController::class, 'create'))->name('register');
         $app->post('register', classie(UserController::class, 'post'))->name('register');
+        /* added by vivek 03/16/2016 */
+        $app->get('edit/{user}', classie(UserController::class, 'edit'))->name('edit');
+        $app->post('update/{user}', classie(UserController::class, 'update'))->name('update');
+        $app->get('reset/{user}', classie(UserController::class, 'resetPassword'))->name('reset');
     });
 
     /**
@@ -99,6 +103,7 @@ $app->group(['middleware' => ['web', 'auth', 'role:admin'], 'prefix' => 'admin']
             $app->get('export', classie(CodeController::class, 'export'))->name('export');
             $app->get('create', classie(CodeController::class, 'create'))->name('create');
             $app->post('post', classie(CodeController::class, 'post'))->name('post');
+            $app->get('unlink/{code}', classie(CodeController::class, 'removeUser'))->name('unlink');
         });
 
         /**

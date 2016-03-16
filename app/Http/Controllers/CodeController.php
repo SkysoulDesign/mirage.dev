@@ -5,9 +5,15 @@ namespace App\Http\Controllers;
 use App\Jobs\ExportProductCodesToExcelJob;
 use App\Jobs\GenerateCodeCommand;
 use App\Jobs\GenerateCodesCommand;
+use App\Jobs\Products\CodeUnlinkUserJob;
+use App\Models\Code;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
+/**
+ * Class CodeController
+ * @package App\Http\Controllers
+ */
 class CodeController extends Controller
 {
 
@@ -91,6 +97,21 @@ class CodeController extends Controller
 
         dispatch(new ExportProductCodesToExcelJob(app(Product::class)->findOrFail($product_id)));
         return redirect()->route('products');
+
+    }
+
+    /**
+     * 03/16/2016
+     * @param Product $product
+     * @param Code $code
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function removeUser(Product $product, Code $code)
+    {
+
+        dispatch(new CodeUnlinkUserJob($product, $code));
+
+        return redirect()->route('product.code.index', $product)->withSuccess('User removed from Code successfully');
 
     }
 
