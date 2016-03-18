@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Jobs\EncodeImageJob;
 use App\Jobs\RegisterProductJob;
-use App\Models\Code;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -47,6 +46,9 @@ class ProductController extends Controller
     public function register(Request $request)
     {
 
+        $code = $request->get('code');
+        $code = substr($code, 0, 5).'-'. implode('-', str_split(substr($code, 5, 17), 4));
+        $request->merge(compact('code'));
         $validator = $this->getValidationFactory()->make($request->all(), [
             'code' => 'required|exists:codes,code'
         ]);
