@@ -13,7 +13,7 @@
 {{--                        {{ $code->product->profile->image or }}--}}
                     </a>
                     <div class="content">
-                        <a class="header">{{ $code->product->name }}</a>
+                        <a href="{{ route('web.product.view', $code->id)  }}" class="header">{{ $code->product->name }}</a>
                     </div>
                 </div>
             </div>
