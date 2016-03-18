@@ -1,3 +1,7 @@
+<div class="ui container center aligned" style="padding: 0px;">
+    <img class="" src="{{ asset('img/mirage-logo.png') }}" height="70">
+</div>
+
 <div class="ui fluid menu">
 
     @if(!auth()->check())
