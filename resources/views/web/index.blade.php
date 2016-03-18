@@ -1,14 +1,25 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: Vivek
- * Date: 3/18/16
- * Time: 2:04 PM
- */
-@extends('layouts.master')
+@extends('layouts.master-web')
 
 @section('content')
 
-    {{ dd($code) }}
+    <div class="ui three column grid">
+
+        @foreach(range(0,6) as $item)
+
+            <div class="column">
+                <div class="ui fluid card">
+                    <a href="{{ route('show') }}" class="image">
+                        <img src="{{ asset('image/products/MF003-figurine.png') }}">
+                    </a>
+                    <div class="content">
+                        <a class="header">Daniel Louise</a>
+                    </div>
+                </div>
+            </div>
+
+        @endforeach
+
+    </div>
+
 
 @endsection
