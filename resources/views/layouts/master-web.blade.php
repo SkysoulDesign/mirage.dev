@@ -6,6 +6,7 @@
 </head>
 
 <link rel="stylesheet" href="{{ asset('css/semantic.min.css') }}">
+
 @yield('css')
 
 <style>
@@ -13,14 +14,13 @@
         padding: 5% 5%;
     }
 </style>
+
 <body>
 
 <div class="ui fluid container">
-
     @include('web.partials.menu')
     @include('errors.errors')
     @yield('content')
-
 </div>
 
 <script src="{{ asset('js/jquery.min.js') }}"></script>
