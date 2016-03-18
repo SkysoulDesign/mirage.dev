@@ -10,4 +10,8 @@ $(document).ready(function () {
 
     $('.ui.checkbox').checkbox();
 
+    if($('.tabular.menu').length>0) {// to trigger tabbed content in page
+        $('.tabular.menu .item').tab();
+    }
+
 });

@@ -1,13 +1,16 @@
 <div class="ui fluid menu">
 
     @if(!auth()->check())
-        <a href="{{ route('web.login') }}" class="item">
+        <a href="{{ route('login') }}" class="item">
             Login
         </a>
-        <a href="{{ route('web.register') }}" class="item">
+        <a href="{{ route('register') }}" class="item">
             Register
         </a>
     @else
+        <a href="{{ route('web.index') }}" class="item">
+            Home
+        </a>
         <a href="{{ route('web.product.register') }}" class="item">
             Register Product
         </a>

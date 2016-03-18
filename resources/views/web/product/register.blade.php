@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <form class="ui form" action="{{ route('user.register') }}" method="POST">
+    <form class="ui form" action="{{ route('web.product.create') }}" method="POST">
 
         <div class="ui stacked segments">
 
@@ -18,7 +18,7 @@
             <div class="ui segment">
                 <button class="ui submit button primary" type="submit">Register</button>
 
-                <a href="{{ route('user.index') }}" class="ui button ui-icon-cancel">
+                <a href="{{ route('web.index') }}" class="ui button ui-icon-cancel">
                     Cancel
                 </a>
             </div>

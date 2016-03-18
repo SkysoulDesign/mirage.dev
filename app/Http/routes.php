@@ -11,18 +11,20 @@
 |
 */
 
-use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Api\AuthController as ApiAuthController;
 use App\Http\Controllers\Api\FormController;
+use App\Http\Controllers\Api\ProductController as ApiProductController;
+use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Auth\PasswordController;
 use App\Http\Controllers\CodeController;
 use App\Http\Controllers\ExtraController;
 use App\Http\Controllers\HelpController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\MediaController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\ProductController;
-use App\Http\Controllers\Api\ProductController as ApiProductController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\Web\UserWebController;
 
 /** @var \Illuminate\Routing\Router $app */
 
@@ -42,7 +44,7 @@ function classie($class, $method)
 
 $app->group(['middleware' => 'web'], function () use ($app) {
 
-    $app->get('/', classie(HomeController::class, 'index'))->name('home');
+    $app->get('/', classie(HomeController::class, 'index'))->middleware('auth')->name('home');
 
     /**
      * Help
@@ -60,12 +62,20 @@ $app->group(['middleware' => 'web'], function () use ($app) {
 
     // Registration Routes...
     $this->get('register', classie(AuthController::class, 'showRegistrationForm'))->name('register');
-    $this->post('register', classie(AuthController::class, 'register'))->name('register');
+    $this->post('register/post', classie(AuthController::class, 'registerPost'))->name('post_register');
 
     // Password Reset Routes...
     $this->get('password/reset/{token?}', classie(PasswordController::class, 'showResetForm'))->name('reset.password');
     $this->post('password/email', classie(PasswordController::class, 'sendResetLinkEmail'))->name('reset.email');
     $this->post('password/reset', classie(PasswordController::class, 'reset'))->name('reset');
+
+    /*
+     * Media Streaming with Hash values
+     */
+    $app->group(['prefix' => 'media', 'as' => 'media.'], function ($app) {
+        $app->get('video/{hashkey}/play', classie(MediaController::class, 'streamVideo'))->name('video');
+        $app->get('image/{hashkey}/show', classie(MediaController::class, 'showImage'))->name('image');
+    });
 
 });
 
@@ -166,6 +176,18 @@ $app->group(['prefix' => 'api', 'as' => 'api.'], function ($app) {
     $app->group(['prefix' => 'form', 'as' => 'form.'], function ($app) {
         $app->get('countries', classie(FormController::class, 'countries'))->name('countries');
         $app->get('ages', classie(FormController::class, 'ages'))->name('ages');
+    });
+
+});
+
+$app->group(['middleware' => ['web', 'auth', 'role:user'], 'prefix' => 'user'], function () use ($app) {
+    $app->group(['prefix' => 'web', 'as' => 'web.'], function ($app) {
+        $app->get('index', classie(UserWebController::class, 'index'))->name('index');
+        $app->group(['prefix' => 'product', 'as' => 'product.'], function ($app) {
+            $app->get('register', classie(UserWebController::class, 'registerProduct'))->name('register');
+            $app->post('create', classie(UserWebController::class, 'createProduct'))->name('create');
+            $app->get('{code}/view', classie(UserWebController::class, 'viewProductByCode'))->name('view');
+        });
     });
 
 });

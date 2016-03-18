@@ -4,15 +4,15 @@
 
     <div class="ui three column grid">
 
-        @foreach(range(0,6) as $item)
+        @foreach($codes as $code)
 
             <div class="column">
                 <div class="ui fluid card">
-                    <a href="{{ route('show') }}" class="image">
-                        <img src="{{ asset('image/products/MF003-figurine.png') }}">
+                    <a href="{{ route('web.product.view', $code->id)  }}" class="image">
+                        <img src="{{ $code->product->profile->image or $code->product->image }}">
                     </a>
                     <div class="content">
-                        <a class="header">Daniel Louise</a>
+                        <a class="header">{{ $code->product->name }}</a>
                     </div>
                 </div>
             </div>
