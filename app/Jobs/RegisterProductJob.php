@@ -24,9 +24,10 @@ class RegisterProductJob extends Job
      * @param $code
      * @param User $user
      */
-    public function __construct($code, User $user)
+    public function __construct($code, User $user=null)
     {
-        $this->code = $code;
+        //$this->code = $code;
+        $this->code = substr($code, 0, 5).'-'. implode('-', str_split(substr($code, 5, 17), 4));
         $this->user = $user;
     }
 
