@@ -28,7 +28,7 @@ class Kernel extends ConsoleKernel
         /**
          * Send Emails
          */
-        $schedule->command('queue:work -- --queue=email')->withoutOverlapping();
+        $schedule->command('queue:work --queue=email')->withoutOverlapping();
 
     }
 
