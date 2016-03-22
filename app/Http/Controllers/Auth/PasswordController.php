@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ResetsPasswords;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Password;
 
 /**
@@ -40,7 +39,7 @@ class PasswordController extends Controller
     /**
      * Reset the given user's password.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function reset(Request $request)
@@ -59,7 +58,7 @@ class PasswordController extends Controller
 
         switch ($response) {
             case Password::PASSWORD_RESET:
-                return redirect()->route('home')->with('status', trans($response));
+                return redirect()->route('reset.success')->withSuccess(trans($response));
                 //return $this->getResetSuccessResponse($response);
 
             default:
@@ -70,8 +69,8 @@ class PasswordController extends Controller
     /**
      * Reset the given user's password.
      *
-     * @param  \Illuminate\Contracts\Auth\CanResetPassword  $user
-     * @param  string  $password
+     * @param  \Illuminate\Contracts\Auth\CanResetPassword $user
+     * @param  string $password
      * @return void
      */
     protected function resetPassword($user, $password)
@@ -80,6 +79,14 @@ class PasswordController extends Controller
 
         $user->save();
 
-        Auth::guard($this->getGuard())->login($user);
+        //Auth::guard($this->getGuard())->login($user);
+    }
+
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function resetSuccess()
+    {
+        return view('auth.passwords.resetsuccess');
     }
 }

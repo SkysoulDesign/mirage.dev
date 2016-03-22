@@ -68,6 +68,7 @@ $app->group(['middleware' => 'web'], function () use ($app) {
     $this->get('password/reset/{token?}', classie(PasswordController::class, 'showResetForm'))->name('reset.password');
     $this->post('password/email', classie(PasswordController::class, 'sendResetLinkEmail'))->name('reset.email');
     $this->post('password/reset', classie(PasswordController::class, 'reset'))->name('reset');
+    $this->get('password/reset-success', classie(PasswordController::class, 'resetSuccess'))->name('reset.success');
 
     /*
      * Media Streaming with Hash values
