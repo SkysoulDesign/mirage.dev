@@ -3,19 +3,29 @@
 namespace App\Jobs;
 
 use App\Models\User;
+use Illuminate\Contracts\Auth\PasswordBroker;
+use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Http\Request;
 use Illuminate\Mail\Message;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
-use Illuminate\Support\Facades\Password;
+
 
 /**
  * Class ResetPasswordMailJob
+ *
  * @package App\Jobs
  */
-class ResetPasswordMailJob extends Job
+class ResetPasswordMailJob extends Job implements ShouldQueue
 {
     use InteractsWithQueue, SerializesModels;
+
+    /**
+     * Queue name
+     * @var string
+     */
+    public $queue = 'email';
+
     /**
      * @var null
      */
@@ -24,37 +34,33 @@ class ResetPasswordMailJob extends Job
     /**
      * Create a new job instance.
      *
-     * @param Request $request
+     * @param array $request
      */
-    public function __construct(Request $request)
+    public function __construct(array $request)
     {
-        $this->request = $request;
+        $this->request = collect($request);
     }
 
     /**
      * Execute the job.
-     * @param Password $password
+     *
+     * @param PasswordBroker $broker
+     * @param User           $user
      * @return bool
      */
-    public function handle(Password $password, User $user)
+    public function handle(PasswordBroker $broker, User $user)
     {
 
-        $field = filter_var($this->request->input('credential'), FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
+        $field = filter_var($this->request->get('credential'), FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
 
-        //$this->request->merge([$field => $this->request->input('credential')]);
+        $userObj = $user->where($field, $this->request->get('credential'))->firstOrFail();
 
-        $userObj = $user->where($field, $this->request->input('credential'))->firstOrFail();
-
-        $broker = $this->getBroker();
-
-        // $this->request->only('email')
-
-        $response = $password::broker($broker)->sendResetLink(['email' => $userObj->email], function (Message $message) {
+        $response = $broker->sendResetLink(['email' => $userObj->email], function (Message $message) {
             $message->from('admin@soapstudio.com');
             $message->subject($this->getEmailSubject());
         });
 
-        return $response === Password::RESET_LINK_SENT;
+        return $response === $broker::RESET_LINK_SENT;
 
     }
 

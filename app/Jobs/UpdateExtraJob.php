@@ -29,6 +29,9 @@ class UpdateExtraJob extends Job
      */
     private $video;
 
+    /**
+     * @var Extra
+     */
     private $extra;
 
     /**
@@ -42,7 +45,6 @@ class UpdateExtraJob extends Job
      */
     public function __construct(Product $product, Extra $extra, array $data, UploadedFile $image = null, UploadedFile $video = null)
     {
-
         $this->product = $product;
         $this->extra = $extra;
         $this->data = $data;
@@ -60,10 +62,8 @@ class UpdateExtraJob extends Job
          * Create Extra
          * @var Extra $extra
          */
-        $extraID = $this->extra->getAttribute('id');
-        $extra = $this->extra->update($this->data);
+        $this->extra->update($this->data);
 
-        $extra = Extra::find($extraID);
         /**
          * Move Extra Content to folder
          */
@@ -71,27 +71,26 @@ class UpdateExtraJob extends Job
 
         $productCode = $this->product->getAttribute('code');
 
-        //dd($this->image);
-        if ($this->image != '') {
-            $imagename = $productCode . '-extra-image-' . $extraID . '.' . $this->image->guessExtension();
-            $image = $this->image->move(public_path() . $path, $imagename);
+        if ($this->image) {
+            $imageName = $productCode . '-extra-image-' . $this->extra->id . '.' . $this->image->guessExtension();
+            $this->image->move(public_path() . $path, $imageName);
 
-            $extra->setAttribute('image', $path . $imagename);
+            $this->extra->setAttribute('image', $path . $imageName);
         }
 
-        if ($this->video != '') {
-            $videoname = $productCode . '-extra-video-' . $extraID . '.' . $this->video->guessExtension();
-            $video = $this->video->move(public_path() . $path, $videoname);
+        if ($this->video) {
+            $videoName = $productCode . '-extra-video-' . $this->extra->id . '.' . $this->video->guessExtension();
+            $this->video->move(public_path() . $path, $videoName);
 
-            $extra->setAttribute('video', $path . $videoname);
+            $this->extra->setAttribute('video', $path . $videoName);
         }
 
-        $extra->save();
+        $this->extra->save();
 
         /**
          * Announce ExtraWasUpdated
          */
-        event(new ExtraWasUpdated($extra));
+        event(new ExtraWasUpdated($this->extra));
 
     }
 
