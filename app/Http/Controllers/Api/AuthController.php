@@ -121,13 +121,7 @@ class AuthController extends Controller
     public function resetPassword(Request $request)
     {
 
-        $response = false;
-
-        $email = $request->get('email', '');
-
-        if ($email != '' && filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            $response = $this->dispatch(new ResetPasswordMailJob($request));
-        }
+        $response = $this->dispatch(new ResetPasswordMailJob($request));
 
         if (!$response)
             return response()->json(['error' => 'email_not_exists']);

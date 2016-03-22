@@ -2,6 +2,7 @@
 
 namespace App\Jobs;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Mail\Message;
 use Illuminate\Queue\InteractsWithQueue;
@@ -24,7 +25,6 @@ class ResetPasswordMailJob extends Job
      * Create a new job instance.
      *
      * @param Request $request
-     * @internal param null $user
      */
     public function __construct(Request $request)
     {
@@ -36,12 +36,20 @@ class ResetPasswordMailJob extends Job
      * @param Password $password
      * @return bool
      */
-    public function handle(Password $password)
+    public function handle(Password $password, User $user)
     {
+
+        $field = filter_var($this->request->input('credential'), FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
+
+        //$this->request->merge([$field => $this->request->input('credential')]);
+
+        $userObj = $user->where($field, $this->request->input('credential'))->firstOrFail();
 
         $broker = $this->getBroker();
 
-        $response = $password::broker($broker)->sendResetLink($this->request->only('email'), function (Message $message) {
+        // $this->request->only('email')
+
+        $response = $password::broker($broker)->sendResetLink(['email' => $userObj->email], function (Message $message) {
             $message->from('admin@soapstudio.com');
             $message->subject($this->getEmailSubject());
         });
