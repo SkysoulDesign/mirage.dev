@@ -33,37 +33,21 @@ class ResetPasswordMailJob extends Job
 
     /**
      * Execute the job.
-     *
-     * @return void
+     * @param Password $password
+     * @return bool
      */
-    public function handle()
+    public function handle(Password $password)
     {
-        /*
-        if (!empty($this->user)) {
-            if ($this->user->id) {
-                $userObj = $this->user;
 
-                Mail::send('emails.resetpassword', array('user' => $userObj), function ($message) use ($userObj) {
-                    $message->from('admin@soapstudio.com', 'Mirage Admin')
-                        ->to($userObj->email)
-                        ->subject('Reset Your Account Password');
-                });
-                return true;
-
-            }
-
-        }
-        return false;
-        */
         $broker = $this->getBroker();
 
-        $response = Password::broker($broker)->sendResetLink(['email' => $this->request->get('user_email', '')], function (Message $message) {
+        $response = $password::broker($broker)->sendResetLink(['email' => $this->request->get('user_email', '')], function (Message $message) {
             $message->from('admin@soapstudio.com');
             $message->subject($this->getEmailSubject());
         });
-        //die($response.'--'.($response == 'passwords.sent' ? true : false));
 
-        return ($response == 'passwords.sent' ? true : false);
+        return $response === Password::RESET_LINK_SENT;
+
     }
 
     /**

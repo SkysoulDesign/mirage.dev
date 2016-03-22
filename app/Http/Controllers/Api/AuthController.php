@@ -10,6 +10,10 @@ use App\Jobs\Users\GenerateTokenJob;
 use Illuminate\Contracts\Auth\Factory as Auth;
 use Illuminate\Http\Request;
 
+/**
+ * Class AuthController
+ * @package App\Http\Controllers\Api
+ */
 class AuthController extends Controller
 {
     /**
@@ -122,8 +126,6 @@ class AuthController extends Controller
         $email = $request->get('user_email', '');
 
         if ($email != '' && filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            /*$user = User::where('email', $email)->firstOrFail();
-            $response = $this->dispatch(new ResetPasswordMailJob($user));*/
             $response = $this->dispatch(new ResetPasswordMailJob($request));
         }
 
