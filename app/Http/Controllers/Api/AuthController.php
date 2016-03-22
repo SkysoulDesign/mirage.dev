@@ -123,7 +123,7 @@ class AuthController extends Controller
 
         $response = false;
 
-        $email = $request->get('user_email', '');
+        $email = $request->get('email', '');
 
         if ($email != '' && filter_var($email, FILTER_VALIDATE_EMAIL)) {
             $response = $this->dispatch(new ResetPasswordMailJob($request));

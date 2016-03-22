@@ -41,7 +41,7 @@ class ResetPasswordMailJob extends Job
 
         $broker = $this->getBroker();
 
-        $response = $password::broker($broker)->sendResetLink(['email' => $this->request->get('user_email', '')], function (Message $message) {
+        $response = $password::broker($broker)->sendResetLink($this->request->only('email'), function (Message $message) {
             $message->from('admin@soapstudio.com');
             $message->subject($this->getEmailSubject());
         });
