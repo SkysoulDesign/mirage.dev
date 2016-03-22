@@ -4,6 +4,8 @@
 /vendor
 /node_modules
 Homestead.yaml
+.DS_Store
+.idea
 
 Homestead.json
 /public/videos

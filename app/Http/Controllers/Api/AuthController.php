@@ -126,7 +126,7 @@ class AuthController extends Controller
         if (!$response)
             return response()->json(['error' => 'email_not_exists']);
 
-        return response()->json(['status' => 'okay']);
+        return response()->json(['status' => 'Reset Password link has been sent your email successfully']);
 
     }
 
