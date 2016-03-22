@@ -73,6 +73,7 @@ $app->group(['middleware' => 'web'], function () use ($app) {
      * Media Streaming with Hash values
      */
     $app->group(['prefix' => 'media', 'as' => 'media.'], function ($app) {
+        $app->get('{media_type}/{hashkey}', classie(MediaController::class, 'streamData'))->name('stream');
         $app->get('video/{hashkey}/play', classie(MediaController::class, 'streamVideo'))->name('video');
         $app->get('image/{hashkey}/show', classie(MediaController::class, 'showImage'))->name('image');
     });
@@ -154,6 +155,7 @@ $app->group(['prefix' => 'api', 'as' => 'api.'], function ($app) {
 
         $app->post('login', classie(ApiAuthController::class, 'authenticate'))->name('login');
         $app->post('register', classie(ApiAuthController::class, 'register'))->name('register');
+        $app->post('reset', classie(ApiAuthController::class, 'resetPassword'))->name('reset');
 
     });
 
@@ -177,6 +179,7 @@ $app->group(['prefix' => 'api', 'as' => 'api.'], function ($app) {
         $app->get('countries', classie(FormController::class, 'countries'))->name('countries');
         $app->get('ages', classie(FormController::class, 'ages'))->name('ages');
     });
+
 
 });
 

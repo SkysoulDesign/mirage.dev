@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\LoginRequest;
+use App\Jobs\ResetPasswordMailJob;
 use App\Jobs\Users\CheckTokenJob;
 use App\Jobs\Users\CreateUserJob;
 use App\Jobs\Users\GenerateTokenJob;
@@ -37,9 +37,9 @@ class AuthController extends Controller
     {
 
         $validator = $this->getValidationFactory()->make($request->all(), [
-            'username'   => 'required|alpha_dash|unique:users',
-            'email'      => 'required|email|unique:users',
-            'password'   => 'required|confirmed|min:6',
+            'username' => 'required|alpha_dash|unique:users',
+            'email' => 'required|email|unique:users',
+            'password' => 'required|confirmed|min:6',
 //            'gender'     => 'string',
 //            'age_id'     => 'exists:ages,id',
 //            'country_id' => 'exists:countries,id',
@@ -68,7 +68,7 @@ class AuthController extends Controller
 
         $validator = $this->getValidationFactory()->make($request->toArray(), [
             'credential' => 'required',
-            'password'   => 'required|min:6'
+            'password' => 'required|min:6'
         ]);
 
         if ($validator->fails())
@@ -104,9 +104,33 @@ class AuthController extends Controller
             return response()->json(['error', 'login_login_expired']);
         }
 
-        $user =  $request->user('api')->load('codes', 'codes.product', 'codes.product.extras', 'codes.product.profile');
+        $user = $request->user('api')->load('codes', 'codes.product', 'codes.product.extras', 'codes.product.profile');
 
         return response()->json($user);
+
+    }
+
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function resetPassword(Request $request)
+    {
+
+        $response = false;
+
+        $email = $request->get('user_email', '');
+
+        if ($email != '' && filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            /*$user = User::where('email', $email)->firstOrFail();
+            $response = $this->dispatch(new ResetPasswordMailJob($user));*/
+            $response = $this->dispatch(new ResetPasswordMailJob($request));
+        }
+
+        if (!$response)
+            return response()->json(['error' => 'email_not_exists']);
+
+        return response()->json(['status' => 'okay']);
 
     }
 

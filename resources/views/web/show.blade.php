@@ -7,7 +7,7 @@
         <div class="ui fluid raised segment">
             {{--<img class="ui fluid bordered image" src="{{ $product->profile->image }}">--}}
             <video oncontextmenu="return false;" id="video" class="video-js vjs-default-skin"
-                   src="{{ route('media.video', encrypt($extras->first()->video)) }}"></video>
+                   src="{{ route('media.stream', array('video', encrypt('code;;;'.$code->id.';;;'.$extras->first()->id))) }}"></video>
         </div>
 
         <div class="ui fluid raised segment ui green inverted">
