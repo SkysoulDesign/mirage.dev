@@ -1,7 +1,6 @@
 <?php
 
-use App\Jobs\CreateAgeJob;
-use App\Jobs\CreateCountryJob;
+use App\Jobs\Ages\CreateAgeJob;
 use Illuminate\Database\Seeder;
 
 class AgesTableSeeder extends Seeder

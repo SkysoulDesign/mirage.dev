@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests;
 use App\Http\Requests\ExtraRequest;
-use App\Jobs\CreateExtraJob;
-use App\Jobs\DeleteExtraJob;
-use App\Jobs\UpdateExtraJob;
+use App\Jobs\Products\Extras\CreateExtraJob;
+use App\Jobs\Products\Extras\DeleteExtraJob;
+use App\Jobs\Products\Extras\UpdateExtraJob;
 use App\Models\Extra;
 use App\Models\Product;
 use Illuminate\Http\Request;

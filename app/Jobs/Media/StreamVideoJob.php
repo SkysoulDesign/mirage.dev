@@ -1,14 +1,6 @@
 <?php
 
-/**
- * Created by PhpStorm.
- * User: Vivek
- * Date: 3/18/16
- * Time: 3:51 PM
- */
-
 namespace App\Jobs\Media;
-
 
 class StreamVideoJob
 {

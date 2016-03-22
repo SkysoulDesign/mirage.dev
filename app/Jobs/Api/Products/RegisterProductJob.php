@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Jobs;
+namespace App\Jobs\Api\Products;
 
+use App\Jobs\Job;
 use App\Models\Code;
 use App\Models\User;
 

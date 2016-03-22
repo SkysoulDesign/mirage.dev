@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Jobs;
+namespace App\Jobs\Ages;
 
 use App\Events\AgeWasCreated;
+use App\Jobs\Job;
 use App\Models\Age;
 
 class CreateAgeJob extends Job

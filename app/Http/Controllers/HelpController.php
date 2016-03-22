@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Jobs\CreateAPIHelpJob;
+use App\Http\Requests;
+use App\Jobs\Help\CreateAPIHelpJob;
 use App\Models\Help;
 use Illuminate\Http\Request;
-
-use App\Http\Requests;
-use App\Http\Controllers\Controller;
 use Illuminate\Routing\Route;
 use Illuminate\Routing\RouteCollection;
 use Illuminate\Routing\Router;

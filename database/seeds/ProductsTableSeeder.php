@@ -1,6 +1,6 @@
 <?php
 
-use App\Jobs\CreateProductJob;
+use App\Jobs\Products\CreateProductJob;
 use Illuminate\Database\Seeder;
 use Symfony\Component\HttpFoundation\File\File;
 

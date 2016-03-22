@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Jobs;
+namespace App\Jobs\Users;
 
+use App\Jobs\Job;
 use App\Models\User;
 use Illuminate\Contracts\Auth\PasswordBroker;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -22,6 +23,7 @@ class ResetPasswordMailJob extends Job implements ShouldQueue
 
     /**
      * Queue name
+     *
      * @var string
      */
     public $queue = 'email';
@@ -45,7 +47,7 @@ class ResetPasswordMailJob extends Job implements ShouldQueue
      * Execute the job.
      *
      * @param PasswordBroker $broker
-     * @param User           $user
+     * @param User $user
      * @return bool
      */
     public function handle(PasswordBroker $broker, User $user)
@@ -57,30 +59,11 @@ class ResetPasswordMailJob extends Job implements ShouldQueue
 
         $response = $broker->sendResetLink(['email' => $userObj->email], function (Message $message) {
             $message->from('admin@soapstudio.com');
-            $message->subject($this->getEmailSubject());
+            $message->subject('Your Password Reset Lin');
         });
 
         return $response === $broker::RESET_LINK_SENT;
 
     }
 
-    /**
-     * Get the broker to be used during password reset.
-     *
-     * @return string|null
-     */
-    public function getBroker()
-    {
-        return property_exists($this, 'broker') ? $this->broker : null;
-    }
-
-    /**
-     * Get the e-mail subject line to be used for the reset link email.
-     *
-     * @return string
-     */
-    protected function getEmailSubject()
-    {
-        return property_exists($this, 'subject') ? $this->subject : 'Your Password Reset Link';
-    }
 }

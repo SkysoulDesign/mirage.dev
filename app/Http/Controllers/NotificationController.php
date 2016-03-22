@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Jobs\CreateNotificationCommand;
+use App\Jobs\Notification\CreateNotificationCommand;
 use App\Models\Notification;
 use Illuminate\Http\Request;
 

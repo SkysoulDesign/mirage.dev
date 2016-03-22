@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Jobs;
+namespace App\Jobs\Countries;
 
 use App\Events\CountryWasCreated;
+use App\Jobs\Job;
 use App\Models\Country;
 
 class CreateCountryJob extends Job

@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Jobs;
+namespace App\Jobs\Products;
 
+use App\Jobs\Job;
 use Intervention\Image\ImageManager;
 
 class EncodeImageJob extends Job

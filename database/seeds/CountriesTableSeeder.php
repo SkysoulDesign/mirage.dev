@@ -1,6 +1,6 @@
 <?php
 
-use App\Jobs\CreateCountryJob;
+use App\Jobs\Countries\CreateCountryJob;
 use Illuminate\Database\Seeder;
 
 class CountriesTableSeeder extends Seeder

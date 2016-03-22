@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Jobs;
+namespace App\Jobs\Products\Extras;
 
 use App\Events\ExtraWasUpdated;
+use App\Jobs\Job;
 use App\Models\Extra;
 use App\Models\Product;
 use Symfony\Component\HttpFoundation\File\UploadedFile;

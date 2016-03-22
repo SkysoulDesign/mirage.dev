@@ -11,7 +11,7 @@ namespace App\Http\Controllers\Web;
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
 use App\Http\Requests\RegisterProductRequest;
-use App\Jobs\RegisterProductJob;
+use App\Jobs\Api\Products\RegisterProductJob;
 use App\Models\Code;
 use App\Models\User;
 use Illuminate\Http\Request;

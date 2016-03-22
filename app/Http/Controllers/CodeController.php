@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Jobs\ExportProductCodesToExcelJob;
-use App\Jobs\GenerateCodeCommand;
-use App\Jobs\GenerateCodesCommand;
-use App\Jobs\Products\CodeUnlinkUserJob;
+use App\Jobs\Products\Codes\CodeUnlinkUserJob;
+use App\Jobs\Products\Codes\ExportProductCodesToExcelJob;
+use App\Jobs\Products\Codes\GenerateCodesCommand;
 use App\Models\Code;
 use App\Models\Product;
 use Illuminate\Http\Request;
@@ -77,11 +76,6 @@ class CodeController extends Controller
                 return ['code' => $code->code];
             })));
         }
-
-//        for ($i = 1; $i <= sqrt($amount); $i++) {
-//            $codes = dispatch(new GenerateCodesCommand(sqrt($amount), $product));
-//            $collection->push($codes);
-//        }
 
         return redirect()->route('product.code.index', $product);
 

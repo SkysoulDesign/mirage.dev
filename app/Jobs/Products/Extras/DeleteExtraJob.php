@@ -6,7 +6,7 @@
  * Time: 4:56 PM
  */
 
-namespace App\Jobs;
+namespace App\Jobs\Products\Extras;
 
 use App\Events\ExtraWasUpdated;
 use App\Models\Extra;

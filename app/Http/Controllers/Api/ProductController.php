@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Jobs\EncodeImageJob;
-use App\Jobs\RegisterProductJob;
+use App\Jobs\Api\Products\RegisterProductJob;
+use App\Jobs\Products\EncodeImageJob;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -18,6 +18,7 @@ class ProductController extends Controller
 
     /**
      * ProductController constructor.
+     *
      * @param Product $product
      */
     public function __construct(Product $product)
@@ -47,7 +48,7 @@ class ProductController extends Controller
     {
 
         $code = $request->get('code');
-        $code = substr($code, 0, 5).'-'. implode('-', str_split(substr($code, 5, 17), 4));
+        $code = substr($code, 0, 5) . '-' . implode('-', str_split(substr($code, 5, 17), 4));
         $request->merge(compact('code'));
         $validator = $this->getValidationFactory()->make($request->all(), [
             'code' => 'required|exists:codes,code'
@@ -70,6 +71,7 @@ class ProductController extends Controller
 
     /**
      * Display Generator Page
+     *
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      */
@@ -84,8 +86,7 @@ class ProductController extends Controller
          * Encode Image if necessary
          */
         if (filter_var($request->get('encode_image', false), FILTER_VALIDATE_BOOLEAN) === true) {
-            $encoded = dispatch(new EncodeImageJob(substr($product->getAttribute('image'), 1)));
-            $product->setAttribute('image', $encoded);
+            $product->setAttribute('image', dispatch(new EncodeImageJob(substr($product->getAttribute('image'), 1))));
         }
 
         return response()->json($product->load('extras', 'profile'));

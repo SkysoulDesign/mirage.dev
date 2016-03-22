@@ -1,6 +1,6 @@
 <?php
 
-use App\Jobs\CreateAPIHelpJob;
+use App\Jobs\Help\CreateAPIHelpJob;
 use Illuminate\Database\Seeder;
 
 class HelperTableSeeder extends Seeder

@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Jobs;
+namespace App\Jobs\Products\Codes;
 
+use App\Jobs\Job;
 use App\Models\Code;
 use App\Models\Product;
 use Illuminate\Support\Collection;

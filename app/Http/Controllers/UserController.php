@@ -12,6 +12,7 @@ use Illuminate\Http\Request;
 
 /**
  * Class UserController
+ *
  * @package App\Http\Controllers
  */
 class UserController extends Controller
@@ -19,6 +20,7 @@ class UserController extends Controller
 
     /**
      * Display Generator Page
+     *
      * @param User $user
      * @return $this
      */
@@ -29,6 +31,7 @@ class UserController extends Controller
 
     /**
      * Create user
+     *
      * @param Role $role
      * @param Country $country
      * @param Age $age
@@ -44,6 +47,7 @@ class UserController extends Controller
 
     /**
      * Create Product
+     *
      * @param Request $request
      * @return \Illuminate\View\View
      */
@@ -51,30 +55,28 @@ class UserController extends Controller
     {
 
         $this->validate($request, [
-            'username' => 'required|alpha_dash',
-            'email' => 'required|email|unique:users',
-            'password' => 'required|confirmed|min:6',
-            'gender' => 'string',
-            'age_id' => 'exists:ages,id',
-            'terms' => 'required|accepted',
-            'role_id' => 'required|exists:roles,id',
+            'username'   => 'required|alpha_dash',
+            'email'      => 'required|email|unique:users',
+            'password'   => 'required|confirmed|min:6',
+            'gender'     => 'string',
+            'age_id'     => 'exists:ages,id',
+            'terms'      => 'required|accepted',
+            'role_id'    => 'required|exists:roles,id',
             'country_id' => 'required|exists:countries,id',
         ]);
 
         /**
          * Create User
          */
-//        dispatch(new CreateUserJob($request->except('role_id', 'country_id', 'age_id'), $request->get('role_id'), $request->get('country_id'), $request->get('age_id')));
-
         dispatch(new CreateUserJob($request->except('role_id'), $request->get('role_id'), $request->get('country_id'), $request->get('age_id')));
 
         return redirect()->route('user.index');
 
     }
 
-
     /**
      * Edit User
+     *
      * @param User $user
      * @param Role $role
      * @param Country $country
@@ -92,6 +94,7 @@ class UserController extends Controller
 
     /**
      * Update User
+     *
      * @param Request $request
      * @param User $user
      * @return \Illuminate\Http\RedirectResponse
@@ -102,13 +105,13 @@ class UserController extends Controller
         $update = ($user && $user->email === $request->get('email')) ? ',id,' . $user->id : '';
 
         $this->validate($request, [
-            'username' => 'required|alpha_dash',
-            'email' => 'required|email|unique:users' . $update,
-            'password' => 'sometimes|confirmed|min:6',
-            'gender' => 'string',
-            'age_id' => 'exists:ages,id',
-            'terms' => 'required|accepted',
-            'role_id' => 'required|exists:roles,id',
+            'username'   => 'required|alpha_dash',
+            'email'      => 'required|email|unique:users' . $update,
+            'password'   => 'sometimes|confirmed|min:6',
+            'gender'     => 'string',
+            'age_id'     => 'exists:ages,id',
+            'terms'      => 'required|accepted',
+            'role_id'    => 'required|exists:roles,id',
             'country_id' => 'required|exists:countries,id',
         ]);
 
@@ -122,20 +125,19 @@ class UserController extends Controller
                 $request->only('role_id', 'country_id', 'age_id')
             )
         );
+
         return redirect()->route('user.edit', $user->id)->withSuccess('User updated successfully');
 
     }
 
     /**
      * Reset Password to User
-     * @param User $user
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function resetPassword(User $user)
+    public function resetPassword()
     {
-
         return redirect()->route('user.index');
-
     }
 
 }

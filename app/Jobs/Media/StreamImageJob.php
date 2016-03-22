@@ -1,16 +1,10 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Vivek
- * Date: 3/21/16
- * Time: 5:48 PM
- */
 
 namespace App\Jobs\Media;
 
-
 /**
  * Class StreamImageJob
+ *
  * @package App\Jobs\Media
  */
 class StreamImageJob
@@ -24,6 +18,7 @@ class StreamImageJob
 
     /**
      * StreamImageJob constructor.
+     *
      * @param $filePath
      */
     public function __construct($filePath)

@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Jobs;
+namespace App\Jobs\Help;
 
 use App\Events\APIHelpWasCreated;
+use App\Jobs\Job;
 use App\Models\Help;
 
 class CreateAPIHelpJob extends Job

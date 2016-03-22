@@ -1,8 +1,6 @@
 <?php
 
-use App\Jobs\RegisterProductJob;
 use App\Jobs\Users\CreateUserJob;
-use App\Models\Code;
 use Illuminate\Database\Seeder;
 
 class UserTableSeeder extends Seeder

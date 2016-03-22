@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Jobs\CreateProductJob;
 use Illuminate\Http\Request;
 
 class GeneratorController extends Controller

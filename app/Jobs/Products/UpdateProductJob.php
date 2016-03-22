@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Jobs;
+namespace App\Jobs\Products;
 
+use App\Jobs\Job;
 use App\Models\Product;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\FileBag;

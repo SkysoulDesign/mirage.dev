@@ -1,9 +1,8 @@
 <?php
 
-namespace App\Jobs;
+namespace App\Jobs\Notification;
 
 use App\Models\Notification;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Support\Collection;
 
 class CreateNotificationCommand

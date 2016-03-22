@@ -1,11 +1,10 @@
 <?php
 
-namespace App\Jobs;
+namespace App\Jobs\Products\Codes;
 
 use App\Models\Product;
 use Illuminate\Support\Collection;
 use Maatwebsite\Excel\Excel;
-use SimpleSoftwareIO\QrCode\BaconQrCodeGenerator;
 
 class ExportProductCodesToExcelJob
 {

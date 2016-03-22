@@ -1,12 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Products;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\ProductRequest;
-use App\Jobs\CreateProductJob;
-use App\Jobs\ExportProductCodesToExcelJob;
-use App\Jobs\GenerateCodesCommand;
-use App\Jobs\UpdateProductJob;
+use App\Jobs\Products\CreateProductJob;
+use App\Jobs\Products\UpdateProductJob;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -61,14 +60,14 @@ class ProductController extends Controller
     /**
      * Shows Edit Form
      *
-     * @param Product        $product
+     * @param Product $product
      * @param ProductRequest $request
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function update(Product $product, ProductRequest $request)
     {
 
-        $this->dispatch(new UpdateProductJob($request->product, $request->all(), $request->files));
+        $this->dispatch(new UpdateProductJob($product, $request->all(), $request->files));
 
         return redirect()->back()->withSuccess('Product was Updated Successfully');
 

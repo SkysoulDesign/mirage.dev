@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Jobs;
+namespace App\Jobs\Products;
 
 use App\Events\ProductWasCreated;
 use App\Models\Product;
