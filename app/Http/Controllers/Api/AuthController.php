@@ -130,8 +130,8 @@ class AuthController extends Controller
 
         $response = $this->dispatch(new ResetPasswordMailJob($request->all()));
 
-        if (!$response)
-            return response()->json(['error' => 'Given input is not valid (OR) User not exists']);
+//        if (!$response)
+//            return response()->json(['error' => 'Given input is not valid (OR) User not exists']);
 
         return response()->json(['status' => 'Reset Password link has been sent your email successfully']);
 
