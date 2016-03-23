@@ -59,7 +59,7 @@ class ResetPasswordMailJob extends Job implements ShouldQueue
         if($userObj) {
             $response = $broker->sendResetLink(['email' => $userObj->email], function (Message $message) {
                 $message->from('admin@soapstudio.com');
-                $message->subject('Your Password Reset Lin');
+                $message->subject('Your Password Reset Link');
             });
 
             return $response === $broker::RESET_LINK_SENT;
