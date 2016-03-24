@@ -62,7 +62,8 @@ class AuthController extends Controller
         if (!$this->auth->attempt($request->only($field, 'password')))
             return redirect()->back()->withInput()->withErrors('Username or Password Not Found');
 
-        if ($request->get('user_type', '') == 'user')
+        /* || $request->get('user_type', '') == 'user'*/
+        if ($this->auth->user()->is('user'))
             return redirect()->route('web.index');
 
         return redirect()->route('home');

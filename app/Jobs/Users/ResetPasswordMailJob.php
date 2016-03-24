@@ -6,7 +6,6 @@ use App\Jobs\Job;
 use App\Models\User;
 use Illuminate\Contracts\Auth\PasswordBroker;
 use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Http\Request;
 use Illuminate\Mail\Message;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
@@ -55,14 +54,18 @@ class ResetPasswordMailJob extends Job implements ShouldQueue
 
         $field = filter_var($this->request->get('credential'), FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
 
-        $userObj = $user->where($field, $this->request->get('credential'))->firstOrFail();
+        $userObj = $user->where($field, $this->request->get('credential'))->first();
 
-        $response = $broker->sendResetLink(['email' => $userObj->email], function (Message $message) {
-            $message->from('admin@soapstudio.com');
-            $message->subject('Your Password Reset Lin');
-        });
+        if($userObj) {
+            $response = $broker->sendResetLink(['email' => $userObj->email], function (Message $message) {
+                $message->from('admin@soapstudio.com');
+                $message->subject('Your Password Reset Link');
+            });
 
-        return $response === $broker::RESET_LINK_SENT;
+            return $response === $broker::RESET_LINK_SENT;
+        }
+
+        return false;
 
     }
 

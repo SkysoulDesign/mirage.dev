@@ -135,10 +135,17 @@ class AuthController extends Controller
     public function resetPassword(Request $request)
     {
 
+        $validator = $this->getValidationFactory()->make($request->all(), [
+            'credential' => 'required'
+        ], ['required' => 'Field cannot be empty'] );
+        //$validator->errors()
+        if ($validator->fails())
+            return response()->json(['error' => 'Given input is not valid']);
+
         $response = $this->dispatch(new ResetPasswordMailJob($request->all()));
 
-        if (!$response)
-            return response()->json(['error' => 'Given input is not valid (OR) User not exists']);
+//        if (!$response)
+//            return response()->json(['error' => 'Given input is not valid (OR) User not exists']);
 
         return response()->json(['status' => 'Reset Password link has been sent your email successfully']);
 
