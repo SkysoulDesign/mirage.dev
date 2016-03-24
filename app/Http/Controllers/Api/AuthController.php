@@ -7,6 +7,7 @@ use App\Jobs\Users\CheckTokenJob;
 use App\Jobs\Users\CreateUserJob;
 use App\Jobs\Users\GenerateTokenJob;
 use App\Jobs\Users\ResetPasswordMailJob;
+use App\Models\Code;
 use App\Models\Product;
 use App\Models\User;
 use Illuminate\Contracts\Auth\Factory as Auth;
@@ -162,8 +163,9 @@ class AuthController extends Controller
          */
         if ($user->is('admin')) {
 
-            $codes = Product::all()->each(function ($product) {
-                return $product->codes->load('product', 'product.extras', 'product.profile')->first();
+            $codes = Product::all()->transform(function ($product) {
+                /** @var Code $code */
+                return $product->codes()->with('product', 'product.extras', 'product.profile')->first();
             });
 
             $user->setRelation('codes', $codes);
