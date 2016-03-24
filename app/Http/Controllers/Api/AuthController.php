@@ -7,11 +7,14 @@ use App\Jobs\Users\CheckTokenJob;
 use App\Jobs\Users\CreateUserJob;
 use App\Jobs\Users\GenerateTokenJob;
 use App\Jobs\Users\ResetPasswordMailJob;
+use App\Models\Product;
+use App\Models\User;
 use Illuminate\Contracts\Auth\Factory as Auth;
 use Illuminate\Http\Request;
 
 /**
  * Class AuthController
+ *
  * @package App\Http\Controllers\Api
  */
 class AuthController extends Controller
@@ -42,7 +45,7 @@ class AuthController extends Controller
 
         $validator = $this->getValidationFactory()->make($request->all(), [
             'username' => 'required|alpha_dash|unique:users',
-            'email' => 'required|email|unique:users',
+            'email'    => 'required|email|unique:users',
             'password' => 'required|confirmed|min:6',
 //            'gender'     => 'string',
 //            'age_id'     => 'exists:ages,id',
@@ -72,7 +75,7 @@ class AuthController extends Controller
 
         $validator = $this->getValidationFactory()->make($request->toArray(), [
             'credential' => 'required',
-            'password' => 'required|min:6'
+            'password'   => 'required|min:6'
         ]);
 
         if ($validator->fails())
@@ -87,7 +90,13 @@ class AuthController extends Controller
 
         dispatch(new GenerateTokenJob($this->auth->user(), true));
 
+        /** @var User $user */
         $user = $this->auth->user()->load('codes', 'codes.product', 'codes.product.extras', 'codes.product.profile');
+
+        /**
+         * Give all Products to admins
+         */
+        $this->adminFunction($user);
 
         return response()->json($user);
 
@@ -110,6 +119,11 @@ class AuthController extends Controller
 
         $user = $request->user('api')->load('codes', 'codes.product', 'codes.product.extras', 'codes.product.profile');
 
+        /**
+         * Give all Products to admins
+         */
+        $this->adminFunction($user);
+
         return response()->json($user);
 
     }
@@ -127,6 +141,27 @@ class AuthController extends Controller
             return response()->json(['error' => 'Given input is not valid (OR) User not exists']);
 
         return response()->json(['status' => 'Reset Password link has been sent your email successfully']);
+
+    }
+
+    /**
+     * Overrides CODES relationship with one for each product available
+     * @param User $user
+     */
+    private function adminFunction(User $user){
+
+        /**
+         * if its an admin, override relationship
+         */
+        if ($user->is('admin')) {
+
+            $codes = Product::all()->each(function ($product) {
+                return $product->codes->load('product', 'product.extras', 'product.profile')->first();
+            });
+
+            $user->setRelation('codes', $codes);
+
+        }
 
     }
 

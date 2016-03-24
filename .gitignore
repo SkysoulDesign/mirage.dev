@@ -5,7 +5,7 @@
 /node_modules
 Homestead.yaml
 .DS_Store
-.idea
+.idea/*
 
 Homestead.json
 /public/videos

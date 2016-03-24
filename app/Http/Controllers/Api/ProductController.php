@@ -50,6 +50,7 @@ class ProductController extends Controller
         $code = $request->get('code');
         $code = substr($code, 0, 5) . '-' . implode('-', str_split(substr($code, 5, 17), 4));
         $request->merge(compact('code'));
+
         $validator = $this->getValidationFactory()->make($request->all(), [
             'code' => 'required|exists:codes,code'
         ]);
@@ -60,7 +61,7 @@ class ProductController extends Controller
         /**
          * Associate User with The Product
          */
-        $response = dispatch(new RegisterProductJob($request->get('code'), $request->user('api')));
+        $response = dispatch(new RegisterProductJob($request->code, $request->user('api')));
 
         if (!$response)
             return response()->json(['error' => 'code_has_been_taken']);
