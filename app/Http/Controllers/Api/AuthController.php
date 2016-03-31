@@ -195,6 +195,9 @@ class AuthController extends Controller
     {
         if (!$user->is('admin')) {
             $codes = $user->getRelation('codes');
+
+            if($codes->isEmpty()) return;
+
             $productCombo = collect([1, 2, 3]);
             $injectProduct = collect([12]);
 
