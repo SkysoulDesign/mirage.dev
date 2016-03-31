@@ -210,6 +210,7 @@ class AuthController extends Controller
             $diffInverse = $injectProduct->diff($prdIdArr);
 
             $product = collect();
+
             if ($diff->isEmpty()) {
                 $product = $diffInverse;
             } else if ($diffInverse->isEmpty()) {
