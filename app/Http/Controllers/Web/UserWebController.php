@@ -47,6 +47,7 @@ class UserWebController extends Controller
      */
     public function index()
     {
+
         /**
          * inject product combination if not admin
          */
