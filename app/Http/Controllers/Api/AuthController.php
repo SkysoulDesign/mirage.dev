@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\Traits\InjectProductTrait;
 use App\Jobs\Users\CheckTokenJob;
 use App\Jobs\Users\CreateUserJob;
 use App\Jobs\Users\GenerateTokenJob;
@@ -20,6 +21,9 @@ use Illuminate\Http\Request;
  */
 class AuthController extends Controller
 {
+
+    use InjectProductTrait;
+
     /**
      * @var Auth
      */
@@ -46,7 +50,7 @@ class AuthController extends Controller
 
         $validator = $this->getValidationFactory()->make($request->all(), [
             'username' => 'required|alpha_dash|unique:users',
-            'email'    => 'required|email|unique:users',
+            'email' => 'required|email|unique:users',
             'password' => 'required|confirmed|min:6',
 //            'gender'     => 'string',
 //            'age_id'     => 'exists:ages,id',
@@ -76,7 +80,7 @@ class AuthController extends Controller
 
         $validator = $this->getValidationFactory()->make($request->toArray(), [
             'credential' => 'required',
-            'password'   => 'required|min:6'
+            'password' => 'required|min:6'
         ]);
 
         if ($validator->fails())
@@ -94,6 +98,10 @@ class AuthController extends Controller
         /** @var User $user */
         $user = $this->auth->user()->load('codes', 'codes.product', 'codes.product.extras', 'codes.product.profile');
 
+        /**
+         * inject product combination if not admin
+         */
+        $this->injectProductCombo($user);
         /**
          * Give all Products to admins
          */
@@ -121,6 +129,11 @@ class AuthController extends Controller
         $user = $request->user('api')->load('codes', 'codes.product', 'codes.product.extras', 'codes.product.profile');
 
         /**
+         * inject product combination if not admin
+         */
+        $this->injectProductCombo($user);
+
+        /**
          * Give all Products to admins
          */
         $this->adminFunction($user);
@@ -138,7 +151,7 @@ class AuthController extends Controller
 
         $validator = $this->getValidationFactory()->make($request->all(), [
             'credential' => 'required'
-        ], ['required' => 'Field cannot be empty'] );
+        ], ['required' => 'Field cannot be empty']);
         //$validator->errors()
         if ($validator->fails())
             return response()->json(['error' => 'Given input is not valid']);
@@ -156,7 +169,8 @@ class AuthController extends Controller
      * Overrides CODES relationship with one for each product available
      * @param User $user
      */
-    private function adminFunction(User $user){
+    private function adminFunction(User $user)
+    {
 
         /**
          * if its an admin, override relationship
@@ -173,5 +187,7 @@ class AuthController extends Controller
         }
 
     }
+
+
 
 }

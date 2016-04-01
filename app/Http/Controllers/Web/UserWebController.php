@@ -9,11 +9,11 @@
 namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\Traits\InjectProductTrait;
 use App\Http\Requests;
 use App\Http\Requests\RegisterProductRequest;
 use App\Jobs\Api\Products\RegisterProductJob;
 use App\Models\Code;
-use App\Models\User;
 use Illuminate\Http\Request;
 
 /**
@@ -22,6 +22,8 @@ use Illuminate\Http\Request;
  */
 class UserWebController extends Controller
 {
+
+    use InjectProductTrait;
 
     /**
      * @var
@@ -34,7 +36,7 @@ class UserWebController extends Controller
     public function __construct()
     {
         // to create user object
-        $this->user = User::find(auth()->user()->id);
+        $this->user = auth()->user();//User::find(auth()->user()->id);
     }
 
     /**
@@ -45,7 +47,14 @@ class UserWebController extends Controller
      */
     public function index()
     {
-        return view('web.index')->with('codes', $this->user->codes);
+
+        /**
+         * inject product combination if not admin
+         */
+        $user = $this->user->load('codes', 'codes.product', 'codes.product.extras', 'codes.product.profile');
+        $this->injectProductCombo($user);
+
+        return view('web.index')->with('codes', $user->codes);
     }
 
     /**

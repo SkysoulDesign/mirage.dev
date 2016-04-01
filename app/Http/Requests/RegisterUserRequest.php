@@ -26,7 +26,7 @@ class RegisterUserRequest extends Request
     public function rules()
     {
         return [
-            'username' => 'required|alpha_dash',
+            'username' => 'required|alpha_dash|unique:users',
             'email' => 'required|email|unique:users',
             'password' => 'required|confirmed|min:6',
             'gender' => 'string',
