@@ -24,7 +24,7 @@ class ExtraRequest extends Request
         return [
             'title'       => 'required',
             'description' => 'required',
-            'image'       => 'required|image',
+            'image'       => 'required|mimes:png',
             'video'       => 'mimes:mp4'
         ];
     }

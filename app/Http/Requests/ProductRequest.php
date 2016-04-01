@@ -26,9 +26,9 @@ class ProductRequest extends Request
 
         return [
             'name'        => 'required',
-            'image'       => 'mimes:jpeg,png|image',
+            'image'       => 'mimes:png|image',
             'code'        => 'required|size:5|unique:products' . $update,
-            'poster'      => 'mimes:jpeg,png|image',
+            'poster'      => 'image',
             'description' => 'required',
         ];
 
