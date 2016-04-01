@@ -8,9 +8,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Traits\InjectProductTrait;
 use App\Jobs\Media\StreamImageJob;
 use App\Jobs\Media\StreamVideoJob;
-use App\Models\Code;
 use App\Models\Extra;
 use Illuminate\Http\Request;
 
@@ -21,6 +21,7 @@ use Illuminate\Http\Request;
  */
 class MediaController extends Controller
 {
+    use InjectProductTrait;
     /**
      * @var mixed|null
      */
@@ -50,6 +51,14 @@ class MediaController extends Controller
      * @var
      */
     private $user_id;
+    /**
+     * @var
+     */
+    private $user;
+    /**
+     * @var string
+     */
+    private $extra_path;
 
     /**
      * MediaController constructor.
@@ -58,17 +67,96 @@ class MediaController extends Controller
     public function __construct(Request $request)
     {
 
-        $this->middleware('auth');// to allow the url when user logged in
+        $this->extra_path = '/image/products-extras/';
 
-        $this->media_type = $request->media_type;
-        $this->hashfile = $request->hashkey;
+        if ($request->has('api_token')) {
+            $this->middleware('api');
+        } else {
+            $this->middleware('auth');// to allow the url when user logged in
 
-        $this->filepath = '';
-        if (@$this->media_type == '')
-            $this->filepath = decrypt($this->hashfile);
-        $this->publicpath = public_path();
+            $this->media_type = $request->media_type;
+            $this->hashfile = $request->hashkey;
+
+            $this->filepath = '';
+            if (@$this->media_type == '')
+                $this->filepath = decrypt($this->hashfile);
+        }
+        $this->publicpath = base_path();
         //$this->user_id = auth()->user()->id;
 
+    }
+
+    /**
+     * @param $type
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function throwError($type)
+    {
+        $error = 'Access Denied';
+        if ($type == 'json')
+            $error = json_encode(['error' => $error]);
+
+        exit($error);
+    }
+
+    /**
+     * streamVideoApi
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     * @internal param Extra $extra
+     */
+    public function streamVideoApi(Request $request)
+    {
+
+        $this->user = $request->user('api');
+        $this->getProductVideoPath($request->get('extra'), 'json', $request->get('aspect', ''));
+
+        $this->streamVideo();
+
+    }
+
+    /**
+     * @param $extraId
+     * @param string $errorType
+     * @param string $aspect
+     * @return \Illuminate\Http\JsonResponse
+     */
+    protected function getProductVideoPath($extraId, $errorType = '', $aspect = '')
+    {
+        $aspect = $aspect ?: '16x9';
+        $codes = $this->getUserCodes($extraId, $errorType);
+        $extra = Extra::find($extraId);
+        $this->filepath = $this->extra_path . $aspect . '/' . @$extra->video;
+        return $codes;
+    }
+
+    /**
+     * @param $extraId
+     * @param $errorType
+     * @return \Illuminate\Http\JsonResponse
+     */
+    protected function getUserCodes($extraId, $errorType = '')
+    {
+        $user = $this->user->load('codes');
+
+        if ($this->user->is('admin'))
+            return $user->getRelation('codes');
+
+        $this->injectProductCombo($user);
+
+        $codes = $user->codes->load(
+            ['product' => function ($query) use ($extraId) {
+                $query->whereHas('extras', function ($query) use ($extraId) {
+                    $query->where('id', $extraId);
+                });
+            }
+                , 'product.profile']
+        )->filter(function ($value) {
+            return $value->product ?: false;
+        });
+        if (!$codes->first()) /** @var TYPE_NAME $this */
+            $this->throwError($errorType);
+        return $codes;
     }
 
     /**
@@ -78,21 +166,17 @@ class MediaController extends Controller
     public function streamData()
     {
 
-        $this->user_id = auth()->user()->id;
+        $this->user = auth()->user();
         $this->hashDecrypt = decrypt($this->hashfile);
         $this->dataArr = explode(';;;', $this->hashDecrypt);
 
         switch ($this->dataArr[0]) {
             case 'code':
-                $code = Code::find($this->dataArr[1]);
-                if ($this->user_id == $code->user_id) {
-                    $extra = Extra::find($this->dataArr[2]);
-                    if ($this->media_type == 'video')
-                        $this->filepath = @$extra->video;
-                    else
-                        $this->filepath = $code->product->profile->image;
-                } else
-                    exit('Access Denied');
+                $codes = $this->getProductVideoPath($this->dataArr[2]);
+                if ($this->media_type == 'video')
+                    $this->getProductVideoPath($this->dataArr[2]);
+                else
+                    $this->filepath = @$codes[0]->product->profile->image;
                 break;
             case 'path':
                 $this->filepath = @$this->dataArr[1];

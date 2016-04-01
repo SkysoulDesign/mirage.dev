@@ -65,6 +65,7 @@ class UpdateExtraJob extends Job
          */
         $this->extra->update($this->data);
 
+        $aspectDir = @$this->data['aspect_ratio'] ?: '16x9';
         /**
          * Move Extra Content to folder
          */
@@ -81,9 +82,9 @@ class UpdateExtraJob extends Job
 
         if ($this->video) {
             $videoName = $productCode . '-extra-video-' . $this->extra->id . '.' . $this->video->guessExtension();
-            $this->video->move(public_path() . $path, $videoName);
+            $this->video->move(base_path() . $path . $aspectDir . '/', $videoName);
 
-            $this->extra->setAttribute('video', $path . $videoName);
+            $this->extra->setAttribute('video', $videoName);
         }
 
         $this->extra->save();

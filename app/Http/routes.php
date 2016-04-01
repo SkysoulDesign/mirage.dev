@@ -181,6 +181,11 @@ $app->group(['prefix' => 'api', 'as' => 'api.'], function ($app) {
         $app->get('ages', classie(FormController::class, 'ages'))->name('ages');
     });
 
+    /**
+     * Video API Call
+     */
+    $app->get('video', classie(MediaController::class, 'streamVideoApi'))->name('video');
+
 
 });
 

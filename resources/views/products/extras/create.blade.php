@@ -43,11 +43,13 @@
                     <div class="field">
                         <label>Video</label>
                         <div class="ui compact segment">
-                            <video controls width="500">
-                                <source src="{{ asset($extra->video) }}" type="video/mp4">
-                                <source src="{{ asset($extra->video) }}" type="video/ogg">
-                                Your browser does not support the video tag.
-                            </video>
+                            {{--<video controls width="500">--}}
+                                {{--<source src="{{ asset($extra->video) }}" type="video/mp4">--}}
+                                {{--<source src="{{ asset($extra->video) }}" type="video/ogg">--}}
+                                {{--Your browser does not support the video tag.--}}
+                            {{--</video>--}}
+                            <video controls width="500"
+                                   src="{{ route('media.stream', array('video', encrypt('code;;;0;;;'.$extra->id))) }}"></video>
                         </div>
                     </div>
                 </div>

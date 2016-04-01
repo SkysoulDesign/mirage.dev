@@ -59,6 +59,7 @@ class CreateExtraJob extends Job
          */
         $extra = $this->product->extras()->create($this->data);
 
+        $aspectDir = @$this->data['aspect_ratio'] ?: '16x9';
         /**
          * Move Extra Content to folder
          */
@@ -72,9 +73,9 @@ class CreateExtraJob extends Job
         $extra->setAttribute('image', $path . $filename);
 
         $filename = $productCode . '-extra-video-' . $extraID . '.' . $this->video->guessExtension();
-        $video = $this->video->move(public_path() . $path, $filename);
+        $video = $this->video->move(base_path() . $path . $aspectDir . '/', $filename);
 
-        $extra->setAttribute('video', $path . $filename);
+        $extra->setAttribute('video', $filename);
         $extra->save();
 
         /**
