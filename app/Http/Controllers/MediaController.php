@@ -78,7 +78,7 @@ class MediaController extends Controller
             $this->hashfile = $request->hashkey;
 
             $this->filepath = '';
-            if (@$this->media_type == '')
+            if (@$this->media_type == '' && $request->route()->getName() != 'image.path')
                 $this->filepath = decrypt($this->hashfile);
         }
         $this->publicpath = base_path();
@@ -97,6 +97,15 @@ class MediaController extends Controller
             $error = json_encode(['error' => $error]);
 
         exit($error);
+    }
+
+    /**
+     *
+     */
+    public function showImageByPath()
+    {
+        $this->filepath = '/image/products-extras/'.$this->hashfile;
+        return $this->showImage();
     }
 
     /**

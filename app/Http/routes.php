@@ -78,6 +78,7 @@ $app->group(['middleware' => 'web'], function () use ($app) {
         $app->get('video/{hashkey}/play', classie(MediaController::class, 'streamVideo'))->name('video');
         $app->get('image/{hashkey}/show', classie(MediaController::class, 'showImage'))->name('image');
     });
+    $app->get('image/products-extras/{hashkey}', classie(MediaController::class, 'showImageByPath'))->name('image.path');
 
 });
 
