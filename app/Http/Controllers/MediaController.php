@@ -132,7 +132,9 @@ class MediaController extends Controller
      */
     protected function getProductVideoPath($extraId, $errorType = '', $aspect = '')
     {
-        $aspect = $aspect ?: '16x9';
+        $aspect = $aspect ?: '16x10';
+        if(!is_dir($this->publicpath.$this->extra_path . $aspect))
+            $aspect = '16x9';
         $codes = $this->getUserCodes($extraId, $errorType);
         $extra = Extra::find($extraId);
         $this->filepath = $this->extra_path . $aspect . '/' . @$extra->video;
