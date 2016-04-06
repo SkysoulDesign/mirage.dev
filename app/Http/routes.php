@@ -79,6 +79,8 @@ $app->group(['middleware' => 'web'], function () use ($app) {
         $app->get('image/{hashkey}/show', classie(MediaController::class, 'showImage'))->name('image');
     });
     $app->get('image/products-extras/{hashkey}', classie(MediaController::class, 'showImageByPath'))->name('image.path');
+    // to temporarily avoid issue on loading videos in APP created below route 04/06/2016
+    $app->get('video', classie(MediaController::class, 'streamVideoApi'))->name('video.temp');
 
 });
 
