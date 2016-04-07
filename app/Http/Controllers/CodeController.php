@@ -98,14 +98,21 @@ class CodeController extends Controller
      * 03/16/2016
      * @param Product $product
      * @param Code $code
+     * @param $action
      * @return \Illuminate\Http\RedirectResponse
+     * @internal param Request $request
      */
-    public function removeUser(Product $product, Code $code)
+    public function removeUser(Product $product, Code $code, $action = null)
     {
 
+        $user_id = $code->user_id;
         dispatch(new CodeUnlinkUserJob($product, $code));
 
-        return redirect()->route('product.code.index', $product)->withSuccess('User removed from Code successfully');
+        $successMsg = 'User removed from Code successfully';
+        if (@$action == 'user')
+            return redirect()->route('user.codes', $user_id)->withSuccess($successMsg);
+
+        return redirect()->route('product.code.index', $product)->withSuccess($successMsg);
 
     }
 

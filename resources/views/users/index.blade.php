@@ -34,6 +34,10 @@
                             <i class="edit icon"></i>
                             Edit
                         </a>
+                        <a class="ui button" href="{{ route('user.codes', $user->id) }}">
+                            <i class="edit icon"></i>
+                            Codes
+                        </a>
                         {{--<a class="ui button" href="{{ route('user.reset', $user->id) }}" title="Reset Password">--}}
                         {{--<i class="archive icon"></i>--}}
                         {{--Reset--}}

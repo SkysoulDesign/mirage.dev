@@ -55,13 +55,13 @@ class UserController extends Controller
     {
 
         $this->validate($request, [
-            'username'   => 'required|alpha_dash',
-            'email'      => 'required|email|unique:users',
-            'password'   => 'required|confirmed|min:6',
-            'gender'     => 'string',
-            'age_id'     => 'exists:ages,id',
-            'terms'      => 'required|accepted',
-            'role_id'    => 'required|exists:roles,id',
+            'username' => 'required|alpha_dash',
+            'email' => 'required|email|unique:users',
+            'password' => 'required|confirmed|min:6',
+            'gender' => 'string',
+            'age_id' => 'exists:ages,id',
+            'terms' => 'required|accepted',
+            'role_id' => 'required|exists:roles,id',
             'country_id' => 'required|exists:countries,id',
         ]);
 
@@ -105,13 +105,13 @@ class UserController extends Controller
         $update = ($user && $user->email === $request->get('email')) ? ',id,' . $user->id : '';
 
         $this->validate($request, [
-            'username'   => 'required|alpha_dash',
-            'email'      => 'required|email|unique:users' . $update,
-            'password'   => 'sometimes|confirmed|min:6',
-            'gender'     => 'string',
-            'age_id'     => 'exists:ages,id',
-            'terms'      => 'required|accepted',
-            'role_id'    => 'required|exists:roles,id',
+            'username' => 'required|alpha_dash',
+            'email' => 'required|email|unique:users' . $update,
+            'password' => 'sometimes|confirmed|min:6',
+            'gender' => 'string',
+            'age_id' => 'exists:ages,id',
+            'terms' => 'required|accepted',
+            'role_id' => 'required|exists:roles,id',
             'country_id' => 'required|exists:countries,id',
         ]);
 
@@ -138,6 +138,15 @@ class UserController extends Controller
     public function resetPassword()
     {
         return redirect()->route('user.index');
+    }
+
+    /**
+     * @param User $user
+     * @return $this
+     */
+    public function userCodes(User $user)
+    {
+        return view('products.codes.index', compact('user'))->with('codes', $user->codes);
     }
 
 }
