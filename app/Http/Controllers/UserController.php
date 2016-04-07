@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\RegisterProductRequest;
+use App\Jobs\Api\Products\RegisterProductJob;
 use App\Jobs\Users\CreateUserJob;
 use App\Jobs\Users\UpdateUserJob;
 use App\Models\Age;
@@ -147,10 +149,35 @@ class UserController extends Controller
     public function userCodes(User $user)
     {
         $codes = $user->codes;
-        $view = view('products.codes.index', compact('user', 'codes'));
+        $view = view('users.codes.index', compact('user', 'codes'));
         if (empty($codes->toArray()))
             $view->withErrors(empty($codes->toArray()) ? 'No Codes Found' : '');
         return $view;
+    }
+
+    /**
+     * @param User $user
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function registerCodeForm(User $user)
+    {
+        return view('users.codes.register', compact('user'));
+    }
+
+    /**
+     * @param RegisterProductRequest $request
+     * @param User $user
+     * @return $this
+     */
+    public function registerCode(RegisterProductRequest $request, User $user)
+    {
+
+        $response = $this->dispatch(new RegisterProductJob($request->get('code'), $user));
+
+        if (!$response)
+            return redirect()->back()->withErrors(['error' => 'Code has been taken (OR) not valid']);
+
+        return redirect()->route('user.codes', $user->id)->withSucess('Product registered successfully');
     }
 
 }

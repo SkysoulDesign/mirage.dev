@@ -97,8 +97,11 @@ $app->group(['middleware' => ['web', 'auth', 'role:admin'], 'prefix' => 'admin']
         $app->get('edit/{user}', classie(UserController::class, 'edit'))->name('edit');
         $app->post('update/{user}', classie(UserController::class, 'update'))->name('update');
         $app->get('reset/{user}', classie(UserController::class, 'resetPassword'))->name('reset');
+        // for User's Code related
         $app->get('{user}/codes', classie(UserController::class, 'userCodes'))->name('codes');
         $app->get('code/{product}/unlink/{code}/{action}', classie(CodeController::class, 'removeUser'))->name('code.unlink');
+        $app->get('{user}/add/code', classie(UserController::class, 'registerCodeForm'))->name('add.code');
+        $app->post('{user}/add/code', classie(UserController::class, 'registerCode'))->name('add.code.post');
     });
 
     /**
