@@ -146,7 +146,11 @@ class UserController extends Controller
      */
     public function userCodes(User $user)
     {
-        return view('products.codes.index', compact('user'))->with('codes', $user->codes);
+        $codes = $user->codes;
+        $view = view('products.codes.index', compact('user', 'codes'));
+        if (empty($codes->toArray()))
+            $view->withErrors(empty($codes->toArray()) ? 'No Codes Found' : '');
+        return $view;
     }
 
 }
