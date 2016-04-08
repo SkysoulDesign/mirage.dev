@@ -44,7 +44,7 @@ class DeleteExtraJob
      */
     public function handle()
     {
-        $path = '/image/products-extras/';
+        $path = '/image/products-extras/16x9/';
         unlink(base_path() . $path . $this->extra->video);
         unlink(base_path() . $this->extra->image);
         $this->extra->delete();
