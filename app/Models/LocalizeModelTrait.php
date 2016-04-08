@@ -44,9 +44,8 @@ trait LocalizeModelTrait
 
     public function getLocalize($json)
     {
-        $array = json_decode($json, true);
-        $data = isset($array[app()->getLocale()]) ? $array[app()->getLocale()] : @$array['en'];
-        return $data ?: $json;
+        $array = collect(json_decode($json, true));
+        return $array->get(app()->getLocale(), $array->get('en'));
     }
 
 }
