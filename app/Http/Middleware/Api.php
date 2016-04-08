@@ -41,8 +41,8 @@ class Api
         /**
          * If language not sent from Device
          */
-        if (!$request->has('language'))
-            return response()->json(['error' => 'language_not_provided']);
+//        if (!$request->has('language'))
+//            return response()->json(['error' => 'language_not_provided']);
 
         if (!$this->auth->guard('api')->user())
             return response()->json(['error' => 'invalid_token']);
