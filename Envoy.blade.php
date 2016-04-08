@@ -18,3 +18,10 @@
 @task('admin')
     sudo apt-get install phpmyadmin
 @endtask
+
+@task('fixpermission')
+    cd /home/mirage.dev/
+    sudo chmod -R 777 image
+    sudo chmod -R 777 storage
+    sudo chmod -R 777 bootstrap/cache
+@endtask
