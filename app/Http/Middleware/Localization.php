@@ -15,7 +15,8 @@ class Localization
      */
     public function handle($request, Closure $next)
     {
-        app()->setLocale($request->get('language', 'en'));
+        $defaultLanguage = 'en';
+        app()->setLocale($request->get('language', $defaultLanguage)?:$defaultLanguage);
         return $next($request);
     }
 }
