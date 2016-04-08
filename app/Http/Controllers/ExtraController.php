@@ -10,6 +10,7 @@ use App\Jobs\Products\Extras\UpdateExtraJob;
 use App\Models\Extra;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Collection;
 
 class ExtraController extends Controller
 {
@@ -73,18 +74,18 @@ class ExtraController extends Controller
     }
 
     /**
-     * @param Request $request
+     * @param ExtraRequest|Request $request
      * @param Product $product
-     * @param Extra   $extra
+     * @param Extra $extra
      * @return mixed
      */
-    public function update(Request $request, Product $product, Extra $extra)
+    public function update(ExtraRequest $request, Product $product, Extra $extra)
     {
 
-        $this->validate($request, [
+        /*$this->validate($request, [
             'title'       => 'required',
             'description' => 'required'
-        ]);
+        ]);*/
 
         /**
          * update Extra Data of product

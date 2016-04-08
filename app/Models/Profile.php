@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Profile extends Model
 {
+    use LocalizeModelTrait;
+
     /**
      * Default MySQL table
      *
@@ -19,6 +21,10 @@ class Profile extends Model
      * @var array
      */
     protected $fillable = ['image', 'description'];
+
+    public $casts = [
+        'description' => 'array'
+    ];
 
     /**
      * Product Relationship

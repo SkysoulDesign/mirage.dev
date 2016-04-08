@@ -75,7 +75,7 @@ class UpdateExtraJob extends Job
 
         if ($this->image) {
             $imageName = $productCode . '-extra-image-' . $this->extra->id . '.' . $this->image->guessExtension();
-            $this->image->move(public_path() . $path, $imageName);
+            $this->image->move(base_path() . $path, $imageName);
 
             $this->extra->setAttribute('image', $path . $imageName);
         }

@@ -21,11 +21,28 @@ class ExtraRequest extends Request
      */
     public function rules()
     {
+        $mediaRequired = @$this->extra->id ? 'sometimes' : 'required';
+
         return [
-            'title'       => 'required',
-            'description' => 'required',
-            'image'       => 'required|mimes:png',
-            'video'       => 'mimes:mp4'
+            'title.en'       => 'required',
+            'description.en' => 'required',
+            'image'       => $mediaRequired.'|mimes:png',
+            'video'       => $mediaRequired.'|mimes:mp4'
+        ];
+    }
+
+    /**
+     * Set custom attributes for validator errors.
+     *
+     * @return array
+     */
+    public function attributes()
+    {
+        return [
+            'title.en' => 'Title', 'description.en' => 'Description',
+            'title.zh' => 'Chinese Title', 'description.zh' => 'Chinese Description',
+            'title.zh_tw' => 'Simplified Chinese Title', 'description.zh_tw' => 'Simplified Chinese Description',
+            'title.ja' => 'Japanese Title', 'description.ja' => 'Japanese Description',
         ];
     }
 }

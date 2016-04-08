@@ -6,6 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Extra extends Model
 {
+
+    use LocalizeModelTrait;
+
     /**
      * The table associated with the model.
      *
@@ -20,6 +23,10 @@ class Extra extends Model
      */
     protected $fillable = [
         'title', 'description', 'image',
+    ];
+
+    public $casts = [
+        'description' => 'array', 'title' => 'array'
     ];
 
     /**

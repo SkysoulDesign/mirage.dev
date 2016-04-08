@@ -68,7 +68,7 @@ class CreateExtraJob extends Job
         $productCode = $this->product->getAttribute('code');
 
         $filename = $productCode . '-extra-image-' . $extraID . '.' . $this->image->guessExtension();
-        $image = $this->image->move(public_path() . $path, $filename);
+        $image = $this->image->move(base_path() . $path, $filename);
 
         $extra->setAttribute('image', $path . $filename);
 

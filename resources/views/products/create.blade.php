@@ -10,32 +10,35 @@
 
             {{ csrf_field() }}
 
-            <div class="required field">
+            @include('products.partials.product-form-top')
+
+            {{--<div class="required field">
                 <label>Product Name</label>
-                <input type="text" name="name" placeholder="Name" value="{{ old('name') }}">
-            </div>
+                    <input type="text" name="name[en]" placeholder="Name" value="{{ old('name') }}">
+            </div>--}}
 
             <div class="required field">
                 <label>Product Code</label>
                 <input type="text" name="code" placeholder="Code" maxlength="5" value="{{ old('code') }}">
             </div>
 
-            <div class="required field">
+            {{--<div class="required field">
                 <label>Description (Displayed on the Mobile App)</label>
-                <textarea type="text" name="description" placeholder="Description" rows="2">{{ old('description') }}</textarea>
-            </div>
+                <textarea type="text" name="description" placeholder="Description"
+                          rows="2">{{ old('description') }}</textarea>
+            </div>--}}
 
             <div class="required field">
                 {{--<div class="medium-12 columns">--}}
-                    <label class="">Product Image (Displayed on the Mobile App)</label>
-                    <input type="file" name="image">
+                <label class="">Product Image (Displayed on the Mobile App)</label>
+                <input type="file" name="image">
                 {{--</div>--}}
             </div>
 
             <div class="required field">
                 {{--<div class="medium-12 columns">--}}
-                    <label class="">Poster (Displayed on the Mobile App)</label>
-                    <input type="file" name="poster">
+                <label class="">Poster (Displayed on the Mobile App)</label>
+                <input type="file" name="poster">
                 {{--</div>--}}
             </div>
 

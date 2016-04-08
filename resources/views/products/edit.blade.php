@@ -12,21 +12,23 @@
 
             {{ csrf_field() }}
 
-            <div class="required field">
-                <label>Product Name</label>
-                <input type="text" name="name" placeholder="Name" value="{{ old('name', $product->name) }}">
-            </div>
+            @include('products.partials.product-form-top')
+
+            {{--<div class="required field">--}}
+                {{--<label>Product Name</label>--}}
+                {{--<input type="text" name="name" placeholder="Name" value="{{ old('name', $product->name) }}">--}}
+            {{--</div>--}}
 
             <div class="required field">
                 <label>Product Code</label>
                 <input type="text" name="code" placeholder="Code" maxlength="5" value="{{ old('code', $product->code) }}">
             </div>
 
-            <div class="required field">
-                <label>Description (Displayed on the Mobile App)</label>
-                <textarea type="text" name="description" placeholder="Description"
-                          rows="4">{{ old('description', $product->profile->description) }}</textarea>
-            </div>
+            {{--<div class="required field">--}}
+                {{--<label>Description (Displayed on the Mobile App)</label>--}}
+                {{--<textarea type="text" name="description" placeholder="Description"--}}
+                          {{--rows="4">{{ old('description', $product->profile->description) }}</textarea>--}}
+            {{--</div>--}}
 
             @if($product->profile->image)
                 <div class="fields">

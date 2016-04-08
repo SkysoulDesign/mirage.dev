@@ -9,11 +9,11 @@
             <tbody>
             <tr>
                 <td class="two wide column">Title</td>
-                <td>{{ $extra->title }}</td>
+                <td>{{ implode(' / ', $extra->titleArray) }}</td>
             </tr>
             <tr>
                 <td>Description</td>
-                <td>{{ $extra->description }}</td>
+                <td>{{ implode(' / ', $extra->descriptionArray) }}</td>
             </tr>
             <tr>
                 <td>Image</td>
