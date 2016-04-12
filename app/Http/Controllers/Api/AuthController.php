@@ -177,10 +177,15 @@ class AuthController extends Controller
          */
         if ($user->is('admin')) {
 
-            $codes = Product::all()->transform(function ($product) {
-                /** @var Code $code */
-                return $product->codes()->with('product', 'product.extras', 'product.profile')->first();
+            $codes = Product::all()->transform(function ($product) use ($user) {
+                /** @var Code $temp */
+                $temp = $product->codes()->with('product', 'product.extras', 'product.profile')->first();
+                if($temp) {
+                    return $temp->setAttribute('user_id', $user->id);
+                }
             });
+
+
 
             $user->setRelation('codes', $codes);
 

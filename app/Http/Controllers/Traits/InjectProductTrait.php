@@ -47,7 +47,7 @@ trait InjectProductTrait
             }
 
             if (!$product->isEmpty()) {
-                $code = $this->getCodeByProduct($product->toArray());
+                $code = $this->getCodeByProduct($product->toArray(), $user);
                 if ($code) {
                     $codes = $codes->merge($code);
                 }
@@ -59,13 +59,17 @@ trait InjectProductTrait
 
     /**
      * @param $product
+     * @param $user
      * @return $this
      */
-    protected function getCodeByProduct($product)
+    protected function getCodeByProduct($product, $user)
     {
-        $code = Product::all()->whereIn('id', $product)->transform(function ($product) {
-            /** @var Code $code */
-            return $product->codes()->with('product', 'product.extras', 'product.profile')->first();
+        $code = Product::all()->whereIn('id', $product)->transform(function ($product) use($user) {
+            /** @var Code $temp */
+            $temp = $product->codes()->with('product', 'product.extras', 'product.profile')->first();
+            if($temp) {
+                return $temp->setAttribute('user_id', $user->id);
+            }
         });
         return $code;
     }
