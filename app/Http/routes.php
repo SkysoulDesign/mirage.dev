@@ -168,6 +168,10 @@ $app->group(['prefix' => 'api', 'as' => 'api.'], function ($app) {
 
     });
 
+    $app->group(['middleware' => ['api']], function ($app) {
+        $app->post('user/changePass', classie(ApiAuthController::class, 'changePassword'))->name('password.change');
+    });
+
     $app->group(['prefix' => 'auth', 'as' => 'auth.', 'middleware' => 'api'], function ($app) {
         $app->post('check', classie(ApiAuthController::class, 'check'))->name('check');
     });

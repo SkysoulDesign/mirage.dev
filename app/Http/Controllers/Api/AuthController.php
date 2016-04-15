@@ -12,6 +12,7 @@ use App\Models\Code;
 use App\Models\Product;
 use App\Models\User;
 use Illuminate\Contracts\Auth\Factory as Auth;
+use Illuminate\Contracts\Hashing\Hasher;
 use Illuminate\Http\Request;
 
 /**
@@ -180,11 +181,10 @@ class AuthController extends Controller
             $codes = Product::all()->transform(function ($product) use ($user) {
                 /** @var Code $temp */
                 $temp = $product->codes()->with('product', 'product.extras', 'product.profile')->first();
-                if($temp) {
+                if ($temp) {
                     return $temp->setAttribute('user_id', $user->id);
                 }
             });
-
 
 
             $user->setRelation('codes', $codes);
@@ -193,6 +193,32 @@ class AuthController extends Controller
 
     }
 
+    /**
+     * @param Request $request
+     * @param Hasher $hasher
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function changePassword(Request $request, Hasher $hasher)
+    {
+
+        /** @var User $user */
+        $user = $request->user('api');
+
+        $validator = $this->getValidationFactory()->make($request->all(), [
+            'current' => 'required',
+            'password' => 'required|confirmed|min:6|different:current',
+        ]);
+
+        if ($validator->fails())
+            return response()->json(['error' => $validator->errors()]);
+
+        if (!$hasher->check($request->get('current'), $user->getAuthPassword()))
+            return response()->json(['error' => 'Invalid Credentials']);
+
+        $user->setAttribute('password', $request->get('password'));
+        $user->save();
+        return response()->json(['status' => 'Password changed successfully']);
+    }
 
 
 }
