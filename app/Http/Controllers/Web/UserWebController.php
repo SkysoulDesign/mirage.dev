@@ -54,6 +54,8 @@ class UserWebController extends Controller
         $user = $this->user->load('codes', 'codes.product', 'codes.product.extras', 'codes.product.profile');
         $this->injectProductCombo($user);
 
+        $this->adminFunction($user);
+
         return view('web.index')->with('codes', $user->codes);
     }
 

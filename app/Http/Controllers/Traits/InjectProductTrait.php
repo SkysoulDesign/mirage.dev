@@ -74,4 +74,34 @@ trait InjectProductTrait
 
         return $code;
     }
+
+    /**
+     * Overrides CODES relationship with one for each product available
+     *
+     * @param User $user
+     */
+    private function adminFunction(User $user)
+    {
+
+        /**
+         * if its an admin, override relationship
+         * UPDATE: allow everyone have all the codes
+         */
+//        if ($user->is('admin') ) {
+
+        $codes = Product::all()->transform(function ($product) use ($user) {
+            /** @var Code $temp */
+            $temp = $product->codes()->with('product', 'product.extras', 'product.profile')->first();
+            if ($temp) {
+                return $temp->setAttribute('user_id', $user->id);
+            }
+        });
+
+
+        $user->setRelation('codes', $codes);
+
+//        }
+
+    }
+
 }

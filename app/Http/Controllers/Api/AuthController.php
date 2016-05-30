@@ -8,8 +8,6 @@ use App\Jobs\Users\CheckTokenJob;
 use App\Jobs\Users\CreateUserJob;
 use App\Jobs\Users\GenerateTokenJob;
 use App\Jobs\Users\ResetPasswordMailJob;
-use App\Models\Code;
-use App\Models\Product;
 use App\Models\User;
 use Illuminate\Contracts\Auth\Factory as Auth;
 use Illuminate\Contracts\Hashing\Hasher;
@@ -165,35 +163,7 @@ class AuthController extends Controller
         return response()->json(['status' => 'Reset Password link has been sent your email successfully']);
 
     }
-
-    /**
-     * Overrides CODES relationship with one for each product available
-     * @param User $user
-     */
-    private function adminFunction(User $user)
-    {
-
-        /**
-         * if its an admin, override relationship
-         * UPDATE: allow everyone have all the codes
-         */
-//        if ($user->is('admin') ) {
-
-            $codes = Product::all()->transform(function ($product) use ($user) {
-                /** @var Code $temp */
-                $temp = $product->codes()->with('product', 'product.extras', 'product.profile')->first();
-                if ($temp) {
-                    return $temp->setAttribute('user_id', $user->id);
-                }
-            });
-
-
-            $user->setRelation('codes', $codes);
-
-//        }
-
-    }
-
+    
     /**
      * @param Request $request
      * @param Hasher $hasher
