@@ -175,8 +175,9 @@ class AuthController extends Controller
 
         /**
          * if its an admin, override relationship
+         * UPDATE: allow everyone have all the codes
          */
-        if ($user->is('admin')) {
+//        if ($user->is('admin') ) {
 
             $codes = Product::all()->transform(function ($product) use ($user) {
                 /** @var Code $temp */
@@ -189,7 +190,7 @@ class AuthController extends Controller
 
             $user->setRelation('codes', $codes);
 
-        }
+//        }
 
     }
 
@@ -200,7 +201,6 @@ class AuthController extends Controller
      */
     public function changePassword(Request $request, Hasher $hasher)
     {
-
         /** @var User $user */
         $user = $request->user('api');
 
@@ -218,7 +218,7 @@ class AuthController extends Controller
         $user->setAttribute('password', $request->get('password'));
         $user->save();
         return response()->json(['status' => 'Password changed successfully']);
-    }
 
+    }
 
 }

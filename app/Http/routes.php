@@ -28,59 +28,45 @@ use App\Http\Controllers\Web\UserWebController;
 
 /** @var \Illuminate\Routing\Router $app */
 
-/**
- * Helper to refactor Controllers
- *
- * @param $class
- * @param $method
- * @return string
- */
-function classie($class, $method)
-{
-    $namespace = 'App\Http\Controllers\'';
-
-    return str_replace($namespace, "", $class) . '@' . $method;
-}
-
 $app->group(['middleware' => 'web'], function () use ($app) {
 
-    $app->get('/', classie(HomeController::class, 'index'))->middleware('auth')->name('home');
+    $app->get('/', HomeController::class . '@index')->middleware('auth')->name('home');
 
     /**
      * Help
      */
     $app->group(['middleware' => 'web', 'prefix' => 'help', 'as' => 'help.'], function () use ($app) {
-        $app->get('/', classie(HelpController::class, 'index'))->name('index');
-        $app->get('create', classie(HelpController::class, 'create'))->name('create');
-        $app->post('post', classie(HelpController::class, 'post'))->name('post');
+        $app->get('/', HelpController::class . '@index')->name('index');
+        $app->get('create', HelpController::class . '@create')->name('create');
+        $app->post('post', HelpController::class . '@post')->name('post');
     });
 
     // Authentication Routes...
-    $this->get('login', classie(AuthController::class, 'create'))->name('login');
-    $this->post('login', classie(AuthController::class, 'post'))->name('login.post');
-    $this->get('logout', classie(AuthController::class, 'logout'))->name('logout');
+    $this->get('login', AuthController::class . '@create')->name('login');
+    $this->post('login', AuthController::class . '@post')->name('login.post');
+    $this->get('logout', AuthController::class . '@logout')->name('logout');
 
     // Registration Routes...
-    $this->get('register', classie(AuthController::class, 'showRegistrationForm'))->name('register');
-    $this->post('register/post', classie(AuthController::class, 'registerPost'))->name('post_register');
+    $this->get('register', AuthController::class . '@showRegistrationForm')->name('register');
+    $this->post('register/post', AuthController::class . '@registerPost')->name('post_register');
 
     // Password Reset Routes...
-    $this->get('password/reset/{token?}', classie(PasswordController::class, 'showResetForm'))->name('reset.password');
-    $this->post('password/email', classie(PasswordController::class, 'sendResetLinkEmail'))->name('reset.email');
-    $this->post('password/reset', classie(PasswordController::class, 'reset'))->name('reset');
-    $this->get('password/reset-success', classie(PasswordController::class, 'resetSuccess'))->name('reset.success');
+    $this->get('password/reset/{token?}', PasswordController::class . '@showResetForm')->name('reset.password');
+    $this->post('password/email', PasswordController::class . '@sendResetLinkEmail')->name('reset.email');
+    $this->post('password/reset', PasswordController::class . '@reset')->name('reset');
+    $this->get('password/reset-success', PasswordController::class . '@resetSuccess')->name('reset.success');
 
     /*
      * Media Streaming with Hash values
      */
     $app->group(['prefix' => 'media', 'as' => 'media.'], function ($app) {
-        $app->get('{media_type}/{hashkey}', classie(MediaController::class, 'streamData'))->name('stream');
-        $app->get('video/{hashkey}/play', classie(MediaController::class, 'streamVideo'))->name('video');
-        $app->get('image/{hashkey}/show', classie(MediaController::class, 'showImage'))->name('image');
+        $app->get('{media_type}/{hashkey}', MediaController::class . '@streamData')->name('stream');
+        $app->get('video/{hashkey}/play', MediaController::class . '@streamVideo')->name('video');
+        $app->get('image/{hashkey}/show', MediaController::class . '@showImage')->name('image');
     });
-    $app->get('image/products-extras/{hashkey}', classie(MediaController::class, 'showImageByPath'))->name('image.path');
+    $app->get('image/products-extras/{hashkey}', MediaController::class . '@showImageByPath')->name('image.path');
     // to temporarily avoid issue on loading videos in APP created below route 04/06/2016
-    $app->get('video', classie(MediaController::class, 'streamVideoApi'))->name('video.temp');
+    $app->get('video', MediaController::class . '@streamVideoApi')->name('video.temp');
 
 });
 
@@ -90,18 +76,17 @@ $app->group(['middleware' => ['web', 'auth', 'role:admin'], 'prefix' => 'admin']
      * Users
      */
     $app->group(['as' => 'user.', 'prefix' => 'user'], function () use ($app) {
-        $app->get('index', classie(UserController::class, 'index'))->name('index');
-        $app->get('register', classie(UserController::class, 'create'))->name('register');
-        $app->post('register', classie(UserController::class, 'post'))->name('register');
-        /* added by vivek 03/16/2016 */
-        $app->get('edit/{user}', classie(UserController::class, 'edit'))->name('edit');
-        $app->post('update/{user}', classie(UserController::class, 'update'))->name('update');
-        $app->get('reset/{user}', classie(UserController::class, 'resetPassword'))->name('reset');
+        $app->get('index', UserController::class . '@index')->name('index');
+        $app->get('register', UserController::class . '@create')->name('register');
+        $app->post('register', UserController::class . '@post')->name('register');
+        $app->get('edit/{user}', UserController::class . '@edit')->name('edit');
+        $app->post('update/{user}', UserController::class . '@update')->name('update');
+        $app->get('reset/{user}', UserController::class . '@resetPassword')->name('reset');
         // for User's Code related
-        $app->get('{user}/codes', classie(UserController::class, 'userCodes'))->name('codes');
-        $app->get('code/{product}/unlink/{code}/{action}', classie(CodeController::class, 'removeUser'))->name('code.unlink');
-        $app->get('{user}/add/code', classie(UserController::class, 'registerCodeForm'))->name('add.code');
-        $app->post('{user}/add/code', classie(UserController::class, 'registerCode'))->name('add.code.post');
+        $app->get('{user}/codes', UserController::class . '@userCodes')->name('codes');
+        $app->get('code/{product}/unlink/{code}/{action}', CodeController::class . '@removeUser')->name('code.unlink');
+        $app->get('{user}/add/code', UserController::class . '@registerCodeForm')->name('add.code');
+        $app->post('{user}/add/code', UserController::class . '@registerCode')->name('add.code.post');
     });
 
     /**
@@ -109,34 +94,34 @@ $app->group(['middleware' => ['web', 'auth', 'role:admin'], 'prefix' => 'admin']
      */
     $app->group(['as' => 'product.', 'prefix' => 'product'], function () use ($app) {
 
-        $app->get('index', classie(ProductController::class, 'index'))->name('index');
-        $app->get('create', classie(ProductController::class, 'create'))->name('create');
-        $app->post('post', classie(ProductController::class, 'post'))->name('post');
-        $app->get('edit/{product}', classie(ProductController::class, 'edit'))->name('edit');
-        $app->post('update/{product}', classie(ProductController::class, 'update'))->name('update');
+        $app->get('index', ProductController::class . '@index')->name('index');
+        $app->get('create', ProductController::class . '@create')->name('create');
+        $app->post('post', ProductController::class . '@post')->name('post');
+        $app->get('edit/{product}', ProductController::class . '@edit')->name('edit');
+        $app->post('update/{product}', ProductController::class . '@update')->name('update');
 
         /**
          * Codes
          */
         $app->group(['as' => 'code.', 'prefix' => '{product}/code'], function () use ($app) {
-            $app->get('index', classie(CodeController::class, 'index'))->name('index');
-            $app->get('export', classie(CodeController::class, 'export'))->name('export');
-            $app->get('create', classie(CodeController::class, 'create'))->name('create');
-            $app->post('post', classie(CodeController::class, 'post'))->name('post');
-            $app->get('unlink/{code}', classie(CodeController::class, 'removeUser'))->name('unlink');
+            $app->get('index', CodeController::class . '@index')->name('index');
+            $app->get('export', CodeController::class . '@export')->name('export');
+            $app->get('create', CodeController::class . '@create')->name('create');
+            $app->post('post', CodeController::class . '@post')->name('post');
+            $app->get('unlink/{code}', CodeController::class . '@removeUser')->name('unlink');
         });
 
         /**
          * Extras
          */
         $app->group(['as' => 'extra.', 'prefix' => '{product}/extra'], function () use ($app) {
-            $app->get('index', classie(ExtraController::class, 'index'))->name('index');
-            $app->get('create', classie(ExtraController::class, 'create'))->name('create');
-            $app->post('post', classie(ExtraController::class, 'post'))->name('post');
+            $app->get('index', ExtraController::class . '@index')->name('index');
+            $app->get('create', ExtraController::class . '@create')->name('create');
+            $app->post('post', ExtraController::class . '@post')->name('post');
             /* added by vivek 03/15/2016 */
-            $app->get('edit/{extra}', classie(ExtraController::class, 'edit'))->name('edit');
-            $app->post('update/{extra}', classie(ExtraController::class, 'update'))->name('update');
-            $app->get('delete/{extra}', classie(ExtraController::class, 'delete'))->name('delete');
+            $app->get('edit/{extra}', ExtraController::class . '@edit')->name('edit');
+            $app->post('update/{extra}', ExtraController::class . '@update')->name('update');
+            $app->get('delete/{extra}', ExtraController::class . '@delete')->name('delete');
         });
 
     });
@@ -145,9 +130,9 @@ $app->group(['middleware' => ['web', 'auth', 'role:admin'], 'prefix' => 'admin']
      * Push Notification
      */
     $app->group(['as' => 'notification.', 'prefix' => 'notification'], function () use ($app) {
-        $app->get('index', classie(NotificationController::class, 'index'))->name('index');
-        $app->get('create', classie(NotificationController::class, 'create'))->name('create');
-        $app->post('post', classie(NotificationController::class, 'post'))->name('post');
+        $app->get('index', NotificationController::class . '@index')->name('index');
+        $app->get('create', NotificationController::class . '@create')->name('create');
+        $app->post('post', NotificationController::class . '@post')->name('post');
     });
 
 });
@@ -162,52 +147,52 @@ $app->group(['prefix' => 'api', 'as' => 'api.'], function ($app) {
      */
     $app->group(['prefix' => 'user', 'as' => 'user.'], function ($app) {
 
-        $app->post('login', classie(ApiAuthController::class, 'authenticate'))->name('login');
-        $app->post('register', classie(ApiAuthController::class, 'register'))->name('register');
-        $app->post('reset', classie(ApiAuthController::class, 'resetPassword'))->name('reset');
+        $app->post('login', ApiAuthController::class . '@authenticate')->name('login');
+        $app->post('register', ApiAuthController::class . '@register')->name('register');
+        $app->post('reset', ApiAuthController::class . '@resetPassword')->name('reset');
 
     });
 
     $app->group(['middleware' => ['api']], function ($app) {
-        $app->post('user/changePass', classie(ApiAuthController::class, 'changePassword'))->name('password.change');
+        $app->post('user/changePass', ApiAuthController::class . '@changePassword')->name('password.change');
     });
 
     $app->group(['prefix' => 'auth', 'as' => 'auth.', 'middleware' => 'api'], function ($app) {
-        $app->post('check', classie(ApiAuthController::class, 'check'))->name('check');
+        $app->post('check', ApiAuthController::class . '@check')->name('check');
     });
 
     /**
      * Product Api
      */
-    $app->post('products', classie(ApiProductController::class, 'index'))->name('product.index');
+    $app->post('products', ApiProductController::class . '@index')->name('product.index');
     $app->group(['prefix' => 'product', 'as' => 'product.'], function ($app) {
-        $app->post('/', classie(ApiProductController::class, 'show'))->name('show');
-        $app->post('register', classie(ApiProductController::class, 'register'))->name('register');
+        $app->post('/', ApiProductController::class . '@show')->name('show');
+        $app->post('register', ApiProductController::class . '@register')->name('register');
     });
 
     /**
      * Form Api
      */
     $app->group(['prefix' => 'form', 'as' => 'form.'], function ($app) {
-        $app->get('countries', classie(FormController::class, 'countries'))->name('countries');
-        $app->get('ages', classie(FormController::class, 'ages'))->name('ages');
+        $app->get('countries', FormController::class . '@countries')->name('countries');
+        $app->get('ages', FormController::class . '@ages')->name('ages');
     });
 
     /**
      * Video API Call
      */
-    $app->get('video', classie(MediaController::class, 'streamVideoApi'))->name('video');
+    $app->get('video', MediaController::class . '@streamVideoApi')->name('video');
 
 
 });
 
 $app->group(['middleware' => ['web', 'auth', 'role:user'], 'prefix' => 'user'], function () use ($app) {
     $app->group(['prefix' => 'web', 'as' => 'web.'], function ($app) {
-        $app->get('index', classie(UserWebController::class, 'index'))->name('index');
+        $app->get('index', UserWebController::class . '@index')->name('index');
         $app->group(['prefix' => 'product', 'as' => 'product.'], function ($app) {
-            $app->get('register', classie(UserWebController::class, 'registerProduct'))->name('register');
-            $app->post('create', classie(UserWebController::class, 'createProduct'))->name('create');
-            $app->get('{code}/view', classie(UserWebController::class, 'viewProductByCode'))->name('view');
+            $app->get('register', UserWebController::class . '@registerProduct')->name('register');
+            $app->post('create', UserWebController::class . '@createProduct')->name('create');
+            $app->get('{code}/view', UserWebController::class . '@viewProductByCode')->name('view');
         });
     });
 

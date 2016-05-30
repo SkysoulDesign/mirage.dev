@@ -6,10 +6,9 @@ use App\Models\Product;
 use App\Models\User;
 
 /**
- * Created by PhpStorm.
- * User: Vivek
- * Date: 3/31/16
- * Time: 3:39 PM
+ * Class InjectProductTrait
+ *
+ * @package App\Http\Controllers\Traits
  */
 trait InjectProductTrait
 {
@@ -18,6 +17,7 @@ trait InjectProductTrait
      * injectProductCombo:
      * if it's an user, check product combination (1, 2, 3) exists and auto inject product (12)
      * also need to do in reverse
+     *
      * @param User $user
      */
     protected function injectProductCombo(User $user)
@@ -25,7 +25,7 @@ trait InjectProductTrait
         if (!$user->is('admin')) {
             $codes = $user->getRelation('codes');
 
-            if($codes->isEmpty()) return;
+            if ($codes->isEmpty()) return;
 
             $productCombo = collect([1, 2, 3]);
             $injectProduct = collect([12]);
@@ -64,13 +64,14 @@ trait InjectProductTrait
      */
     protected function getCodeByProduct($product, $user)
     {
-        $code = Product::all()->whereIn('id', $product)->transform(function ($product) use($user) {
+        $code = Product::all()->whereIn('id', $product)->transform(function ($product) use ($user) {
             /** @var Code $temp */
             $temp = $product->codes()->with('product', 'product.extras', 'product.profile')->first();
-            if($temp) {
+            if ($temp) {
                 return $temp->setAttribute('user_id', $user->id);
             }
         });
+
         return $code;
     }
 }
