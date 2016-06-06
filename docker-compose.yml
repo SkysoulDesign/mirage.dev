@@ -1,0 +1,21 @@
+php:
+  build: .
+  dockerfile: ./build/docker/php/Dockerfile
+  image: php:fpm-alpine
+  container_name: php
+  volumes:
+    - .:/home/mirage
+  entrypoint:
+      - php-fpm
+
+nginx:
+  image: nginx:alpine
+  container_name: nginx
+  volumes_from:
+    - php
+  volumes:
+    - ./build/nginx.conf:/etc/nginx/conf.d/default.conf
+  links:
+    - php
+  ports:
+    - 80:80
