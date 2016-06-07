@@ -26,6 +26,8 @@ use App\Http\Controllers\Products\ProductController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\Web\UserWebController;
 
+dd($_SERVER['SERVER_NAME']);
+
 /** @var \Illuminate\Routing\Router $app */
 
 $app->group(['middleware' => 'web'], function () use ($app) {
