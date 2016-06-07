@@ -26,7 +26,7 @@ use App\Http\Controllers\Products\ProductController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\Web\UserWebController;
 
-dd($_SERVER['SERVER_NAME']);
+dd('HELLO U ARE IN CHINA');
 
 /** @var \Illuminate\Routing\Router $app */
 
