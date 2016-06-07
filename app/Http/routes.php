@@ -26,15 +26,16 @@ use App\Http\Controllers\Products\ProductController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\Web\UserWebController;
 
-echo gethostname();
-echo request()->server('SERVER_NAME');
-
 
 /** @var \Illuminate\Routing\Router $app */
 
 $app->group(['middleware' => 'web'], function () use ($app) {
 
     $app->get('/', HomeController::class . '@index')->middleware('auth')->name('home');
+
+    $app->get('hostname', function () {
+        return gethostname();
+    });
 
     /**
      * Help
