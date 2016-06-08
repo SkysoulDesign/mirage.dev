@@ -5,8 +5,8 @@
     <title>Mirage</title>
 </head>
 
-<link rel="stylesheet" href="{{ asset('css/semantic.min.css') }}">
-<link rel="stylesheet" href="{{ asset('css/app.css') }}">
+<link rel="stylesheet" href="{{ secure_asset('css/semantic.min.css') }}">
+<link rel="stylesheet" href="{{ secure_asset('css/app.css') }}">
 
 <body>
 
@@ -18,9 +18,9 @@
 
 </div>
 
-<script src="{{ asset('js/jquery.min.js') }}"></script>
-<script src="{{ asset('js/semantic.min.js') }}"></script>
-<script src="{{ asset('js/app.js') }}"></script>
+<script src="{{ secure_asset('js/jquery.min.js') }}"></script>
+<script src="{{ secure_asset('js/semantic.min.js') }}"></script>
+<script src="{{ secure_asset('js/app.js') }}"></script>
 
 </body>
 </html>
