@@ -34,6 +34,9 @@ $app->group(['middleware' => 'web'], function () use ($app) {
     $app->get('/', HomeController::class . '@index')->middleware('auth')->name('home');
 
     $app->get('hostname', function () {
+
+        echo request()->isSecure();
+
         return gethostname();
     });
 
