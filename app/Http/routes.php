@@ -35,9 +35,10 @@ $app->group(['middleware' => 'web'], function () use ($app) {
 
     $app->get('hostname', function () {
 
-        echo request()->isSecure();
+        echo 'is secure?'  . request()->isSecure();
 
         return gethostname();
+        
     });
 
     /**
