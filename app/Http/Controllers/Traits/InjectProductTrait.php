@@ -97,10 +97,7 @@ trait InjectProductTrait
             }
         });
 
-
         $user->setRelation('codes', $codes);
-
-//        }
 
     }
 
