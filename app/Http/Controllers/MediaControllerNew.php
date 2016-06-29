@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Extra;
 use Illuminate\Http\Request;
 
 /**
@@ -23,6 +24,13 @@ class MediaControllerNew extends Controller
 
     }
 
+    /**
+     * @param \Illuminate\Http\Request $request
+     *
+     * @param \App\Models\Extra        $extra
+     *
+     * @return \Symfony\Component\HttpFoundation\StreamedResponse
+     */
     public function streamVideoApi(Request $request, Extra $extra)
     {
         return $this->getStreamResponse(
@@ -31,6 +39,12 @@ class MediaControllerNew extends Controller
         );
     }
 
+    /**
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Models\Extra        $extra
+     *
+     * @return \Symfony\Component\HttpFoundation\StreamedResponse
+     */
     public function streamData(Request $request, Extra $extra)
     {
 
