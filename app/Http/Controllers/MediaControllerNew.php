@@ -72,6 +72,11 @@ class MediaControllerNew extends Controller
     {
 
         $size = \Storage::size($path = $this->getVideoPath($extra->id, $aspect));
+
+        return response()->download($path, 'test123', [
+            'Content-Type' => 'video/mp4'
+        ]);
+
         $stream = fopen($path, "r");
 
         $type = 'video/mp4';
