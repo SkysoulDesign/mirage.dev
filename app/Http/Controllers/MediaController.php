@@ -10,7 +10,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Traits\InjectProductTrait;
 use App\Jobs\Media\StreamImageJob;
-use App\Jobs\Media\StreamVideoJob;
 use App\Models\Extra;
 use Illuminate\Http\Request;
 
@@ -124,46 +123,7 @@ class MediaController extends Controller
         $this->user = $request->user('api');
         $this->getProductVideoPath($request->get('extra'), 'json', $request->get('aspect', ''));
 
-        $size = \Storage::size($this->getRealPath($this->filepath));
-        $file = \Storage::get($this->getRealPath($this->filepath));
-        $stream = fopen($this->getRealPath($this->filepath), "r");
-
-        $type = 'video/mp4';
-        $start = 0;
-        $length = $size;
-        $status = 200;
-
-        $headers = ['Content-Type' => $type, 'Content-Length' => $size, 'Accept-Ranges' => 'bytes'];
-
-        if (false !== $range = request()->server('HTTP_RANGE', false)) {
-            list($param, $range) = explode('=', $range);
-            if (strtolower(trim($param)) !== 'bytes') {
-                header('HTTP/1.1 400 Invalid Request');
-                exit;
-            }
-            list($from, $to) = explode('-', $range);
-            if ($from === '') {
-                $end = $size - 1;
-                $start = $end - intval($from);
-            } elseif ($to === '') {
-                $start = intval($from);
-                $end = $size - 1;
-            } else {
-                $start = intval($from);
-                $end = intval($to);
-            }
-            $length = $end - $start + 1;
-            $status = 206;
-            $headers['Content-Range'] = sprintf('bytes %d-%d/%d', $start, $end, $size);
-        }
-
-        return response()->stream(function() use ($stream, $start, $length) {
-            fseek($stream, $start, SEEK_SET);
-            echo fread($stream, $length);
-            fclose($stream);
-        }, $status, $headers);
-
-        $this->streamVideo();
+        return $this->streamVideo();
 
     }
 
@@ -252,7 +212,7 @@ class MediaController extends Controller
 
         switch ($this->media_type) {
             case 'video':
-                $this->streamVideo();
+                return $this->streamVideo();
                 break;
             case 'image':
                 $this->showImage();
@@ -270,10 +230,51 @@ class MediaController extends Controller
     public function streamVideo()
     {
 
+        $size = \Storage::size($this->getRealPath($this->filepath));
+        $file = \Storage::get($this->getRealPath($this->filepath));
+        $stream = fopen($this->getRealPath($this->filepath), "r");
+
+        $type = 'video/mp4';
+        $start = 0;
+        $length = $size;
+        $status = 200;
+
+        $headers = ['Content-Type' => $type, 'Content-Length' => $size, 'Accept-Ranges' => 'bytes'];
+
+        if (false !== $range = request()->server('HTTP_RANGE', false)) {
+            list($param, $range) = explode('=', $range);
+            if (strtolower(trim($param)) !== 'bytes') {
+                header('HTTP/1.1 400 Invalid Request');
+                exit;
+            }
+            list($from, $to) = explode('-', $range);
+            if ($from === '') {
+                $end = $size - 1;
+                $start = $end - intval($from);
+            } elseif ($to === '') {
+                $start = intval($from);
+                $end = $size - 1;
+            } else {
+                $start = intval($from);
+                $end = intval($to);
+            }
+            $length = $end - $start + 1;
+            $status = 206;
+            $headers['Content-Range'] = sprintf('bytes %d-%d/%d', $start, $end, $size);
+        }
+
+        return response()->stream(function() use ($stream, $start, $length) {
+            fseek($stream, $start, SEEK_SET);
+            echo fread($stream, $length);
+            fclose($stream);
+        }, $status, $headers);
+
+
+
 //        dd($this->getRealPath($this->filepath));
-        $video = new StreamVideoJob($this->getRealPath($this->filepath));
-        $video->start();
-        exit;
+//        $video = new StreamVideoJob($this->getRealPath($this->filepath));
+//        $video->start();
+//        exit;
     }
 
     /**
