@@ -16,11 +16,11 @@ class ProxyMiddleware
     public function handle($request, Closure $next)
     {
 
-        $request->setTrustedProxies([
-            '114.55.103.163',
-            '223.197.27.204',
-            $request->getClientIp()
-        ]);
+//        $request->setTrustedProxies([
+//            '114.55.103.163',
+//            '223.197.27.204',
+//            $request->getClientIp()
+//        ]);
 
         return $next($request);
     }
