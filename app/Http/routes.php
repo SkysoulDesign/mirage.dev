@@ -20,7 +20,7 @@ use App\Http\Controllers\CodeController;
 use App\Http\Controllers\ExtraController;
 use App\Http\Controllers\HelpController;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\MediaController;
+use App\Http\Controllers\MediaControllerNew as MediaController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\Products\ProductController;
 use App\Http\Controllers\UserController;
@@ -70,8 +70,8 @@ $app->group(['middleware' => 'web'], function () use ($app) {
      */
     $app->group(['prefix' => 'media', 'as' => 'media.'], function ($app) {
         $app->get('{media_type}/{hashkey}', MediaController::class . '@streamData')->name('stream');
-        $app->get('video/{hashkey}/play', MediaController::class . '@streamVideo')->name('video');
-        $app->get('image/{hashkey}/show', MediaController::class . '@showImage')->name('image');
+//        $app->get('video/{hashkey}/play', MediaController::class . '@streamVideo')->name('video');
+//        $app->get('image/{hashkey}/show', MediaController::class . '@showImage')->name('image');
     });
     $app->get('image/products-extras/{hashkey}', MediaController::class . '@showImageByPath')->name('image.path');
     // to temporarily avoid issue on loading videos in APP created below route 04/06/2016
