@@ -54,7 +54,10 @@ return [
     |
     */
 
-    'from' => ['address' => null, 'name' => null],
+    'from' => [
+        'address' => 'mirage3d@soapstudio.com',
+        'name' => 'Mirage 3D'
+    ],
 
     /*
     |--------------------------------------------------------------------------
