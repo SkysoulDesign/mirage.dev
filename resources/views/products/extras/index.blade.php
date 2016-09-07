@@ -8,14 +8,14 @@
         <table class="ui definition table">
             <tbody>
             <tr>
-                {{ dd($extra->titleArray) }}
+
                 <td class="two wide column">Title</td>
-                <td>{{ implode(' / ', $extra->titleArray) }}</td>
+                <td>{{ implode(' / ', json_encode($extra->getOriginal('title'), true)) }}</td>
 
             </tr>
             <tr>
                 <td>Description</td>
-                <td>{{ implode(' / ', $extra->descriptionArray) }}</td>
+                <td>{{ implode(' / ',json_encode($extra->getOriginal('description'), true)) }}</td>
             </tr>
             <tr>
                 <td>Image</td>
@@ -30,9 +30,9 @@
                 <td>
                     <div class="ui segment compact">
                         {{--<video controls width="500">--}}
-                            {{--<source src="{{ asset($extra->video) }}" type="video/mp4">--}}
-                            {{--<source src="{{ asset($extra->video) }}" type="video/ogg">--}}
-                            {{--Your browser does not support the video tag.--}}
+                        {{--<source src="{{ asset($extra->video) }}" type="video/mp4">--}}
+                        {{--<source src="{{ asset($extra->video) }}" type="video/ogg">--}}
+                        {{--Your browser does not support the video tag.--}}
                         {{--</video>--}}
                         <video controls width="500"
                                src="{{ route('media.stream', array('video', encrypt('code;;;0;;;'.$extra->id))) }}"></video>
