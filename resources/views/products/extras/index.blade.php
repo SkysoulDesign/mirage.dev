@@ -8,7 +8,7 @@
         <table class="ui definition table">
             <tbody>
             <tr>
-
+                {{ dd(json_encode($extra->getOriginal('title'), true)) }}
                 <td class="two wide column">Title</td>
                 <td>{{ implode(' / ', json_encode($extra->getOriginal('title'), true)) }}</td>
 
