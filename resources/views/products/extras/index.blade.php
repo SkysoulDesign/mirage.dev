@@ -9,7 +9,7 @@
             <tbody>
             <tr>
                 <td class="two wide column">Title</td>
-                <td>{{ implode(' / ', json_decode($this->getOriginal('title'), true)) }}</td>
+{{--                <td>{{ implode(' / ', json_decode($this->getOriginal('title'), true)) }}</td>--}}
             </tr>
             <tr>
                 <td>Description</td>
