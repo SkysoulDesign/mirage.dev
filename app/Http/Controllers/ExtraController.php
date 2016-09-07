@@ -21,7 +21,6 @@ class ExtraController extends Controller
      */
     public function index(Product $product)
     {
-        dd($product->extras);
         return view('products.extras.index', compact('product'))->with('extras', $product->extras);
     }
 
