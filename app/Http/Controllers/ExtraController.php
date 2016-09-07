@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests;
 use App\Http\Requests\ExtraRequest;
 use App\Jobs\Products\Extras\CreateExtraJob;
 use App\Jobs\Products\Extras\DeleteExtraJob;
@@ -22,6 +21,7 @@ class ExtraController extends Controller
      */
     public function index(Product $product)
     {
+        dd($product->extras);
         return view('products.extras.index', compact('product'))->with('extras', $product->extras);
     }
 
