@@ -8,7 +8,7 @@
         <table class="ui definition table">
             <tbody>
             <tr>
-                {{ dd($extra->titleArray) }}
+                {{ dd($extra->title) }}
                 <td class="two wide column">Title</td>
                 <td>{{ implode(' / ', $extra->titleArray) }}</td>
 
