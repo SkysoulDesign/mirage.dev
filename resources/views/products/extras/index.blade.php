@@ -8,8 +8,10 @@
         <table class="ui definition table">
             <tbody>
             <tr>
+                {{ dd($extra->titleArray) }}
                 <td class="two wide column">Title</td>
                 <td>{{ implode(' / ', $extra->titleArray) }}</td>
+
             </tr>
             <tr>
                 <td>Description</td>
@@ -37,7 +39,7 @@
                     </div>
                 </td>
             </tr>
-            <tr>{{ dd('test') }}
+            <tr>
                 <td>Actions</td>
                 <td>
                     <div class="ui small menu compact">
