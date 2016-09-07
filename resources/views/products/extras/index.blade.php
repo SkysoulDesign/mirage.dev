@@ -10,6 +10,7 @@
             <tr>
                 <td class="two wide column">Title</td>
                 <td>{{ implode(' / ', $extra->titleArray) }}</td>
+                {{ dd('hi') }}
             </tr>
             <tr>
                 <td>Description</td>
