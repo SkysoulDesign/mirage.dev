@@ -13,7 +13,7 @@
             </tr>
             <tr>
                 <td>Description</td>
-                <td>{{ implode(' / ', json_decode($this->getOriginal('description'), true)) }}</td>
+{{--                <td>{{ implode(' / ', json_decode($this->getOriginal('description'), true)) }}</td>--}}
             </tr>
             <tr>
                 <td>Image</td>
