@@ -8,14 +8,14 @@
         <table class="ui definition table">
             <tbody>
             <tr>
-                {{ dd(json_encode($extra->getOriginal('title'), true)) }}
+
                 <td class="two wide column">Title</td>
-                <td>{{ implode(' / ', json_encode($extra->getOriginal('title'), true)) }}</td>
+                <td>{{ implode(' / ', json_decode($extra->getOriginal('title'), true)) }}</td>
 
             </tr>
             <tr>
                 <td>Description</td>
-                <td>{{ implode(' / ',json_encode($extra->getOriginal('description'), true)) }}</td>
+                <td>{{ implode(' / ',json_decode($extra->getOriginal('description'), true)) }}</td>
             </tr>
             <tr>
                 <td>Image</td>
