@@ -29,7 +29,7 @@ trait LocalizeModelTrait
 
     public function getDescriptionArrayAttribute()
     {
-        return json_decode($this->getOriginal('description'), true);
+        return json_decode($this->description, true);
     }
 
     public function getTitleAttribute($name)
@@ -39,7 +39,7 @@ trait LocalizeModelTrait
 
     public function getTitleArrayAttribute()
     {
-        return json_decode($this->getOriginal('title'), true);
+        return json_decode($this->title, true);
     }
 
     public function getLocalize($json)
