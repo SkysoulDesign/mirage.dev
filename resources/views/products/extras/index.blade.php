@@ -8,13 +8,12 @@
         <table class="ui definition table">
             <tbody>
             <tr>
-                {{ dd($extra->titleArray, $extra->getOriginal('title')) }}
                 <td class="two wide column">Title</td>
-                <td>{{ implode(' / ', $extra->titleArray) }}</td>
+                <td>{{ implode(' / ', json_decode($this->getOriginal('title'), true)) }}</td>
             </tr>
             <tr>
                 <td>Description</td>
-                <td>{{ implode(' / ', $extra->descriptionArray) }}</td>
+                <td>{{ implode(' / ', json_decode($this->getOriginal('description'), true)) }}</td>
             </tr>
             <tr>
                 <td>Image</td>
