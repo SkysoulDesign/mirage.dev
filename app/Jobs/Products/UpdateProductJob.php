@@ -70,9 +70,9 @@ class UpdateProductJob extends Job
             'image' => $this->files->has('image') ?
                 $this->moveFile($this->files->get('image'), '/image/products/', 'figurine') : $this->product->image
         ]);
-        dd($this->request->input('description'));
+        dd($this->request->get('description'));
         $this->product->profile->update([
-            'description' => $this->request->input('description'),
+            'description' => $this->request->get('description'),
             'image' => $this->files->has('poster') ?
                 $this->moveFile($this->files->get('poster'), '/image/products/', 'poster') : $this->product->profile->image
         ]);

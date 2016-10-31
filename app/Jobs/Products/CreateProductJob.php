@@ -60,7 +60,7 @@ class CreateProductJob
          * Create Product Profile
          */
         $product->profile()->create([
-            'description' => $this->request->input('description'),
+            'description' => $this->request->get('description'),
             'image' => $this->moveFile($this->poster, '/image/products/', 'poster')
         ]);
 
