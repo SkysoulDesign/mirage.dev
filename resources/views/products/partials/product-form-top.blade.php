@@ -11,6 +11,7 @@
 </div>
 
 {{--*/ $nameArray = @$product?$product->nameArray:array()  /*--}}
+{{--*/ $descriptionArray = @$product?$product->profile->descriptionArray()  /*--}}
 {{--*/ $language = ['en' => '', 'zh' => 'Chinese ', 'zh_tw' => 'Simplified Chinese ', 'ja' => 'Japanese '] /*--}}
 
 @foreach($language as $lang => $placeHolder)
@@ -18,6 +19,6 @@
         <input type="text" name="name[{{ $lang }}]" placeholder="{{ $placeHolder }}Name" value="{{ old('name['.$lang.']', @$nameArray[$lang]) }}">
         <br/><br/>
                 <textarea type="text" name="description[{{ $lang }}]" placeholder="{{ $placeHolder }}Description"
-                          rows="2">{{ old('description['.$lang.']') }}</textarea>
+                          rows="2">{{ old('description['.$lang.']', @$descriptionArray[$lang]) }}</textarea>
     </div>
 @endforeach
