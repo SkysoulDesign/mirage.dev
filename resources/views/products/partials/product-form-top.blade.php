@@ -10,8 +10,8 @@
     </div>
 </div>
 
-{{--*/ $nameArray = @$product?$product->nameArray:array()  /*--}}
-{{--*/ $descriptionArray = json_decode($product->profile->getOriginal('description'), true)  /*--}}
+{{--*/ $nameArray = @$product?$product->nameArray:array() /*--}}
+{{--*/ $descriptionArray = json_decode(@$product?$product->profile->getOriginal('description') ?? '{}', true) /*--}}
 {{--*/ $language = ['en' => '', 'zh' => 'Chinese ', 'zh_tw' => 'Simplified Chinese ', 'ja' => 'Japanese '] /*--}}
 
 @foreach($language as $lang => $placeHolder)
