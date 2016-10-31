@@ -16,7 +16,7 @@ $descriptionArray = @$product?$product->profile->descriptionArray:array();
 $language = ['en' => '', 'zh' => 'Chinese ', 'zh_tw' => 'Simplified Chinese ', 'ja' => 'Japanese '];
 @endphp
 
-{{ dd($product->profile, $product->profile->descriptionArray) }}
+{{ dd($product->profile, $product->profile->description) }}
 
 @foreach($language as $lang => $placeHolder)
     <div class="ui bottom attached segment tab {{ ($lang=='en'?'active':'') }}" data-tab="name_{{ $lang }}">
