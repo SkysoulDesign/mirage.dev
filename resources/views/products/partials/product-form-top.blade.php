@@ -13,7 +13,7 @@
 {{--*/ $nameArray = @$product?$product->nameArray:array()  /*--}}
 {{--*/ $descriptionArray = @$product?$product->profile->descriptionArray:array()  /*--}}
 {{--*/ $language = ['en' => '', 'zh' => 'Chinese ', 'zh_tw' => 'Simplified Chinese ', 'ja' => 'Japanese '] /*--}}
-{{ dd($product->profile->descriptionArray) }}
+{{ dd($product->profile->getOriginal('description')) }}
 @foreach($language as $lang => $placeHolder)
     <div class="ui bottom attached segment tab {{ ($lang=='en'?'active':'') }}" data-tab="name_{{ $lang }}">
         <input type="text" name="name[{{ $lang }}]" placeholder="{{ $placeHolder }}Name" value="{{ old('name['.$lang.']', @$nameArray[$lang]) }}">
