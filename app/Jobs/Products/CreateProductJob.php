@@ -29,8 +29,8 @@ class CreateProductJob
      * Create a new job instance.
      *
      * @param array $request
-     * @param File  $image
-     * @param File  $poster
+     * @param File $image
+     * @param File $poster
      */
     public function __construct(array $request, File $image, File $poster)
     {
@@ -51,17 +51,17 @@ class CreateProductJob
          * Create Product
          */
         $product = $product->create([
-            'name'  => $this->request->get('name'),
-            'code'  => $this->request->get('code'),
+            'name' => $this->request->get('name'),
+            'code' => $this->request->get('code'),
             'image' => $this->moveFile($this->image, '/image/products/', 'figurine'),
         ]);
-
+        dd($this->request->input('description'));
         /**
          * Create Product Profile
          */
         $product->profile()->create([
-            'description' => $this->request->get('description'),
-            'image'       => $this->moveFile($this->poster, '/image/products/', 'poster')
+            'description' => $this->request->input('description'),
+            'image' => $this->moveFile($this->poster, '/image/products/', 'poster')
         ]);
 
         /**
@@ -72,7 +72,7 @@ class CreateProductJob
     }
 
     /**
-     * @param File   $image
+     * @param File $image
      * @param string $prefix
      * @param String $path
      * @return string
