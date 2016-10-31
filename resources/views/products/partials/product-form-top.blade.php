@@ -11,9 +11,9 @@
 </div>
 
 @php()
-$nameArray = @$product?$product->nameArray:array()
-$descriptionArray = @$product?$product->profile->descriptionArray:array()
-$language = ['en' => '', 'zh' => 'Chinese ', 'zh_tw' => 'Simplified Chinese ', 'ja' => 'Japanese ']
+$nameArray = @$product?$product->nameArray:array();
+$descriptionArray = @$product?$product->profile->descriptionArray:array();
+$language = ['en' => '', 'zh' => 'Chinese ', 'zh_tw' => 'Simplified Chinese ', 'ja' => 'Japanese '];
 @endphp
 
 {{ dd($product->profile, $product->profile->descriptionArray) }}
