@@ -28,7 +28,7 @@ class UpdateProductJob extends Job
      * Create a new job instance.
      *
      * @param Product $product
-     * @param array   $request
+     * @param array $request
      * @param FileBag $files
      */
     public function __construct(Product $product, array $request, FileBag $files)
@@ -64,24 +64,23 @@ class UpdateProductJob extends Job
 //        ]);
 
 
-
         $this->product->update([
-            'name'  => $this->request->get('name'),
-            'code'  => $this->request->get('code'),
+            'name' => $this->request->get('name'),
+            'code' => $this->request->get('code'),
             'image' => $this->files->has('image') ?
                 $this->moveFile($this->files->get('image'), '/image/products/', 'figurine') : $this->product->image
         ]);
-
+        dd($this->request->input('description'));
         $this->product->profile->update([
-            'description' => $this->request->get('description'),
-            'image'       =>  $this->files->has('poster') ?
+            'description' => $this->request->input('description'),
+            'image' => $this->files->has('poster') ?
                 $this->moveFile($this->files->get('poster'), '/image/products/', 'poster') : $this->product->profile->image
         ]);
 
     }
 
     /**
-     * @param File   $image
+     * @param File $image
      * @param string $prefix
      * @param String $path
      * @return string

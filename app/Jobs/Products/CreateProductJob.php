@@ -55,7 +55,7 @@ class CreateProductJob
             'code' => $this->request->get('code'),
             'image' => $this->moveFile($this->image, '/image/products/', 'figurine'),
         ]);
-        dd($this->request->input('description'));
+
         /**
          * Create Product Profile
          */
