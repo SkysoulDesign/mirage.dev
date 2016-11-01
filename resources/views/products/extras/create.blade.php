@@ -7,14 +7,14 @@
     <div class="ui segment">
 
         <?php
-            $formAction = 'product.extra.';
-            $formActionParam = $product;
-            if (@$extra->id!=''){
-                $formAction .= 'update';
-                $formActionParam = array($product, $extra->id);
-            } else {
-                $formAction .= 'post';
-            }
+        $formAction = 'product.extra.';
+        $formActionParam = $product;
+        if (@$extra->id!=''){
+        $formAction .= 'update';
+        $formActionParam = array($product, $extra->id);
+        } else {
+        $formAction .= 'post';
+        }
         ?>
         <form class="ui form" action="{{ route($formAction, $formActionParam) }}" method="POST"
               enctype="multipart/form-data">
@@ -34,16 +34,16 @@
             </div>
 
             {{--*/ $titleArray = @$extra ? json_decode($extra->getOriginal('title'), true) : []  /*--}}
-
-            {{--*/ $descriptionArray = @$extra ? json_decode($extra->getOriginal('description'), true) : []  /*--}}
+            {{--*/ $descriptionArray = @$extra ? json_decode($extra->getOriginal('description') ?? '[]', true) : []  /*--}}
             {{--*/ $language = ['en' => '', 'zh' => 'Chinese ', 'zh_tw' => 'Simplified Chinese ', 'ja' => 'Japanese '] /*--}}
 
             @foreach($language as $lang => $placeHolder)
                 <div class="ui bottom attached segment tab {{ ($lang=='en'?'active':'') }}" data-tab="name_{{ $lang }}">
-                    <input type="text" name="title[{{ $lang }}]" placeholder="{{ $placeHolder }}Name" value="{{ old('title['.$lang.']', @$titleArray[$lang]) }}">
+                    <input type="text" name="title[{{ $lang }}]" placeholder="{{ $placeHolder }}Name"
+                           value="{{ old('title['.$lang.']', @$titleArray[$lang]) }}">
                     <br/><br/>
-                <textarea type="text" name="description[{{ $lang }}]" placeholder="{{ $placeHolder }}Description"
-                          rows="2">{{ old('description['.$lang.']', @$descriptionArray[$lang]) }}</textarea>
+                    <textarea type="text" name="description[{{ $lang }}]" placeholder="{{ $placeHolder }}Description"
+                              rows="2">{{ old('description['.$lang.']', @$descriptionArray[$lang]) }}</textarea>
                 </div>
             @endforeach
 
@@ -70,9 +70,9 @@
                         <label>Video</label>
                         <div class="ui compact segment">
                             {{--<video controls width="500">--}}
-                                {{--<source src="{{ asset($extra->video) }}" type="video/mp4">--}}
-                                {{--<source src="{{ asset($extra->video) }}" type="video/ogg">--}}
-                                {{--Your browser does not support the video tag.--}}
+                            {{--<source src="{{ asset($extra->video) }}" type="video/mp4">--}}
+                            {{--<source src="{{ asset($extra->video) }}" type="video/ogg">--}}
+                            {{--Your browser does not support the video tag.--}}
                             {{--</video>--}}
                             <video controls width="500"
                                    src="{{ route('media.stream', array('video', encrypt('code;;;0;;;'.$extra->id))) }}"></video>
