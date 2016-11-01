@@ -34,7 +34,7 @@
             </div>
 
             {{--*/ $titleArray = @$extra ? json_decode($extra->getOriginal('title'), true) : []  /*--}}
-            {{--*/ $descriptionArray = @$extra ? json_decode($extra->getOriginal('description') ?? '[]', true) : []  /*--}}
+            {{--*/ $descriptionArray = (@$extra && @$extra instanceof \Illuminate\Database\Eloquent\Model) ? json_decode($extra->getOriginal('description'), true) : []  /*--}}
             {{--*/ $language = ['en' => '', 'zh' => 'Chinese ', 'zh_tw' => 'Simplified Chinese ', 'ja' => 'Japanese '] /*--}}
 
             @foreach($language as $lang => $placeHolder)
