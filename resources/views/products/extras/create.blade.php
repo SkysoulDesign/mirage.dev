@@ -33,8 +33,9 @@
                 </div>
             </div>
 
-            {{--*/ $titleArray = @$extra?@$extra->titleArray:array()  /*--}}
-            {{--*/ $descriptionArray = @$extra?@$extra->descriptionArray:array()  /*--}}
+            {{--*/ $titleArray = @$extra ? json_decode($extra->getOriginal('title'), true) : []  /*--}}
+
+            {{--*/ $descriptionArray = @$extra ? json_decode($extra->getOriginal('description'), true) : []  /*--}}
             {{--*/ $language = ['en' => '', 'zh' => 'Chinese ', 'zh_tw' => 'Simplified Chinese ', 'ja' => 'Japanese '] /*--}}
 
             @foreach($language as $lang => $placeHolder)
